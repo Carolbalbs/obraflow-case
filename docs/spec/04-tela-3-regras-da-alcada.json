@@ -1,0 +1,303 @@
+{
+  "sprint": {
+    "id": "s4",
+    "index": 4,
+    "name": "Tela 3 — Regras da alçada",
+    "description": "Primeira tela de verdade, porque sem faixa não há pedido submetível. CRUD de faixas por obra, exclusivo do admin.",
+    "entregavel": "Marina cria, edita, reordena e remove faixas; Amanda tentando a mesma URL vê a explicação de acesso negado.",
+    "risco": "medio",
+    "pre_requisito": "s3",
+    "coder_agent_id": "ag-fullstack",
+    "stack": [
+      "next",
+      "react",
+      "typescript",
+      "tailwind",
+      "prisma",
+      "zod"
+    ],
+    "features": [
+      {
+        "id": "s4f1",
+        "categoria": "api_endpoint",
+        "name": "Listar e criar faixas da obra",
+        "description": "GET devolve as faixas ordenadas pelo limite; POST cria faixa nova.",
+        "user_story": "Como admin, quero definir as faixas de valor e seus aprovadores por obra, para que obras de portes diferentes tenham controles diferentes.",
+        "steps": [
+          "Escrever GET /api/obras/[id]/faixas devolvendo as faixas ordenadas com aprovadores",
+          "Escrever POST criando faixa com limite e lista ordenada de aprovadores",
+          "Recusar a segunda faixa aberta da obra",
+          "Recusar limite duplicado na mesma obra"
+        ],
+        "acceptance_criteria": [
+          "GET devolve as faixas ordenadas por limiteCentavos crescente, com a faixa aberta por último",
+          "GET inclui os aprovadores de cada faixa na ordem gravada",
+          "POST com limiteCentavos nulo numa obra que já tem faixa aberta responde 422 com código VALIDACAO",
+          "POST com limite igual ao de outra faixa da mesma obra responde 422",
+          "POST com zero aprovadores responde 422 com campos.aprovadores",
+          "POST com mais de 10 aprovadores responde 422",
+          "POST com aprovador repetido responde 422",
+          "POST por usuário não-admin responde 403 SEM_PERMISSAO",
+          "POST com usuarioId inexistente responde 422"
+        ],
+        "edge_cases": [
+          "Obra inexistente: 404 NAO_ENCONTRADO",
+          "Limite negativo: 422",
+          "Mais de 20 faixas na obra: 422",
+          "Corpo com total de aprovadores válido mas ordem duplicada: a ordem é reindexada pelo servidor a partir da posição no array, então ordem enviada é ignorada"
+        ],
+        "api_spec": [
+          {
+            "method": "GET",
+            "path": "/api/obras/{id}/faixas",
+            "auth": "sessao",
+            "request": {
+              "params": {
+                "id": "string cuid"
+              },
+              "query": {},
+              "body": {}
+            },
+            "responses": {
+              "200": "[{ id, limiteCentavos, semTeto, aprovadores: [{ usuarioId, nome, ordem }] }]",
+              "403": "SEM_PERMISSAO",
+              "404": "NAO_ENCONTRADO — obra inexistente"
+            },
+            "timeout_ms": 5000,
+            "payload_limit": "1MB",
+            "side_effects": [],
+            "idempotent": true
+          },
+          {
+            "method": "POST",
+            "path": "/api/obras/{id}/faixas",
+            "auth": "sessao + papel admin",
+            "request": {
+              "params": {
+                "id": "string cuid"
+              },
+              "query": {},
+              "body": {
+                "limiteCentavos": "int > 0 ou null para faixa aberta",
+                "aprovadores": "array de usuarioId, 1 a 10, sem repetição; a ordem é a posição no array"
+              }
+            },
+            "responses": {
+              "201": "{ id, limiteCentavos, semTeto, aprovadores }",
+              "403": "SEM_PERMISSAO",
+              "404": "NAO_ENCONTRADO",
+              "413": "payload acima de 1MB",
+              "422": "VALIDACAO — segunda faixa aberta, limite duplicado, zero ou mais de 10 aprovadores, aprovador repetido ou inexistente"
+            },
+            "timeout_ms": 5000,
+            "payload_limit": "1MB",
+            "side_effects": [
+              "cria Faixa e FaixaAprovador numa transação"
+            ],
+            "idempotent": false
+          }
+        ],
+        "models": [
+          "Faixa",
+          "FaixaAprovador",
+          "Obra",
+          "Usuario"
+        ],
+        "files": [
+          "app/api/obras/[id]/faixas/route.ts"
+        ],
+        "tests": [
+          "tests/api/faixas.test.ts"
+        ],
+        "depends_on": [
+          "s3f4"
+        ],
+        "out_of_scope": [
+          "CRUD de obra (fora de escopo no PRD)"
+        ]
+      },
+      {
+        "id": "s4f2",
+        "categoria": "api_endpoint",
+        "name": "Substituir e remover faixa",
+        "description": "PUT substitui limite e lista ordenada de uma vez, eliminando rota de reordenação. DELETE remove, e o snapshot dos pedidos sobrevive.",
+        "user_story": "Como admin, quero inverter a ordem de dois aprovadores e salvar, para que a nova ordem persista após recarregar.",
+        "steps": [
+          "Escrever PUT /api/faixas/[id] substituindo a faixa inteira numa transação",
+          "Escrever DELETE /api/faixas/[id]",
+          "Contar pedidos em andamento sob a faixa e devolver na resposta do GET e antes do DELETE"
+        ],
+        "acceptance_criteria": [
+          "PUT substitui limite e aprovadores numa única transação: não existe estado intermediário com a faixa sem aprovador",
+          "Inverter a ordem de dois aprovadores e recarregar devolve a nova ordem",
+          "DELETE de faixa usada por pedido submetido responde 200, e o pedido mantém faixaLimiteCentavos e faixaSemTeto",
+          "Depois do DELETE, o pedido afetado tem faixaId nulo e a cadeia gravada intacta",
+          "PUT e DELETE por não-admin respondem 403 SEM_PERMISSAO",
+          "PUT que deixaria a obra com duas faixas abertas responde 422",
+          "GET da faixa inclui pedidosEmAndamento com a contagem de pedidos pendentes sob ela"
+        ],
+        "edge_cases": [
+          "Faixa inexistente: 404",
+          "PUT com array de aprovadores vazio: 422",
+          "DELETE de faixa sem pedido nenhum: 200, sem aviso",
+          "Dois PUT concorrentes na mesma faixa: o último escreve; não há controle de versão, e a decisão está registrada como aceita neste recorte"
+        ],
+        "api_spec": [
+          {
+            "method": "PUT",
+            "path": "/api/faixas/{id}",
+            "auth": "sessao + papel admin",
+            "request": {
+              "params": {
+                "id": "string cuid"
+              },
+              "query": {},
+              "body": {
+                "limiteCentavos": "int > 0 ou null",
+                "aprovadores": "array de usuarioId, 1 a 10, ordem = posição"
+              }
+            },
+            "responses": {
+              "200": "{ id, limiteCentavos, semTeto, aprovadores }",
+              "403": "SEM_PERMISSAO",
+              "404": "NAO_ENCONTRADO",
+              "413": "payload acima de 1MB",
+              "422": "VALIDACAO"
+            },
+            "timeout_ms": 5000,
+            "payload_limit": "1MB",
+            "side_effects": [
+              "apaga e recria FaixaAprovador da faixa numa transação"
+            ],
+            "idempotent": true
+          },
+          {
+            "method": "DELETE",
+            "path": "/api/faixas/{id}",
+            "auth": "sessao + papel admin",
+            "request": {
+              "params": {
+                "id": "string cuid"
+              },
+              "query": {},
+              "body": {}
+            },
+            "responses": {
+              "200": "{ removida: true, pedidosAfetados: int }",
+              "403": "SEM_PERMISSAO",
+              "404": "NAO_ENCONTRADO"
+            },
+            "timeout_ms": 5000,
+            "payload_limit": "1MB",
+            "side_effects": [
+              "apaga Faixa e seus FaixaAprovador em cascata",
+              "Pedido.faixaId vira nulo; o snapshot denormalizado permanece"
+            ],
+            "idempotent": true
+          }
+        ],
+        "models": [
+          "Faixa",
+          "FaixaAprovador",
+          "Pedido"
+        ],
+        "files": [
+          "app/api/faixas/[id]/route.ts"
+        ],
+        "tests": [
+          "tests/api/faixas.test.ts"
+        ],
+        "depends_on": [
+          "s4f1"
+        ],
+        "out_of_scope": [
+          "Controle de versão otimista na faixa"
+        ]
+      },
+      {
+        "id": "s4f3",
+        "categoria": "frontend",
+        "name": "Tela de regras da alçada",
+        "description": "Seleção de obra, tabela de faixas com aprovadores na ordem, criar, editar, reordenar e remover.",
+        "user_story": "Como admin, quero configurar a alçada pela interface, para não depender de ninguém mexendo no banco.",
+        "steps": [
+          "Seletor de obra",
+          "Tabela com faixa, aprovadores na ordem e ações",
+          "Formulário de criar e editar com aprovadores adicionáveis, removíveis e reordenáveis",
+          "Diálogo de confirmação de exclusão com a contagem de pedidos em andamento"
+        ],
+        "acceptance_criteria": [
+          "A tabela mostra as faixas da obra selecionada, ordenadas, com os aprovadores na ordem gravada",
+          "A faixa aberta é exibida como 'acima de R$ X', derivada do limite da faixa anterior",
+          "Criar faixa e recarregar mantém a faixa",
+          "Reordenar aprovadores e salvar persiste a nova ordem",
+          "O diálogo de exclusão informa quantos pedidos em andamento usam a faixa e declara que eles seguem com a cadeia gravada na submissão",
+          "Excluir sem confirmar no diálogo não chama a API",
+          "A tabela tem estado de carregando, vazio e erro com repetição",
+          "Erro de validação do servidor aparece ancorado no campo, via error.fields"
+        ],
+        "edge_cases": [
+          "Obra sem nenhuma faixa: empty state explicando que nenhum pedido dessa obra poderá ser submetido",
+          "Nenhuma obra no banco: empty state apontando o seed",
+          "Usuário não-admin acessando a URL direto: tela explica o acesso negado e diz a quem recorrer, em vez de tela branca",
+          "API fora do ar: erro com botão de tentar de novo"
+        ],
+        "api_spec": [],
+        "models": [
+          "Faixa",
+          "FaixaAprovador",
+          "Obra"
+        ],
+        "files": [
+          "app/alcadas/page.tsx",
+          "src/ui/componentes/",
+          "src/ui/hooks/"
+        ],
+        "tests": [],
+        "depends_on": [
+          "s4f1",
+          "s4f2"
+        ],
+        "out_of_scope": [
+          "Gráfico de faixas (extra E3)"
+        ]
+      }
+    ],
+    "definition_of_done": [
+      "Admin cria, edita, reordena e remove faixas pela tela",
+      "Não-admin recebe 403 da API e explicação na tela",
+      "O diálogo de exclusão comunica o efeito sobre pedidos em andamento",
+      "npx tsc --noEmit limpo, lint limpo, npm test verde"
+    ]
+  },
+  "contexto": {
+    "base": "docs/spec/base.json",
+    "spec_completa": "docs/SPEC.md",
+    "progresso": "docs/PROGRESS.md",
+    "agente": {
+      "id": "ag-fullstack",
+      "name": "Agente de fatia vertical",
+      "role": "Rota e tela da mesma capacidade, entregues juntas e funcionando.",
+      "model": "claude-opus-5",
+      "rules": [
+        "A sprint só fecha com a tela usando a rota de verdade, nunca com dado simulado.",
+        "Toda lista nasce com carregando, vazio e erro com repetição — não é passada posterior.",
+        "Validação da tela usa o mesmo schema Zod do servidor, ancorada por error.fields.",
+        "Regra de negócio fica no domínio; componente não decide alçada.",
+        "Fidelidade total ao artboard da sua sprint (meta.mockups): estrutura, textos, estados, cores, tipografia e espaçamento saem do mockup, não de estimativa. Divergir só pelo que já está na lista de divergências deliberadas."
+      ]
+    },
+    "modelos_tocados": [
+      "Faixa",
+      "FaixaAprovador",
+      "Obra",
+      "Pedido",
+      "Usuario"
+    ],
+    "verificacoes": [
+      "npx tsc --noEmit",
+      "npm run lint",
+      "npm test"
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "obraflow",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev"
+      ],
+      "port": 3000
+    },
+    {
+      "name": "hextra-docs",
+      "runtimeExecutable": "hugo",
+      "runtimeArgs": [
+        "server",
+        "--source",
+        "site",
+        "--port",
+        "1313",
+        "--disableFastRender"
+      ],
+      "port": 1313
+    }
+  ]
+}

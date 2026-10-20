@@ -1,0 +1,174 @@
+Summary,Issue Type,Epic Name,Epic Link,Description,Priority,Labels,Status
+INC0 · Esqueleto,Epic,INC0 · Esqueleto,,Bloco INC0 do plano incremental. Ver docs/plano-incremental.md.,High,dia-29,Done
+"Gerar projeto Next 16 com TypeScript, Tailwind v4 e App Router",Task,,INC0 · Esqueleto,"App na raiz do fork, sem src-dir, convivendo com site/ intocado.
+
+Pronto quando: npm run dev sobe sem erro de console.",Highest,dia-29,Done
+Tema Tailwind com os tokens do ObraFlow,Task,,INC0 · Esqueleto,"Rampa de marca, rampa neutra, superficies e fontes Inter/Lora iguais a site/assets/css/obraflow.css.
+
+Pronto quando: a pagina renderiza com a cor de marca e o eyebrow em Lora italico.",Highest,dia-29,Done
+Schema Prisma completo e primeira migration,Task,,INC0 · Esqueleto,"Oito modelos. Dinheiro em centavos, quantidade em milesimos, snapshot da faixa no pedido (faixaLimiteCentavos, faixaSemTeto).
+
+Pronto quando: prisma migrate dev aplica sem erro.",Highest,dia-29,Done
+Cliente Prisma com driver adapter e singleton,Task,,INC0 · Esqueleto,"Prisma 7 exige prisma.config.ts e adapter. Singleton para o HMR do Next nao abrir conexao por recarga.
+
+Pronto quando: uma pagina server-side le do banco.",Highest,dia-29,Done
+Seed minimo e scripts npm,Task,,INC0 · Esqueleto,"Tres obras. Scripts seed e db:reset.
+
+Pronto quando: npm run seed imprime a contagem.",High,dia-29,Done
+INC1 · Dominio e testes,Epic,INC1 · Dominio e testes,,Bloco INC1 do plano incremental. Ver docs/plano-incremental.md.,High,dia-29,To Do
+dinheiro.ts: centavos e milesimos,Task,,INC1 · Dominio e testes,"Conversao entre entrada do formulario e inteiro, formatacao pt-BR, e totalItem = round(quantidadeMilesimos * precoUnitarioCentavos / 1000). Nenhum float no caminho.
+
+Pronto quando: testado nos limites de arredondamento.",Highest,dia-29,To Do
+alcada.ts: resolverFaixa,Task,,INC1 · Dominio e testes,"Recebe total em centavos e as faixas da obra. Limite superior inclusivo. Faixa sem teto cobre o resto. Devolve a faixa ou o estado sem regra aplicavel.
+
+Pronto quando: cobre valor exato no limite, teto estourado e obra sem faixa.",Highest,dia-29,To Do
+alcada.ts: montarCadeia,Task,,INC1 · Dominio e testes,"A partir da faixa, devolve as etapas na ordem dos aprovadores.
+
+Pronto quando: ordem preservada e cadeia vazia recusada.",Highest,dia-29,To Do
+decisao.ts: aprovador da vez e validacao,Task,,INC1 · Dominio e testes,"Quem pode decidir, o que aprovacao avanca, o que rejeicao encerra, motivo obrigatorio na rejeicao.
+
+Pronto quando: decisao fora de ordem e segunda decisao na mesma etapa sao recusadas.",Highest,dia-29,To Do
+schemas.ts: um Zod por operacao,Task,,INC1 · Dominio e testes,"Rascunho permissivo e pedido submetido estrito sao schemas diferentes. Mesmo arquivo serve rota e formulario.
+
+Pronto quando: o schema estrito recusa pedido sem itens.",High,dia-29,To Do
+erros.ts: codigos fechados,Task,,INC1 · Dominio e testes,"VALIDACAO, SEM_REGRA_APLICAVEL, NAO_E_SUA_VEZ, CADEIA_CONCLUIDA, NAO_ENCONTRADO, SEM_PERMISSAO.
+
+Pronto quando: o tipo e exaustivo e a interface decide por codigo, nunca por mensagem.",High,dia-29,To Do
+Configurar Vitest em dois projetos,Task,,INC1 · Dominio e testes,"Projeto dominio paralelo e sem setup; projeto api em serie com banco de teste (usado so no E2).
+
+Pronto quando: npm test roda o dominio em segundos.",High,dia-29,To Do
+Suite do dominio: 12 a 18 casos,Task,,INC1 · Dominio e testes,"Os casos listados nas tasks acima, sem banco e sem servidor.
+
+Pronto quando: npm test verde.",Highest,dia-29,To Do
+INC2 · Sessao e papeis,Epic,INC2 · Sessao e papeis,,Bloco INC2 do plano incremental. Ver docs/plano-incremental.md.,High,dia-29,To Do
+lerSessao recebendo Request,Task,,INC2 · Sessao e papeis,"CRITICO: nao usar cookies() de next/headers. O handler recebe o Request e repassa, senao a etapa 2 de testes fica inviavel.
+
+Pronto quando: a funcao e chamavel fora do contexto do Next.",Highest,dia-29,To Do
+Criacao e destruicao de sessao em cookie httpOnly,Task,,INC2 · Sessao e papeis,"POST para entrar, DELETE para sair. Identidade decidida no servidor.
+
+Pronto quando: o cookie nao e legivel por JavaScript.",Highest,dia-29,To Do
+Gate DEMO_MODE na rota de entrada,Task,,INC2 · Sessao e papeis,"Com a flag desligada a rota nao responde.
+
+Pronto quando: DEMO_MODE=false devolve 404 na entrada.",High,dia-29,To Do
+permissao.ts: matriz de quatro papeis,Task,,INC2 · Sessao e papeis,"admin, aprovador, comprador, visualizador. Uma funcao so, consultada por toda rota.
+
+Pronto quando: a matriz do artboard Perfis e verdade no codigo.",Highest,dia-29,To Do
+http.ts: envelope de erro e helper de rota,Task,,INC2 · Sessao e papeis,"{ error: { code, message, fields? } } e um wrapper que converte ErroDominio em resposta.
+
+Pronto quando: toda rota responde no mesmo formato.",High,dia-29,To Do
+Tela de entrada,Task,,INC2 · Sessao e papeis,"Lista os usuarios do seed, sem senha. Mostra o papel de cada um.
+
+Pronto quando: da para entrar como cada usuario.",High,dia-29,To Do
+"Cabecalho com usuario, papel e trocar de usuario",Task,,INC2 · Sessao e papeis,"Nome da construtora fixo. Sem seletor de empresa (ADR 0006).
+
+Pronto quando: o menu muda conforme o papel.",High,dia-29,To Do
+INC3 · Tela 3 — Regras da alcada,Epic,INC3 · Tela 3 — Regras da alcada,,Bloco INC3 do plano incremental. Ver docs/plano-incremental.md.,High,dia-29,To Do
+GET e POST /api/obras/:id/faixas,Task,,INC3 · Tela 3 — Regras da alcada,"Lista as faixas ordenadas e cria faixa nova.
+
+Pronto quando: faixa sem teto so pode existir uma por obra.",Highest,dia-29,To Do
+PUT e DELETE /api/faixas/:id,Task,,INC3 · Tela 3 — Regras da alcada,"PUT substitui limite e lista ordenada de aprovadores de uma vez, eliminando rota de reordenacao.
+
+Pronto quando: reordenar e salvar nao gera estado intermediario invalido.",Highest,dia-29,To Do
+Tela: selecao de obra e listagem de faixas,Task,,INC3 · Tela 3 — Regras da alcada,"Tabela com faixa, aprovadores na ordem e acoes.
+
+Pronto quando: a tabela do enunciado aparece preenchida.",High,dia-29,To Do
+Tela: criar e editar faixa,Task,,INC3 · Tela 3 — Regras da alcada,"Limite de valor e aprovadores adicionaveis, removiveis e reordenaveis.
+
+Pronto quando: a ordem salva e a ordem exibida.",High,dia-29,To Do
+403 para quem nao e admin,Task,,INC3 · Tela 3 — Regras da alcada,"Recusa na API, nao item escondido no menu. Tela explica e diz a quem recorrer.
+
+Pronto quando: Amanda digitando a URL ve a explicacao, nao uma tela branca.",Highest,dia-29,To Do
+INC4 · Tela 1 — Cadastro de pedido,Epic,INC4 · Tela 1 — Cadastro de pedido,,Bloco INC4 do plano incremental. Ver docs/plano-incremental.md.,High,dia-30,To Do
+"POST, PUT e DELETE /api/pedidos",Task,,INC4 · Tela 1 — Cadastro de pedido,"Cria rascunho, edita rascunho, apaga rascunho. Pedido submetido e imutavel.
+
+Pronto quando: PUT em pedido submetido devolve erro.",Highest,dia-30,To Do
+POST /api/pedidos/:id/submissao,Task,,INC4 · Tela 1 — Cadastro de pedido,"Valida por inteiro, resolve a faixa, grava a cadeia, tudo numa transacao.
+
+Pronto quando: falha na validacao nao deixa etapa orfa.",Highest,dia-30,To Do
+Formulario de dados gerais,Task,,INC4 · Tela 1 — Cadastro de pedido,"Obra, fornecedor, data e observacoes internas.
+
+Pronto quando: rascunho salva com campos vazios.",High,dia-30,To Do
+Editor de itens N,Task,,INC4 · Tela 1 — Cadastro de pedido,"Comeca com um item em branco. Adicionar, editar, remover. Total do item calculado e nao editavel.
+
+Pronto quando: tres itens somam o total do pedido corretamente.",Highest,dia-30,To Do
+Totalizacao e habilitacao do envio,Task,,INC4 · Tela 1 — Cadastro de pedido,"Total visivel. Botao de cadastrar so quando dados gerais e todos os itens forem validos.
+
+Pronto quando: item invalido mantem o botao desabilitado com o motivo visivel.",High,dia-30,To Do
+Tratamento de SEM_REGRA_APLICAVEL,Task,,INC4 · Tela 1 — Cadastro de pedido,"Bloqueia a submissao sem perder o rascunho, e diz o que fazer.
+
+Pronto quando: da para salvar, criar a faixa na tela 3 e voltar para enviar.",High,dia-30,To Do
+INC5 · Tela 2 — Aprovacao,Epic,INC5 · Tela 2 — Aprovacao,,Bloco INC5 do plano incremental. Ver docs/plano-incremental.md.,High,dia-30,To Do
+GET /api/pedidos com filtros,Task,,INC5 · Tela 2 — Aprovacao,"Filtra por situacao e obra. Devolve acoes possiveis para a sessao atual.
+
+Pronto quando: curl com sessoes diferentes devolve acoes diferentes.",Highest,dia-30,To Do
+GET /api/pedidos/:id,Task,,INC5 · Tela 2 — Aprovacao,"Cabecalho, itens, cadeia gravada e historico de decisoes.
+
+Pronto quando: a cadeia vem do snapshot, nunca recalculada.",Highest,dia-30,To Do
+POST /api/pedidos/:id/decisoes com UPDATE condicional,Task,,INC5 · Tela 2 — Aprovacao,"Uma escrita condicionada ao estado que a autoriza. Zero linhas afetadas vira 409.
+
+Pronto quando: duas decisoes simultaneas produzem exatamente um 200 e um 409.",Highest,dia-30,To Do
+Lista de pedidos,Task,,INC5 · Tela 2 — Aprovacao,"Identificador, obra, fornecedor, data, itens, total, situacao, alcada atual e acoes.
+
+Pronto quando: a lista de pendentes reflete o nivel atual, vindo do back-end.",High,dia-30,To Do
+Detalhe do pedido,Task,,INC5 · Tela 2 — Aprovacao,"Itens com descricao, quantidade, unidade, preco e total, mais o historico de decisoes.
+
+Pronto quando: rejeicao aparece no historico com o motivo.",High,dia-30,To Do
+Componente de cadeia de aprovacao,Task,,INC5 · Tela 2 — Aprovacao,"Etapas concluidas, etapa atual destacada e proximas. Empilha no vertical em tela estreita.
+
+Pronto quando: e legivel em 390px.",High,dia-30,To Do
+Dialogo de rejeicao com motivo obrigatorio,Task,,INC5 · Tela 2 — Aprovacao,"Validado antes do submit. Foco preso, Esc fecha, foco volta ao gatilho.
+
+Pronto quando: rejeitar sem motivo nao envia.",Highest,dia-30,To Do
+Estados de decisao indisponivel,Task,,INC5 · Tela 2 — Aprovacao,"Cadeia concluida, nao e a sua vez, papel sem permissao: cada um com explicacao propria.
+
+Pronto quando: nenhum botao fica desabilitado sem dizer por que.",High,dia-30,To Do
+"INC6 · Estados, validacoes e responsividade",Epic,"INC6 · Estados, validacoes e responsividade",,Bloco INC6 do plano incremental. Ver docs/plano-incremental.md.,High,dia-31,To Do
+Loading em toda lista,Task,,"INC6 · Estados, validacoes e responsividade","Obrigatorio pelo enunciado.
+
+Pronto quando: nenhuma lista pisca conteudo vazio antes de carregar.",Highest,dia-31,To Do
+Empty states,Task,,"INC6 · Estados, validacoes e responsividade","Nenhuma obra cadastrada, nenhum pedido, obra sem faixa. Amigavel, nunca tela branca.
+
+Pronto quando: banco vazio produz orientacao, nao vazio.",High,dia-31,To Do
+Erro com opcao de tentar de novo,Task,,"INC6 · Estados, validacoes e responsividade","API fora do ar e 500.
+
+Pronto quando: derrubar o servidor com a tela aberta mostra erro com botao de repetir.",Highest,dia-31,To Do
+Validacao por campo,Task,,"INC6 · Estados, validacoes e responsividade","Mesmo schema Zod do servidor, erro ancorado no input certo via error.fields.
+
+Pronto quando: quantidade negativa acende o erro no item correspondente.",High,dia-31,To Do
+Responsividade de 390px para cima,Task,,"INC6 · Estados, validacoes e responsividade","Tabela de itens vira cartoes abaixo de 768px.
+
+Pronto quando: nao ha rolagem horizontal em 390px.",High,dia-31,To Do
+"INC7 · Seed, prova e documentacao",Epic,"INC7 · Seed, prova e documentacao",,Bloco INC7 do plano incremental. Ver docs/plano-incremental.md.,High,dia-31,To Do
+Seed completo com oito pedidos,Task,,"INC7 · Seed, prova e documentacao","Rascunho completo e incompleto, pendente na 1a etapa, pendente na 2a com a 1a aprovada, aprovado, rejeitado com motivo, e um com a faixa editada depois da submissao.
+
+Pronto quando: trocar de usuario mostra filas diferentes sem editar dado.",Highest,dia-31,To Do
+scripts/verificar.sh,Task,,"INC7 · Seed, prova e documentacao","curl comentado demonstrando 409 em decisao fora de ordem, 409 em decisao duplicada e 403 em rota de alcada.
+
+Pronto quando: o avaliador roda e ve os codigos.",Highest,dia-31,To Do
+Screenshots das tres telas,Task,,"INC7 · Seed, prova e documentacao","Exigidos pelo enunciado. Demoram mais do que parece.
+
+Pronto quando: estao no README e legiveis.",High,dia-31,To Do
+README completo,Task,,"INC7 · Seed, prova e documentacao","Instalacao, execucao, seed, tecnologias e motivos, modelagem da alcada, comunicacao front-back, consistencia, o que mudaria em producao, e a tabela de o que cada usuario ve.
+
+Pronto quando: alguem que nunca viu o projeto clona e chega na tela de aprovacao sem perguntar.",Highest,dia-31,To Do
+Abrir o Pull Request,Task,,"INC7 · Seed, prova e documentacao","Com e-mail e telefone na descricao, conforme o enunciado. Abrir dia 31, nao dia 1.
+
+Pronto quando: o PR esta aberto contra ObraFlow/obraflow-case.",Highest,dia-31,To Do
+EXTRA1 · Simulador de alcada ao vivo,Epic,EXTRA1 · Simulador de alcada ao vivo,,Bloco EXTRA1 do plano incremental. Ver docs/plano-incremental.md.,High,extra,To Do
+Rota de simulacao da cadeia,Task,,EXTRA1 · Simulador de alcada ao vivo,"Recebe obra e total, devolve a cadeia prevista sem criar nada. Reaproveita resolverFaixa.
+
+Pronto quando: responde tambem o estado sem regra aplicavel.",Medium,extra,To Do
+Componente de cadeia prevista no cadastro,Task,,EXTRA1 · Simulador de alcada ao vivo,"Atualiza conforme o total muda. Desenhado em AprovacoesB.
+
+Pronto quando: mudar um preco muda a cadeia na tela.",Medium,extra,To Do
+EXTRA2 · Suite de integracao da API,Epic,EXTRA2 · Suite de integracao da API,,Bloco EXTRA2 do plano incremental. Ver docs/plano-incremental.md.,High,extra,To Do
+Banco de teste e limpeza entre casos,Task,,EXTRA2 · Suite de integracao da API,"env de teste, reset de schema, fabricas em tests/fabricas.ts.
+
+Pronto quando: os casos rodam isolados em serie.",Low,extra,To Do
+Sete casos de API no nivel do handler,Task,,EXTRA2 · Suite de integracao da API,"Fora de ordem, duplicada, corrida com Promise.all, permissao, escopo de leitura, sem regra aplicavel e snapshot.
+
+Pronto quando: npm test cobre os dois projetos.",Low,extra,To Do
+EXTRA3 · Grafico na tela de administracao,Epic,EXTRA3 · Grafico na tela de administracao,,Bloco EXTRA3 do plano incremental. Ver docs/plano-incremental.md.,High,extra,To Do
+Grafico de pedidos por situacao,Task,,EXTRA3 · Grafico na tela de administracao,"Menor prioridade do backlog: nao melhora nenhum criterio diretamente.
+
+Pronto quando: existe e nao atrapalha.",Lowest,extra,To Do
