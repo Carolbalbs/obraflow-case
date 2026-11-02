@@ -1,11 +1,11 @@
 {{- /* "Comece rápido": instalação local e a chamada da API de decisões, lado a lado. */ -}}
-{{- $repo := "https://github.com/Carolbalbs/obraflow-case/blob/main" -}}
+{{- $repo := "https://github.com/Carolbalbs/obraflow-case/blob/resolucao-obraflow" -}}
 <section class="of-comece">
   <div class="of-comece-inner">
     <div>
       <h2>Comece rápido</h2>
       <p>Rode localmente com Node 20 — sem container, sem credencial:</p>
-<pre class="of-code">git clone https://github.com/Carolbalbs/obraflow-case.git
+<pre class="of-code">git clone -b resolucao-obraflow https://github.com/Carolbalbs/obraflow-case.git
 cd obraflow-case &amp;&amp; npm install
 cp .env.example .env
 npx prisma migrate dev &amp;&amp; npm run seed

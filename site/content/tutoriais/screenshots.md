@@ -5,7 +5,7 @@ prev: /tutoriais/dados-demo
 ---
 
 {{< callout type="info" >}}
-Este conteúdo é o mesmo do [`README.md`](https://github.com/Carolbalbs/obraflow-case#readme) da entrega, que continua sendo a referência exigida pelo enunciado.
+Este conteúdo é o mesmo do [`README.md`](https://github.com/Carolbalbs/obraflow-case/blob/resolucao-obraflow/docs/README.md) da entrega, que continua sendo a referência exigida pelo enunciado.
 {{< /callout >}}
 
 Todas as capturas abaixo saem do estado do seed, sem nenhum cadastro manual. Para recapturá-las

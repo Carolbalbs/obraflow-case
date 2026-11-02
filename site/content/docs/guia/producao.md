@@ -6,7 +6,7 @@ next: /docs/escopo/
 ---
 
 {{< callout type="info" >}}
-Este conteúdo é o mesmo do [`README.md`](https://github.com/Carolbalbs/obraflow-case#readme) da entrega, que continua sendo a referência exigida pelo enunciado.
+Este conteúdo é o mesmo do [`README.md`](https://github.com/Carolbalbs/obraflow-case/blob/resolucao-obraflow/docs/README.md) da entrega, que continua sendo a referência exigida pelo enunciado.
 {{< /callout >}}
 
 O que está aqui é o recorte do case executando local. O que mudaria, e por quê:

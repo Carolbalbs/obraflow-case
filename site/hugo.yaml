@@ -52,7 +52,7 @@ menu:
       weight: 1
     - identifier: readme
       name: README do desafio
-      url: "https://github.com/Carolbalbs/obraflow-case#readme"
+      url: "https://github.com/Carolbalbs/obraflow-case/blob/resolucao-obraflow/docs/README.md"
       weight: 2
     - identifier: contato
       name: Falar com o recrutador

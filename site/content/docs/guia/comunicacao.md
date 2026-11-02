@@ -6,7 +6,7 @@ next: /docs/guia/consistencia
 ---
 
 {{< callout type="info" >}}
-Este conteúdo é o mesmo do [`README.md`](https://github.com/Carolbalbs/obraflow-case#readme) da entrega, que continua sendo a referência exigida pelo enunciado.
+Este conteúdo é o mesmo do [`README.md`](https://github.com/Carolbalbs/obraflow-case/blob/resolucao-obraflow/docs/README.md) da entrega, que continua sendo a referência exigida pelo enunciado.
 {{< /callout >}}
 
 `fetch` do navegador contra Route Handlers em `app/api/*`. JSON nos dois sentidos, cookie

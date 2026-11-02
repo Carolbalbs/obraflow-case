@@ -5,7 +5,7 @@ next: /tutoriais/screenshots
 ---
 
 {{< callout type="info" >}}
-Este conteúdo é o mesmo do [`README.md`](https://github.com/Carolbalbs/obraflow-case#readme) da entrega, que continua sendo a referência exigida pelo enunciado.
+Este conteúdo é o mesmo do [`README.md`](https://github.com/Carolbalbs/obraflow-case/blob/resolucao-obraflow/docs/README.md) da entrega, que continua sendo a referência exigida pelo enunciado.
 {{< /callout >}}
 
 Como instalar e subir a aplicação está em [Primeiros passos](/docs/getting-started). Esta página descreve o que o seed cria e com quem entrar.
@@ -67,7 +67,7 @@ estado vazio da tela 3.
 Os dois últimos são a razão de o seed escrever o estado diretamente em vez de encená-lo pelas
 rotas: nenhuma sequência de chamadas produz "faixa editada **depois** de um pedido já ter sido
 submetido sob ela" sem um segundo passo manual. O que importa demonstrar é o estado — e ele é
-exatamente o que o [ADR 0001](https://github.com/Carolbalbs/obraflow-case/blob/main/docs/adr/0001-cadeia-de-aprovacao-e-snapshot.md) promete.
+exatamente o que o [ADR 0001](https://github.com/Carolbalbs/obraflow-case/blob/resolucao-obraflow/docs/adr/0001-cadeia-de-aprovacao-e-snapshot.md) promete.
 
 ### Filas diferentes, sem editar nada
 

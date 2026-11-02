@@ -94,5 +94,5 @@ endereço da tabela de endpoints.
 
 | Documento | O que é |
 |---|---|
-| [`docs/adr/`](https://github.com/Carolbalbs/obraflow-case/blob/main/docs/adr/) | As sete decisões que o resto do código assume |
-| [`GLOSSARY.md`](https://github.com/Carolbalbs/obraflow-case/blob/main/GLOSSARY.md) | O vocabulário: faixa, cadeia, etapa, alçada, aprovador da vez |
+| [`docs/adr/`](https://github.com/Carolbalbs/obraflow-case/blob/resolucao-obraflow/docs/adr/) | As sete decisões que o resto do código assume |
+| [`GLOSSARY.md`](https://github.com/Carolbalbs/obraflow-case/blob/resolucao-obraflow/GLOSSARY.md) | O vocabulário: faixa, cadeia, etapa, alçada, aprovador da vez |

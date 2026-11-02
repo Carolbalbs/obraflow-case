@@ -48,20 +48,20 @@ O resumo, por peso de avaliação:
 | Qualidade de código, organização e decisões técnicas | 15% | ✅ | Domínio puro, 7 ADRs, mapa de erros central; toda rota tem feature na SPEC |
 | Desenho de UI: hierarquia, clareza, consistência | 20% | ✅ | 9 screenshots; depende do julgamento de quem avalia |
 | Estados, responsividade e validações | 10% | ✅ | Completo; data do pedido obrigatória e preço zero aceito, como o enunciado pede |
-| Documentação (`## Decisões técnicas`) | 10% | ✅ | Seção com exatamente esse título em README.md:266 |
+| Documentação (`## Decisões técnicas`) | 10% | ✅ | Seção com exatamente esse título em docs/README.md:268 |
 
 ### Entrega
 
 | Exigência | | Onde |
 |---|:---:|---|
-| Instruções para instalar, configurar e iniciar | ✅ | README.md:113 |
+| Instruções para instalar, configurar e iniciar | ✅ | docs/README.md:115 |
 | Código-fonte de front e back | ✅ | `app/`, `src/` |
-| Dados de demonstração e instruções | ✅ | `npm run seed`; README.md:174 |
+| Dados de demonstração e instruções | ✅ | `npm run seed`; docs/README.md:176 |
 | README: screenshots | ✅ | 9 imagens em `docs/screenshots/`, todas existentes |
-| README: tecnologias e motivos | ✅ | README.md:268 |
-| README: como a alçada é modelada, calculada e persistida | ✅ | README.md:285 |
-| README: como o front conversa com o back | ✅ | README.md:337 |
-| README: consistência e integridade | ✅ | README.md:411 |
-| README: o que mudaria em produção | ✅ | README.md:532 |
+| README: tecnologias e motivos | ✅ | docs/README.md:270 |
+| README: como a alçada é modelada, calculada e persistida | ✅ | docs/README.md:286 |
+| README: como o front conversa com o back | ✅ | docs/README.md:338 |
+| README: consistência e integridade | ✅ | docs/README.md:412 |
+| README: o que mudaria em produção | ✅ | docs/README.md:530 |
 | Fork e Pull Request até 01/11/2026 23h59 | ✅ | Branch `resolucao-obraflow` do fork, PR aberto para `ObraFlow/obraflow-case` |
 | E-mail e telefone na descrição do PR | ✅ | Na descrição do PR |

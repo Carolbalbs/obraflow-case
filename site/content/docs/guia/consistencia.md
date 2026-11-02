@@ -6,7 +6,7 @@ next: /docs/guia/producao
 ---
 
 {{< callout type="info" >}}
-Este conteúdo é o mesmo do [`README.md`](https://github.com/Carolbalbs/obraflow-case#readme) da entrega, que continua sendo a referência exigida pelo enunciado.
+Este conteúdo é o mesmo do [`README.md`](https://github.com/Carolbalbs/obraflow-case/blob/resolucao-obraflow/docs/README.md) da entrega, que continua sendo a referência exigida pelo enunciado.
 {{< /callout >}}
 
 **Dinheiro nunca passa por ponto flutuante.** Centavos (`Int`) e quantidades em milésimos (`Int`),
@@ -29,7 +29,7 @@ aprovadores, substituir um pedido inteiro, submeter, decidir: tudo ou nada. A al
 escrita — se sumiu, o plano falha e nada foi gravado.
 
 **Concorrência: a decisão é um `UPDATE` condicional**
-([ADR 0004](https://github.com/Carolbalbs/obraflow-case/blob/main/docs/adr/0004-decisao-por-update-condicional.md)). Não há leitura seguida de escrita
+([ADR 0004](https://github.com/Carolbalbs/obraflow-case/blob/resolucao-obraflow/docs/adr/0004-decisao-por-update-condicional.md)). Não há leitura seguida de escrita
 confiando no que leu. O `where` **é** o contrato:
 
 ```ts

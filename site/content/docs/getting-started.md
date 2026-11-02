@@ -6,7 +6,7 @@ next: /docs/guia/
 ---
 
 {{< callout type="info" >}}
-Este conteúdo é o mesmo do [`README.md`](https://github.com/Carolbalbs/obraflow-case#readme) da entrega, que continua sendo a referência exigida pelo enunciado.
+Este conteúdo é o mesmo do [`README.md`](https://github.com/Carolbalbs/obraflow-case/blob/resolucao-obraflow/docs/README.md) da entrega, que continua sendo a referência exigida pelo enunciado.
 {{< /callout >}}
 
 ## Como rodar
@@ -15,7 +15,7 @@ Pré-requisitos: **Node.js 20 ou mais novo** e `npm`. Nada além disso — o ban
 criado localmente, e não há serviço externo, credencial ou container.
 
 ```bash
-git clone https://github.com/Carolbalbs/obraflow-case.git
+git clone -b resolucao-obraflow https://github.com/Carolbalbs/obraflow-case.git
 cd obraflow-case
 npm install
 cp .env.example .env          # DATABASE_URL e DEMO_MODE
@@ -26,7 +26,7 @@ npm run dev                   # http://localhost:3000
 
 Abra <http://localhost:3000>. Sem sessão, a aplicação leva para `/entrar`, onde se escolhe quem
 entrar como — **sem senha**, porque a autenticação está declarada fora de escopo
-([ADR 0005](https://github.com/Carolbalbs/obraflow-case/blob/main/docs/adr/0005-sessao-de-demonstracao-sem-senha.md)). Daí em diante, o seletor no canto
+([ADR 0005](https://github.com/Carolbalbs/obraflow-case/blob/resolucao-obraflow/docs/adr/0005-sessao-de-demonstracao-sem-senha.md)). Daí em diante, o seletor no canto
 superior direito troca de usuário sem sair da tela.
 
 ### Os comandos

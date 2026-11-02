@@ -6,7 +6,7 @@ next: /docs/guia/comunicacao
 ---
 
 {{< callout type="info" >}}
-Este conteúdo é o mesmo do [`README.md`](https://github.com/Carolbalbs/obraflow-case#readme) da entrega, que continua sendo a referência exigida pelo enunciado.
+Este conteúdo é o mesmo do [`README.md`](https://github.com/Carolbalbs/obraflow-case/blob/resolucao-obraflow/docs/README.md) da entrega, que continua sendo a referência exigida pelo enunciado.
 {{< /callout >}}
 
 **Modelada.** Uma `Faixa` guarda **apenas o limite superior**, e ele é **inclusivo**:
@@ -24,7 +24,7 @@ Não há coluna de valor mínimo. O mínimo é **derivado**: é o limite da faix
 centavo, e a tela o mostra recalculado. A ausência é a invariante — sem um mínimo editável à
 parte, **buraco e sobreposição entre faixas deixam de ser representáveis**. Não existe estado
 inválido a validar, porque não existe forma de escrevê-lo
-([ADR 0002](https://github.com/Carolbalbs/obraflow-case/blob/main/docs/adr/0002-faixa-por-limite-superior.md)).
+([ADR 0002](https://github.com/Carolbalbs/obraflow-case/blob/resolucao-obraflow/docs/adr/0002-faixa-por-limite-superior.md)).
 
 A ordem dos aprovadores é coluna, com índice único `(faixaId, ordem)`: duas pessoas na mesma
 posição são impossíveis no banco, não só improváveis no código.
@@ -45,7 +45,7 @@ genérico**: a submissão é bloqueada com mensagem própria e o rascunho contin
 corrigido. `montarCadeia` então transforma os aprovadores da faixa em etapas numeradas.
 
 **Persistida.** O instante em que isso acontece é a **submissão**, uma vez só, e o resultado é
-gravado como **snapshot** ([ADR 0001](https://github.com/Carolbalbs/obraflow-case/blob/main/docs/adr/0001-cadeia-de-aprovacao-e-snapshot.md)):
+gravado como **snapshot** ([ADR 0001](https://github.com/Carolbalbs/obraflow-case/blob/resolucao-obraflow/docs/adr/0001-cadeia-de-aprovacao-e-snapshot.md)):
 
 - as `Etapa` do pedido, com `(pedidoId, ordem)` único e o `usuarioId` de quem assina;
 - três colunas no próprio pedido — `faixaId`, `faixaLimiteCentavos`, `faixaSemTeto`.
