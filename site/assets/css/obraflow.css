@@ -545,6 +545,10 @@ code, kbd, pre, samp { font-family: var(--of-font-mono); }
 .dark .of-step em { color: rgba(255, 255, 255, 0.4); }
 .dark .of-step-now em { color: var(--of-brand-300); }
 
+/* O contêiner da home é flex com items-start, que encolhe cada seção até o
+   próprio conteúdo: as faixas de largura total precisam esticar. */
+.of-hero, .of-aurora, .of-comece { align-self: stretch; box-sizing: border-box; }
+
 /* a capa encosta na navbar: anula o padding superior do <main> */
 main:has(> div > .of-hero:first-child) { padding-top: 0 !important; }
 .of-hero { margin-top: 0; }
