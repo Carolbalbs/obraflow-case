@@ -78,7 +78,7 @@
 &lt;td&gt;Documentação (&lt;code&gt;## Decisões técnicas&lt;/code&gt;)&lt;/td&gt;
 &lt;td style="text-align: right"&gt;10%&lt;/td&gt;
 &lt;td style="text-align: center"&gt;✅&lt;/td&gt;
-&lt;td&gt;Seção com exatamente esse título em README.md:266&lt;/td&gt;
+&lt;td&gt;Seção com exatamente esse título em docs/README.md:268&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -95,7 +95,7 @@
 &lt;tr&gt;
 &lt;td&gt;Instruções para instalar, configurar e iniciar&lt;/td&gt;
 &lt;td style="text-align: center"&gt;✅&lt;/td&gt;
-&lt;td&gt;README.md:113&lt;/td&gt;
+&lt;td&gt;docs/README.md:115&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;Código-fonte de front e back&lt;/td&gt;
@@ -105,7 +105,7 @@
 &lt;tr&gt;
 &lt;td&gt;Dados de demonstração e instruções&lt;/td&gt;
 &lt;td style="text-align: center"&gt;✅&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;npm run seed&lt;/code&gt;; README.md:174&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;npm run seed&lt;/code&gt;; docs/README.md:176&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;README: screenshots&lt;/td&gt;
@@ -115,27 +115,27 @@
 &lt;tr&gt;
 &lt;td&gt;README: tecnologias e motivos&lt;/td&gt;
 &lt;td style="text-align: center"&gt;✅&lt;/td&gt;
-&lt;td&gt;README.md:268&lt;/td&gt;
+&lt;td&gt;docs/README.md:270&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;README: como a alçada é modelada, calculada e persistida&lt;/td&gt;
 &lt;td style="text-align: center"&gt;✅&lt;/td&gt;
-&lt;td&gt;README.md:285&lt;/td&gt;
+&lt;td&gt;docs/README.md:286&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;README: como o front conversa com o back&lt;/td&gt;
 &lt;td style="text-align: center"&gt;✅&lt;/td&gt;
-&lt;td&gt;README.md:337&lt;/td&gt;
+&lt;td&gt;docs/README.md:338&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;README: consistência e integridade&lt;/td&gt;
 &lt;td style="text-align: center"&gt;✅&lt;/td&gt;
-&lt;td&gt;README.md:411&lt;/td&gt;
+&lt;td&gt;docs/README.md:412&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;README: o que mudaria em produção&lt;/td&gt;
 &lt;td style="text-align: center"&gt;✅&lt;/td&gt;
-&lt;td&gt;README.md:532&lt;/td&gt;
+&lt;td&gt;docs/README.md:530&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;Fork e Pull Request até 01/11/2026 23h59&lt;/td&gt;
@@ -152,7 +152,7 @@
 &lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200"&gt;
 &lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/&gt;&lt;/svg&gt;&lt;/div&gt;
 &lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
-&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;Este conteúdo é o mesmo do &lt;a href="https://github.com/Carolbalbs/obraflow-case#readme" target="_blank" rel="noopener"&gt;&lt;code&gt;README.md&lt;/code&gt;&lt;/a&gt; da entrega, que continua sendo a referência exigida pelo enunciado.&lt;/div&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;Este conteúdo é o mesmo do &lt;a href="https://github.com/Carolbalbs/obraflow-case/blob/resolucao-obraflow/docs/README.md" target="_blank" rel="noopener"&gt;&lt;code&gt;README.md&lt;/code&gt;&lt;/a&gt; da entrega, que continua sendo a referência exigida pelo enunciado.&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;Como instalar e subir a aplicação está em &lt;a href="https://carolbalbs.github.io/obraflow-case/docs/getting-started/"&gt;Primeiros passos&lt;/a&gt;. Esta página descreve o que o seed cria e com quem entrar.&lt;/p&gt;
@@ -310,7 +310,7 @@ estado vazio da tela 3.&lt;/p&gt;
 &lt;p&gt;Os dois últimos são a razão de o seed escrever o estado diretamente em vez de encená-lo pelas
 rotas: nenhuma sequência de chamadas produz &amp;ldquo;faixa editada &lt;strong&gt;depois&lt;/strong&gt; de um pedido já ter sido
 submetido sob ela&amp;rdquo; sem um segundo passo manual. O que importa demonstrar é o estado — e ele é
-exatamente o que o &lt;a href="https://github.com/Carolbalbs/obraflow-case/blob/main/docs/adr/0001-cadeia-de-aprovacao-e-snapshot.md" target="_blank" rel="noopener"&gt;ADR 0001&lt;/a&gt; promete.&lt;/p&gt;
+exatamente o que o &lt;a href="https://github.com/Carolbalbs/obraflow-case/blob/resolucao-obraflow/docs/adr/0001-cadeia-de-aprovacao-e-snapshot.md" target="_blank" rel="noopener"&gt;ADR 0001&lt;/a&gt; promete.&lt;/p&gt;
 &lt;h3 data-hextra-search-id="filas-diferentes-sem-editar-nada"&gt;Filas diferentes, sem editar nada&lt;span class="hx:absolute hx:-mt-20" id="filas-diferentes-sem-editar-nada"&gt;&lt;/span&gt;
 &lt;a href="#filas-diferentes-sem-editar-nada" class="subheading-anchor" aria-label="Link permanente para esta secção"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;table&gt;
 &lt;thead&gt;
@@ -415,7 +415,7 @@ depois não reescreve pedido em andamento. Detalhes em &lt;a href="https://carol
 &lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200"&gt;
 &lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/&gt;&lt;/svg&gt;&lt;/div&gt;
 &lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
-&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;Este conteúdo é o mesmo do &lt;a href="https://github.com/Carolbalbs/obraflow-case#readme" target="_blank" rel="noopener"&gt;&lt;code&gt;README.md&lt;/code&gt;&lt;/a&gt; da entrega, que continua sendo a referência exigida pelo enunciado.&lt;/div&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;Este conteúdo é o mesmo do &lt;a href="https://github.com/Carolbalbs/obraflow-case/blob/resolucao-obraflow/docs/README.md" target="_blank" rel="noopener"&gt;&lt;code&gt;README.md&lt;/code&gt;&lt;/a&gt; da entrega, que continua sendo a referência exigida pelo enunciado.&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;table&gt;
@@ -440,7 +440,7 @@ depois não reescreve pedido em andamento. Detalhes em &lt;a href="https://carol
 &lt;tr&gt;
 &lt;td&gt;Mutações&lt;/td&gt;
 &lt;td&gt;&lt;strong&gt;Route Handlers&lt;/strong&gt;, sem Server Actions&lt;/td&gt;
-&lt;td&gt;Porque o contrato precisa ser inspecionável por &lt;code&gt;curl&lt;/code&gt; — é o que torna o &lt;code&gt;scripts/verificar.sh&lt;/code&gt; possível (&lt;a href="https://github.com/Carolbalbs/obraflow-case/blob/main/docs/adr/0003-route-handlers-sem-server-actions.md" target="_blank" rel="noopener"&gt;ADR 0003&lt;/a&gt;)&lt;/td&gt;
+&lt;td&gt;Porque o contrato precisa ser inspecionável por &lt;code&gt;curl&lt;/code&gt; — é o que torna o &lt;code&gt;scripts/verificar.sh&lt;/code&gt; possível (&lt;a href="https://github.com/Carolbalbs/obraflow-case/blob/resolucao-obraflow/docs/adr/0003-route-handlers-sem-server-actions.md" target="_blank" rel="noopener"&gt;ADR 0003&lt;/a&gt;)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;Persistência&lt;/td&gt;
@@ -691,37 +691,37 @@ e payloads&lt;/strong&gt;. Veja o &lt;a href="https://carolbalbs.github.io/obraf
 &lt;/thead&gt;
 &lt;tbody&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;a href="https://github.com/Carolbalbs/obraflow-case/blob/main/docs/adr/0001-cadeia-de-aprovacao-e-snapshot.md" target="_blank" rel="noopener"&gt;0001&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href="https://github.com/Carolbalbs/obraflow-case/blob/resolucao-obraflow/docs/adr/0001-cadeia-de-aprovacao-e-snapshot.md" target="_blank" rel="noopener"&gt;0001&lt;/a&gt;&lt;/td&gt;
 &lt;td&gt;Cadeia é snapshot&lt;/td&gt;
 &lt;td&gt;Gravada na submissão, nunca recalculada&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;a href="https://github.com/Carolbalbs/obraflow-case/blob/main/docs/adr/0002-faixa-por-limite-superior.md" target="_blank" rel="noopener"&gt;0002&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href="https://github.com/Carolbalbs/obraflow-case/blob/resolucao-obraflow/docs/adr/0002-faixa-por-limite-superior.md" target="_blank" rel="noopener"&gt;0002&lt;/a&gt;&lt;/td&gt;
 &lt;td&gt;Só o limite superior&lt;/td&gt;
 &lt;td&gt;Buraco e sobreposição deixam de ser representáveis&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;a href="https://github.com/Carolbalbs/obraflow-case/blob/main/docs/adr/0003-route-handlers-sem-server-actions.md" target="_blank" rel="noopener"&gt;0003&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href="https://github.com/Carolbalbs/obraflow-case/blob/resolucao-obraflow/docs/adr/0003-route-handlers-sem-server-actions.md" target="_blank" rel="noopener"&gt;0003&lt;/a&gt;&lt;/td&gt;
 &lt;td&gt;Route Handlers&lt;/td&gt;
 &lt;td&gt;O contrato precisa ser inspecionável por &lt;code&gt;curl&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;a href="https://github.com/Carolbalbs/obraflow-case/blob/main/docs/adr/0004-decisao-por-update-condicional.md" target="_blank" rel="noopener"&gt;0004&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href="https://github.com/Carolbalbs/obraflow-case/blob/resolucao-obraflow/docs/adr/0004-decisao-por-update-condicional.md" target="_blank" rel="noopener"&gt;0004&lt;/a&gt;&lt;/td&gt;
 &lt;td&gt;&lt;code&gt;UPDATE&lt;/code&gt; condicional&lt;/td&gt;
 &lt;td&gt;Fora de ordem, duplo clique e corrida, um mecanismo só&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;a href="https://github.com/Carolbalbs/obraflow-case/blob/main/docs/adr/0005-sessao-de-demonstracao-sem-senha.md" target="_blank" rel="noopener"&gt;0005&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href="https://github.com/Carolbalbs/obraflow-case/blob/resolucao-obraflow/docs/adr/0005-sessao-de-demonstracao-sem-senha.md" target="_blank" rel="noopener"&gt;0005&lt;/a&gt;&lt;/td&gt;
 &lt;td&gt;Sessão sem senha&lt;/td&gt;
 &lt;td&gt;Atrás de &lt;code&gt;DEMO_MODE&lt;/code&gt;; desligada, 404 e não 403&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;a href="https://github.com/Carolbalbs/obraflow-case/blob/main/docs/adr/0006-sem-empresa-no-modelo.md" target="_blank" rel="noopener"&gt;0006&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href="https://github.com/Carolbalbs/obraflow-case/blob/resolucao-obraflow/docs/adr/0006-sem-empresa-no-modelo.md" target="_blank" rel="noopener"&gt;0006&lt;/a&gt;&lt;/td&gt;
 &lt;td&gt;Sem &lt;code&gt;Empresa&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;&lt;code&gt;Obra&lt;/code&gt; é o escopo máximo&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;a href="https://github.com/Carolbalbs/obraflow-case/blob/main/docs/adr/0007-dominio-em-portugues.md" target="_blank" rel="noopener"&gt;0007&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href="https://github.com/Carolbalbs/obraflow-case/blob/resolucao-obraflow/docs/adr/0007-dominio-em-portugues.md" target="_blank" rel="noopener"&gt;0007&lt;/a&gt;&lt;/td&gt;
 &lt;td&gt;Domínio em português&lt;/td&gt;
 &lt;td&gt;O código fala a língua de quem usa o produto&lt;/td&gt;
 &lt;/tr&gt;
@@ -730,7 +730,7 @@ e payloads&lt;/strong&gt;. Veja o &lt;a href="https://carolbalbs.github.io/obraf
 &lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200"&gt;
 &lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/&gt;&lt;/svg&gt;&lt;/div&gt;
 &lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
-&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;Este conteúdo é o mesmo do &lt;a href="https://github.com/Carolbalbs/obraflow-case#readme" target="_blank" rel="noopener"&gt;&lt;code&gt;README.md&lt;/code&gt;&lt;/a&gt; da entrega, que continua sendo a referência exigida pelo enunciado.&lt;/div&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;Este conteúdo é o mesmo do &lt;a href="https://github.com/Carolbalbs/obraflow-case/blob/resolucao-obraflow/docs/README.md" target="_blank" rel="noopener"&gt;&lt;code&gt;README.md&lt;/code&gt;&lt;/a&gt; da entrega, que continua sendo a referência exigida pelo enunciado.&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;&lt;strong&gt;Modelada.&lt;/strong&gt; Uma &lt;code&gt;Faixa&lt;/code&gt; guarda &lt;strong&gt;apenas o limite superior&lt;/strong&gt;, e ele é &lt;strong&gt;inclusivo&lt;/strong&gt;:&lt;/p&gt;
@@ -756,7 +756,7 @@ data-copied-label="Copiado!"
 centavo, e a tela o mostra recalculado. A ausência é a invariante — sem um mínimo editável à
 parte, &lt;strong&gt;buraco e sobreposição entre faixas deixam de ser representáveis&lt;/strong&gt;. Não existe estado
 inválido a validar, porque não existe forma de escrevê-lo
-(&lt;a href="https://github.com/Carolbalbs/obraflow-case/blob/main/docs/adr/0002-faixa-por-limite-superior.md" target="_blank" rel="noopener"&gt;ADR 0002&lt;/a&gt;).&lt;/p&gt;
+(&lt;a href="https://github.com/Carolbalbs/obraflow-case/blob/resolucao-obraflow/docs/adr/0002-faixa-por-limite-superior.md" target="_blank" rel="noopener"&gt;ADR 0002&lt;/a&gt;).&lt;/p&gt;
 &lt;p&gt;A ordem dos aprovadores é coluna, com índice único &lt;code&gt;(faixaId, ordem)&lt;/code&gt;: duas pessoas na mesma
 posição são impossíveis no banco, não só improváveis no código.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Calculada.&lt;/strong&gt; A faixa aplicável sai do &lt;strong&gt;total do pedido&lt;/strong&gt;, nunca do valor de um item isolado. A
@@ -782,7 +782,7 @@ comporta o total — ou falha com &lt;code&gt;SEM_REGRA_APLICAVEL&lt;/code&gt;, 
 genérico&lt;/strong&gt;: a submissão é bloqueada com mensagem própria e o rascunho continua existindo para ser
 corrigido. &lt;code&gt;montarCadeia&lt;/code&gt; então transforma os aprovadores da faixa em etapas numeradas.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Persistida.&lt;/strong&gt; O instante em que isso acontece é a &lt;strong&gt;submissão&lt;/strong&gt;, uma vez só, e o resultado é
-gravado como &lt;strong&gt;snapshot&lt;/strong&gt; (&lt;a href="https://github.com/Carolbalbs/obraflow-case/blob/main/docs/adr/0001-cadeia-de-aprovacao-e-snapshot.md" target="_blank" rel="noopener"&gt;ADR 0001&lt;/a&gt;):&lt;/p&gt;
+gravado como &lt;strong&gt;snapshot&lt;/strong&gt; (&lt;a href="https://github.com/Carolbalbs/obraflow-case/blob/resolucao-obraflow/docs/adr/0001-cadeia-de-aprovacao-e-snapshot.md" target="_blank" rel="noopener"&gt;ADR 0001&lt;/a&gt;):&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;as &lt;code&gt;Etapa&lt;/code&gt; do pedido, com &lt;code&gt;(pedidoId, ordem)&lt;/code&gt; único e o &lt;code&gt;usuarioId&lt;/code&gt; de quem assina;&lt;/li&gt;
 &lt;li&gt;três colunas no próprio pedido — &lt;code&gt;faixaId&lt;/code&gt;, &lt;code&gt;faixaLimiteCentavos&lt;/code&gt;, &lt;code&gt;faixaSemTeto&lt;/code&gt;.&lt;/li&gt;
@@ -813,14 +813,14 @@ gravaria uma decisão derivada de um número provisório.&lt;/p&gt;
 &lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200"&gt;
 &lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/&gt;&lt;/svg&gt;&lt;/div&gt;
 &lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
-&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;Este conteúdo é o mesmo do &lt;a href="https://github.com/Carolbalbs/obraflow-case#readme" target="_blank" rel="noopener"&gt;&lt;code&gt;README.md&lt;/code&gt;&lt;/a&gt; da entrega, que continua sendo a referência exigida pelo enunciado.&lt;/div&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;Este conteúdo é o mesmo do &lt;a href="https://github.com/Carolbalbs/obraflow-case/blob/resolucao-obraflow/docs/README.md" target="_blank" rel="noopener"&gt;&lt;code&gt;README.md&lt;/code&gt;&lt;/a&gt; da entrega, que continua sendo a referência exigida pelo enunciado.&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;h2 data-hextra-search-id="como-rodar"&gt;Como rodar&lt;span class="hx:absolute hx:-mt-20" id="como-rodar"&gt;&lt;/span&gt;
 &lt;a href="#como-rodar" class="subheading-anchor" aria-label="Link permanente para esta secção"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Pré-requisitos: &lt;strong&gt;Node.js 20 ou mais novo&lt;/strong&gt; e &lt;code&gt;npm&lt;/code&gt;. Nada além disso — o banco é um arquivo SQLite
 criado localmente, e não há serviço externo, credencial ou container.&lt;/p&gt;
 &lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
-&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git clone https://github.com/Carolbalbs/obraflow-case.git
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git clone -b resolucao-obraflow https://github.com/Carolbalbs/obraflow-case.git
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; obraflow-case
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;npm install
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;cp .env.example .env &lt;span class="c1"&gt;# DATABASE_URL e DEMO_MODE&lt;/span&gt;
@@ -840,7 +840,7 @@ data-copied-label="Copiado!"
 &lt;/div&gt;
 &lt;p&gt;Abra &lt;a href="http://localhost:3000" target="_blank" rel="noopener"&gt;http://localhost:3000&lt;/a&gt;. Sem sessão, a aplicação leva para &lt;code&gt;/entrar&lt;/code&gt;, onde se escolhe quem
 entrar como — &lt;strong&gt;sem senha&lt;/strong&gt;, porque a autenticação está declarada fora de escopo
-(&lt;a href="https://github.com/Carolbalbs/obraflow-case/blob/main/docs/adr/0005-sessao-de-demonstracao-sem-senha.md" target="_blank" rel="noopener"&gt;ADR 0005&lt;/a&gt;). Daí em diante, o seletor no canto
+(&lt;a href="https://github.com/Carolbalbs/obraflow-case/blob/resolucao-obraflow/docs/adr/0005-sessao-de-demonstracao-sem-senha.md" target="_blank" rel="noopener"&gt;ADR 0005&lt;/a&gt;). Daí em diante, o seletor no canto
 superior direito troca de usuário sem sair da tela.&lt;/p&gt;
 &lt;h3 data-hextra-search-id="os-comandos"&gt;Os comandos&lt;span class="hx:absolute hx:-mt-20" id="os-comandos"&gt;&lt;/span&gt;
 &lt;a href="#os-comandos" class="subheading-anchor" aria-label="Link permanente para esta secção"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;table&gt;
@@ -1008,7 +1008,7 @@ credenciais externas. &lt;code&gt;docker compose&lt;/code&gt; é aceito, mas nã
 &lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200"&gt;
 &lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/&gt;&lt;/svg&gt;&lt;/div&gt;
 &lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
-&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;Este conteúdo é o mesmo do &lt;a href="https://github.com/Carolbalbs/obraflow-case#readme" target="_blank" rel="noopener"&gt;&lt;code&gt;README.md&lt;/code&gt;&lt;/a&gt; da entrega, que continua sendo a referência exigida pelo enunciado.&lt;/div&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;Este conteúdo é o mesmo do &lt;a href="https://github.com/Carolbalbs/obraflow-case/blob/resolucao-obraflow/docs/README.md" target="_blank" rel="noopener"&gt;&lt;code&gt;README.md&lt;/code&gt;&lt;/a&gt; da entrega, que continua sendo a referência exigida pelo enunciado.&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;Todas as capturas abaixo saem do estado do seed, sem nenhum cadastro manual. Para recapturá-las
@@ -1457,7 +1457,7 @@ controle; sem ele a única saída seria apagar o cookie à mão.&lt;/li&gt;
 &lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200"&gt;
 &lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/&gt;&lt;/svg&gt;&lt;/div&gt;
 &lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
-&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;Este conteúdo é o mesmo do &lt;a href="https://github.com/Carolbalbs/obraflow-case#readme" target="_blank" rel="noopener"&gt;&lt;code&gt;README.md&lt;/code&gt;&lt;/a&gt; da entrega, que continua sendo a referência exigida pelo enunciado.&lt;/div&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;Este conteúdo é o mesmo do &lt;a href="https://github.com/Carolbalbs/obraflow-case/blob/resolucao-obraflow/docs/README.md" target="_blank" rel="noopener"&gt;&lt;code&gt;README.md&lt;/code&gt;&lt;/a&gt; da entrega, que continua sendo a referência exigida pelo enunciado.&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;&lt;code&gt;fetch&lt;/code&gt; do navegador contra Route Handlers em &lt;code&gt;app/api/*&lt;/code&gt;. JSON nos dois sentidos, cookie
@@ -1626,7 +1626,7 @@ Sem data, ela responde &lt;code&gt;422&lt;/code&gt; com &lt;code&gt;fields.dataP
 &lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200"&gt;
 &lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/&gt;&lt;/svg&gt;&lt;/div&gt;
 &lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
-&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;Este conteúdo é o mesmo do &lt;a href="https://github.com/Carolbalbs/obraflow-case#readme" target="_blank" rel="noopener"&gt;&lt;code&gt;README.md&lt;/code&gt;&lt;/a&gt; da entrega, que continua sendo a referência exigida pelo enunciado.&lt;/div&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;Este conteúdo é o mesmo do &lt;a href="https://github.com/Carolbalbs/obraflow-case/blob/resolucao-obraflow/docs/README.md" target="_blank" rel="noopener"&gt;&lt;code&gt;README.md&lt;/code&gt;&lt;/a&gt; da entrega, que continua sendo a referência exigida pelo enunciado.&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;&lt;strong&gt;Dinheiro nunca passa por ponto flutuante.&lt;/strong&gt; Centavos (&lt;code&gt;Int&lt;/code&gt;) e quantidades em milésimos (&lt;code&gt;Int&lt;/code&gt;),
@@ -1645,7 +1645,7 @@ aprovadores, substituir um pedido inteiro, submeter, decidir: tudo ou nada. A al
 &lt;strong&gt;dentro&lt;/strong&gt; da transação da submissão, porque a faixa pode ter sido apagada entre a leitura e a
 escrita — se sumiu, o plano falha e nada foi gravado.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Concorrência: a decisão é um &lt;code&gt;UPDATE&lt;/code&gt; condicional&lt;/strong&gt;
-(&lt;a href="https://github.com/Carolbalbs/obraflow-case/blob/main/docs/adr/0004-decisao-por-update-condicional.md" target="_blank" rel="noopener"&gt;ADR 0004&lt;/a&gt;). Não há leitura seguida de escrita
+(&lt;a href="https://github.com/Carolbalbs/obraflow-case/blob/resolucao-obraflow/docs/adr/0004-decisao-por-update-condicional.md" target="_blank" rel="noopener"&gt;ADR 0004&lt;/a&gt;). Não há leitura seguida de escrita
 confiando no que leu. O &lt;code&gt;where&lt;/code&gt; &lt;strong&gt;é&lt;/strong&gt; o contrato:&lt;/p&gt;
 &lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
 &lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-ts" data-lang="ts"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;{&lt;/span&gt;
@@ -1732,7 +1732,7 @@ só é real contra o banco de verdade, e um mock dela provaria apenas que o mock
 &lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200"&gt;
 &lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/&gt;&lt;/svg&gt;&lt;/div&gt;
 &lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
-&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;Este conteúdo é o mesmo do &lt;a href="https://github.com/Carolbalbs/obraflow-case#readme" target="_blank" rel="noopener"&gt;&lt;code&gt;README.md&lt;/code&gt;&lt;/a&gt; da entrega, que continua sendo a referência exigida pelo enunciado.&lt;/div&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;Este conteúdo é o mesmo do &lt;a href="https://github.com/Carolbalbs/obraflow-case/blob/resolucao-obraflow/docs/README.md" target="_blank" rel="noopener"&gt;&lt;code&gt;README.md&lt;/code&gt;&lt;/a&gt; da entrega, que continua sendo a referência exigida pelo enunciado.&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;O que está aqui é o recorte do case executando local. O que mudaria, e por quê:&lt;/p&gt;
