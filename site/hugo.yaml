@@ -63,13 +63,14 @@ params:
   description: Escopo de documentação do desafio ObraFlow — o serviço de alçadas de aprovação.
 
   navbar:
+    width: wide
     displayTitle: true
     displayLogo: false
 
   footer:
     displayCopyright: true
     displayPoweredBy: true
-    width: normal
+    width: wide
 
   theme:
     default: system
@@ -81,7 +82,7 @@ params:
     enable: false
 
   page:
-    width: normal
+    width: wide
 
   toc:
     displayTags: true

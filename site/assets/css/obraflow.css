@@ -310,7 +310,7 @@ code, kbd, pre, samp { font-family: var(--of-font-mono); }
 .of-hero {
   position: relative;
   margin-inline: calc(50% - 50vw);
-  padding: 4.5rem max(1.5rem, calc(50vw - 40rem)) 5rem;
+  padding: 4.5rem max(1.5rem, calc(50vw - var(--hextra-max-page-width) / 2)) 5rem;
   color: var(--of-text-heading);
   overflow: hidden;
   isolation: isolate;
@@ -368,7 +368,7 @@ code, kbd, pre, samp { font-family: var(--of-font-mono); }
   display: grid;
   gap: 3rem;
   align-items: center;
-  max-width: 80rem;
+  max-width: var(--hextra-max-page-width);
   margin-inline: auto;
 }
 
@@ -579,7 +579,7 @@ main:has(.of-aurora) { overflow-x: clip; }
 .of-aurora,
 .of-comece {
   margin-inline: calc(50% - 50vw);
-  padding-inline: max(1.5rem, calc(50vw - 40rem));
+  padding-inline: max(1.5rem, calc(50vw - var(--hextra-max-page-width) / 2));
 }
 
 /* Um só fundo aurora atrás da arte e dos cards, continuando o da capa. */
@@ -601,7 +601,7 @@ main:has(.of-aurora) { overflow-x: clip; }
     radial-gradient(900px 520px at 6% 18%, rgba(255, 0, 77, 0.14), transparent 64%),
     radial-gradient(900px 560px at 96% 52%, rgba(151, 71, 255, 0.14), transparent 64%);
 }
-.of-aurora .hextra-feature-grid { max-width: 80rem; margin-inline: auto; }
+.of-aurora .hextra-feature-grid { max-width: var(--hextra-max-page-width); margin-inline: auto; }
 
 .of-arte { margin-bottom: 4rem; }
 
@@ -611,7 +611,7 @@ main:has(.of-aurora) { overflow-x: clip; }
   justify-content: space-between;
   align-items: flex-end;
   gap: 1.5rem;
-  max-width: 80rem;
+  max-width: var(--hextra-max-page-width);
   margin: 0 auto 2rem;
 }
 .of-arte-eyebrow {
@@ -652,7 +652,7 @@ main:has(.of-aurora) { overflow-x: clip; }
 
 .of-arte-panel {
   position: relative;
-  max-width: 80rem;
+  max-width: var(--hextra-max-page-width);
   margin-inline: auto;
   min-height: 40rem;
   padding: 3.5rem 3rem 4rem;
@@ -733,7 +733,7 @@ main:has(.of-aurora) { overflow-x: clip; }
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.5rem;
-  max-width: 80rem;
+  max-width: var(--hextra-max-page-width);
   margin: 1.5rem auto 0;
 }
 .of-arte-points p { margin: 0; font-size: 0.875rem; line-height: 1.6; color: var(--of-text-body); }
@@ -768,7 +768,7 @@ main:has(.of-aurora) { overflow-x: clip; }
   display: flex;
   flex-wrap: wrap;
   gap: 4rem;
-  max-width: 80rem;
+  max-width: var(--hextra-max-page-width);
   margin-inline: auto;
 }
 .of-comece-inner > div { flex: 1 1 28rem; min-width: 0; }
