@@ -550,7 +550,8 @@ code, kbd, pre, samp { font-family: var(--of-font-mono); }
 .of-hero, .of-aurora, .of-comece { align-self: stretch; box-sizing: border-box; }
 
 /* a capa encosta na navbar: anula o padding superior do <main> */
-main:has(> div > .of-hero:first-child) { padding-top: 0 !important; }
+main:has(> div > .of-hero:first-child),
+main:has(> div > .of-aurora:first-child) { padding-top: 0 !important; }
 .of-hero { margin-top: 0; }
 
 /* --------------------------------------------------------------------------
@@ -582,25 +583,36 @@ main:has(.of-aurora) { overflow-x: clip; }
   padding-inline: max(1.5rem, calc(50vw - var(--hextra-max-page-width) / 2));
 }
 
-/* Um só fundo aurora atrás da arte e dos cards, continuando o da capa. */
+/* Um só fundo, da capa até os cards (como docs.helix.ml): o hero perde o
+   fundo próprio e as manchas de cor seguem pela página sem emenda. */
 .of-aurora {
-  padding-block: 5rem;
-  background-color: var(--of-surface-page);
+  padding-block: 0 5rem;
+  background-color: #ffffff;
   background-image:
-    radial-gradient(900px 520px at 6% 18%, rgba(255, 138, 160, 0.26), transparent 64%),
-    radial-gradient(900px 560px at 96% 52%, rgba(167, 139, 250, 0.26), transparent 64%),
-    radial-gradient(900px 520px at 20% 96%, rgba(255, 0, 204, 0.10), transparent 70%),
+    radial-gradient(1100px 520px at 8% 0, rgba(255, 138, 160, 0.38), transparent 62%),
+    radial-gradient(900px 560px at 92% 120px, rgba(167, 139, 250, 0.34), transparent 64%),
+    radial-gradient(900px 620px at 4% 1250px, rgba(255, 138, 160, 0.24), transparent 64%),
+    radial-gradient(900px 620px at 96% 1700px, rgba(167, 139, 250, 0.24), transparent 64%),
+    radial-gradient(900px 620px at 30% 2300px, rgba(255, 0, 204, 0.10), transparent 70%),
     linear-gradient(173deg,
-      rgba(255, 36, 94, 0.08) 17.37%,
-      rgba(98, 0, 255, 0.08) 52.59%,
-      rgba(255, 0, 204, 0.08) 89.98%);
+      rgba(255, 36, 94, 0.10) 10%,
+      rgba(98, 0, 255, 0.10) 52.59%,
+      rgba(255, 0, 204, 0.10) 89.98%);
 }
 .dark .of-aurora {
   background-color: var(--of-levels-950);
   background-image:
-    radial-gradient(900px 520px at 6% 18%, rgba(255, 0, 77, 0.14), transparent 64%),
-    radial-gradient(900px 560px at 96% 52%, rgba(151, 71, 255, 0.14), transparent 64%);
+    radial-gradient(1100px 520px at 8% 0, rgba(255, 0, 77, 0.20), transparent 62%),
+    radial-gradient(900px 560px at 92% 120px, rgba(151, 71, 255, 0.18), transparent 64%),
+    radial-gradient(900px 620px at 4% 1250px, rgba(255, 0, 77, 0.12), transparent 64%),
+    radial-gradient(900px 620px at 96% 1700px, rgba(151, 71, 255, 0.12), transparent 64%);
 }
+.of-aurora .of-hero,
+.dark .of-aurora .of-hero {
+  background: none;
+  border-bottom: 0;
+}
+.of-aurora .of-hero::before { display: none; }
 .of-aurora .hextra-feature-grid { max-width: var(--hextra-max-page-width); margin-inline: auto; }
 
 .of-arte { margin-bottom: 4rem; }

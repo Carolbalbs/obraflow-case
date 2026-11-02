@@ -3,6 +3,7 @@ title: ObraFlow · Aprovações
 layout: hextra-home
 ---
 
+<div class="of-aurora">
 <div class="of-hero">
 <div class="of-hero-inner">
 <div>
@@ -47,8 +48,6 @@ compra e em qual ordem, conforme a obra e o valor — e registra a trilha inteir
 </div>
 </div>
 </div>
-
-<div class="of-aurora">
 
 {{< of-arte >}}
 
