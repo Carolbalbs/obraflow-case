@@ -6,7 +6,7 @@ Pedidos de compra que percorrem uma **cadeia de aprovadores definida pela alçad
 de valor, cada uma com os seus aprovadores em ordem. O total do pedido escolhe a faixa; a faixa
 escolhe quem assina e em que sequência; e só o aprovador da vez decide.
 
-Resposta ao [enunciado do case](docs/enunciado.md), preservado na íntegra em `docs/`.
+Resposta ao [enunciado do case](https://github.com/ObraFlow/obraflow-case/blob/main/README.md).
 
 | | |
 |---|---|
@@ -632,7 +632,6 @@ endereço da tabela de endpoints.
 
 | Documento | O que é |
 |---|---|
-| [`docs/enunciado.md`](docs/enunciado.md) | O enunciado do case, preservado na íntegra |
 | [`docs/adr/`](docs/adr/) | As sete decisões que o resto do código assume |
 | [`GLOSSARY.md`](GLOSSARY.md) | O vocabulário: faixa, cadeia, etapa, alçada, aprovador da vez |
 

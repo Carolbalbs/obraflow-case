@@ -39,7 +39,7 @@ A seção `## Decisões técnicas` não é opcional: ela aparece nos
 
 ## Cruzamento com o enunciado
 
-O levantamento completo, critério a critério, está em [`docs/criterios-do-enunciado.md`](https://github.com/Carolbalbs/obraflow-case/blob/main/docs/criterios-do-enunciado.md). O resumo:
+O resumo, por peso de avaliação:
 
 | Critério | Peso | Situação | Onde pesa |
 |---|---:|:---:|---|

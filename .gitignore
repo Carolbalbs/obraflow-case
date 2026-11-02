@@ -68,3 +68,7 @@ prisma/test.db
 /docs/ciclo-coder-evaluator.md
 /docs/checklist.md
 /scripts/spec-md.mjs
+/docs/enunciado.md
+/docs/criterios-do-enunciado.md
+/docs/pull-request.md
+/site/archetypes/

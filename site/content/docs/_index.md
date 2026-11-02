@@ -22,7 +22,7 @@ Pedidos de compra que percorrem uma **cadeia de aprovadores definida pela alçad
 de valor, cada uma com os seus aprovadores em ordem. O total do pedido escolhe a faixa; a faixa
 escolhe quem assina e em que sequência; e só o aprovador da vez decide.
 
-Resposta ao [enunciado do case](https://github.com/Carolbalbs/obraflow-case/blob/main/docs/enunciado.md), preservado na íntegra no repositório.
+Resposta ao [enunciado do case](https://github.com/ObraFlow/obraflow-case/blob/main/README.md).
 
 | | |
 |---|---|
@@ -94,6 +94,5 @@ endereço da tabela de endpoints.
 
 | Documento | O que é |
 |---|---|
-| [`docs/enunciado.md`](https://github.com/Carolbalbs/obraflow-case/blob/main/docs/enunciado.md) | O enunciado do case, preservado na íntegra |
 | [`docs/adr/`](https://github.com/Carolbalbs/obraflow-case/blob/main/docs/adr/) | As sete decisões que o resto do código assume |
 | [`GLOSSARY.md`](https://github.com/Carolbalbs/obraflow-case/blob/main/GLOSSARY.md) | O vocabulário: faixa, cadeia, etapa, alçada, aprovador da vez |
