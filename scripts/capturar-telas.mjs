@@ -25,6 +25,7 @@ const TELAS = [
   { arquivo: 'tela-2-aprovacao-fila.png', url: '/pedidos', usuario: AMANDA },
   { arquivo: 'tela-2-aprovacao-detalhe.png', url: '/pedidos/1003', usuario: AMANDA },
   { arquivo: 'tela-3-regras-da-alcada.png', url: '/alcadas?obra=cseedobraaurora000001', usuario: MARINA },
+  { arquivo: 'administracao-painel.png', url: '/admin', usuario: MARINA },
   { arquivo: 'snapshot-da-faixa.png', url: '/pedidos/1007', usuario: JOAO },
   { arquivo: 'entrar.png', url: '/entrar', usuario: '' },
   { arquivo: 'tela-2-aprovacao-390px.png', url: '/pedidos', usuario: AMANDA, largura: 390 },

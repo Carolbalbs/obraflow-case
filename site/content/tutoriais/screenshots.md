@@ -57,6 +57,8 @@ com o período anterior de mesmo tamanho), valor aprovado por semana e por obra,
 de pedidos parados há mais de 24 h e a contagem de pedidos por situação. O filtro de obra recorta
 tudo. Os números saem de `src/domain/painel.ts`, que tem 18 casos de teste.
 
+![Administração — painel da empresa, como Marina](/screenshots/administracao-painel.png)
+
 ## A prova visual do snapshot
 
 O pedido `#1007` foi submetido quando a faixa da obra era **"até R$ 6.000,00 → João Ferreira"**.
