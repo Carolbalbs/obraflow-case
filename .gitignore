@@ -9,7 +9,7 @@
 !.yarn/plugins
 !.yarn/releases
 !.yarn/versions
-
+/specreviewerlionlab.md
 # testing
 /coverage
 
@@ -60,6 +60,7 @@ prisma/test.db
 /docs/PROGRESS.md
 /docs/SPEC.md
 /docs/SPEC-TEMPLATE.*
+/docs/jira/
 /docs/spec/
 /docs/specs/
 /docs/sprints/

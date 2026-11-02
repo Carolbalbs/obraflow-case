@@ -14,11 +14,11 @@ Os [critérios de avaliação e seus pesos](/docs/) estão na Introdução.
 
 ## Contato
 
-**Jonathan Bispo**
+**Ana Carolina Balbino**
 
 {{< cards >}}
-  {{< card link="https://wa.me/5571992044335" title="WhatsApp" icon="phone" subtitle="+55 71 99204-4335" >}}
-  {{< card link="mailto:contrato@obraflow.io" title="E-mail" icon="mail" subtitle="contrato@obraflow.io" >}}
+  {{< card link="https://wa.me/5571983002588" title="WhatsApp" icon="phone" subtitle="+55 71 98300-2588">}}
+  {{< card link="mailto:carolbalbino4@fgmail.com" title="E-mail" icon="mail" subtitle="carolbalbino4@fgmail.com" >}}
 {{< /cards >}}
 
 ## As sete decisões registradas
