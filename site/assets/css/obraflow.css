@@ -570,31 +570,36 @@ main:has(> div > .of-hero:first-child) { padding-top: 0 !important; }
    -------------------------------------------------------------------------- */
 
 /* 100vw conta a barra de rolagem: corta o excedente para não abrir rolagem lateral. */
-main:has(.of-arte) { overflow-x: clip; }
+main:has(.of-aurora) { overflow-x: clip; }
 
-.of-arte,
+.of-aurora,
 .of-comece {
   margin-inline: calc(50% - 50vw);
   padding-inline: max(1.5rem, calc(50vw - 40rem));
 }
 
-.of-arte {
-  padding-block: 5rem 4.5rem;
+/* Um só fundo aurora atrás da arte e dos cards, continuando o da capa. */
+.of-aurora {
+  padding-block: 5rem;
   background-color: var(--of-surface-page);
   background-image:
-    radial-gradient(900px 520px at 6% 30%, rgba(255, 138, 160, 0.26), transparent 64%),
-    radial-gradient(900px 560px at 96% 70%, rgba(167, 139, 250, 0.26), transparent 64%),
+    radial-gradient(900px 520px at 6% 18%, rgba(255, 138, 160, 0.26), transparent 64%),
+    radial-gradient(900px 560px at 96% 52%, rgba(167, 139, 250, 0.26), transparent 64%),
+    radial-gradient(900px 520px at 20% 96%, rgba(255, 0, 204, 0.10), transparent 70%),
     linear-gradient(173deg,
       rgba(255, 36, 94, 0.08) 17.37%,
       rgba(98, 0, 255, 0.08) 52.59%,
       rgba(255, 0, 204, 0.08) 89.98%);
 }
-.dark .of-arte {
+.dark .of-aurora {
   background-color: var(--of-levels-950);
   background-image:
-    radial-gradient(900px 520px at 6% 30%, rgba(255, 0, 77, 0.14), transparent 64%),
-    radial-gradient(900px 560px at 96% 70%, rgba(151, 71, 255, 0.14), transparent 64%);
+    radial-gradient(900px 520px at 6% 18%, rgba(255, 0, 77, 0.14), transparent 64%),
+    radial-gradient(900px 560px at 96% 52%, rgba(151, 71, 255, 0.14), transparent 64%);
 }
+.of-aurora .hextra-feature-grid { max-width: 80rem; margin-inline: auto; }
+
+.of-arte { margin-bottom: 4rem; }
 
 .of-arte-head {
   display: flex;

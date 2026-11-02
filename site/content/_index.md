@@ -48,6 +48,8 @@ compra e em qual ordem, conforme a obra e o valor — e registra a trilha inteir
 </div>
 </div>
 
+<div class="of-aurora">
+
 {{< of-arte >}}
 
 {{< hextra/feature-grid >}}
@@ -88,5 +90,7 @@ compra e em qual ordem, conforme a obra e o valor — e registra a trilha inteir
     link="tutoriais/screenshots"
   >}}
 {{< /hextra/feature-grid >}}
+
+</div>
 
 {{< of-comece >}}
