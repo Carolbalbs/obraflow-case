@@ -547,7 +547,7 @@ code, kbd, pre, samp { font-family: var(--of-font-mono); }
 
 /* O contêiner da home é flex com items-start, que encolhe cada seção até o
    próprio conteúdo: as faixas de largura total precisam esticar. */
-.of-hero, .of-aurora, .of-comece { align-self: stretch; box-sizing: border-box; }
+.of-hero, .of-aurora { align-self: stretch; box-sizing: border-box; }
 
 /* a capa encosta na navbar: anula o padding superior do <main> */
 main:has(> div > .of-hero:first-child),
@@ -580,8 +580,7 @@ main:has(> div > .of-aurora:first-child) { padding-top: 0 !important; }
 html:has(.of-aurora),
 body:has(.of-aurora) { overflow-x: clip; }
 
-.of-aurora,
-.of-comece {
+.of-aurora {
   margin-inline: calc(50% - 50vw);
   padding-inline: max(1.5rem, calc(50vw - var(--hextra-max-page-width) / 2));
 }
@@ -597,6 +596,7 @@ body:has(.of-aurora) { overflow-x: clip; }
     radial-gradient(900px 620px at 4% 1250px, rgba(255, 138, 160, 0.24), transparent 64%),
     radial-gradient(900px 620px at 96% 1700px, rgba(167, 139, 250, 0.24), transparent 64%),
     radial-gradient(900px 620px at 30% 2300px, rgba(255, 0, 204, 0.10), transparent 70%),
+    radial-gradient(900px 620px at 90% 2800px, rgba(255, 138, 160, 0.22), transparent 64%),
     linear-gradient(173deg,
       rgba(255, 36, 94, 0.10) 10%,
       rgba(98, 0, 255, 0.10) 52.59%,
@@ -767,17 +767,14 @@ body:has(.of-aurora) { overflow-x: clip; }
 }
 
 /* --------------------------------------------------------------------------
-   Capa — "Comece rápido": instalação e API sobre o mesmo degradê escuro
+   Capa — "Comece rápido": instalação e API, dentro do mesmo fundo aurora
    -------------------------------------------------------------------------- */
 
 .of-comece {
-  padding-block: 6rem;
-  color: var(--of-levels-200);
-  background-color: var(--of-levels-950);
-  background-image:
-    radial-gradient(1100px 520px at 8% -8%, rgba(255, 0, 77, 0.20), transparent 62%),
-    radial-gradient(900px 560px at 92% 4%, rgba(151, 71, 255, 0.18), transparent 64%),
-    var(--of-gradient-cta);
+  margin-top: 6rem;
+  padding-top: 4rem;
+  border-top: 1px solid var(--of-border-hairline);
+  color: var(--of-text-body);
 }
 .of-comece-inner {
   display: flex;
@@ -790,31 +787,40 @@ body:has(.of-aurora) { overflow-x: clip; }
 .of-comece h2,
 .of-comece h3 {
   margin: 0 0 0.5rem;
-  font-weight: 500;
-  color: #fff;
-  letter-spacing: -0.03em;
+  font-weight: 600;
+  color: var(--of-text-strong);
+  letter-spacing: var(--of-tracking-display);
 }
 .of-comece h2 { font-size: clamp(2rem, 4vw, 2.75rem); line-height: 1.1; }
 .of-comece h3 { font-size: 2rem; line-height: 1.2; }
-.of-comece p { margin: 0 0 1.5rem; font-size: 1rem; line-height: 1.7; color: var(--of-levels-300); }
+.of-comece p { margin: 0 0 1.5rem; font-size: 1rem; line-height: 1.7; color: var(--of-text-body); }
 .of-comece p code {
   font-family: var(--of-font-mono);
   font-size: 0.875rem;
-  color: #fff;
-  background: rgba(255, 255, 255, 0.08);
+  color: var(--of-text-strong);
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid var(--of-border-subtle);
   border-radius: var(--of-radius-xs);
   padding: 0.1em 0.35em;
 }
-.of-comece a { color: var(--of-brand-300); }
-.of-comece a:hover { color: var(--of-brand-200); }
+.of-comece a { color: var(--of-brand-600); font-weight: 500; }
+.of-comece a:hover { color: var(--of-brand-700); }
 .of-comece-links { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 1.5rem; }
+
+.dark .of-comece { border-top-color: rgba(255, 255, 255, 0.08); }
+.dark .of-comece h2, .dark .of-comece h3 { color: #fff; }
+.dark .of-comece p { color: var(--of-levels-300); }
+.dark .of-comece p code { color: #fff; background: rgba(255, 255, 255, 0.08); border-color: transparent; }
+.dark .of-comece a { color: var(--of-brand-300); }
+.dark .of-comece a:hover { color: var(--of-brand-200); }
 
 .of-code {
   margin: 0 0 1.5rem;
   padding: 1.25rem 1.375rem;
   border-radius: 0.75rem;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(12, 17, 29, 0.72);
+  background: var(--of-levels-900);
+  box-shadow: var(--of-shadow-lg);
   font-family: var(--of-font-mono);
   font-size: 0.84rem;
   line-height: 1.75;

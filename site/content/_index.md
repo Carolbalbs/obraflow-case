@@ -90,6 +90,6 @@ compra e em qual ordem, conforme a obra e o valor — e registra a trilha inteir
   >}}
 {{< /hextra/feature-grid >}}
 
-</div>
-
 {{< of-comece >}}
+
+</div>
