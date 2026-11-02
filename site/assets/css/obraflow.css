@@ -574,8 +574,11 @@ main:has(> div > .of-aurora:first-child) { padding-top: 0 !important; }
    com o fundo aurora claro da capa continuando por trás
    -------------------------------------------------------------------------- */
 
-/* 100vw conta a barra de rolagem: corta o excedente para não abrir rolagem lateral. */
-main:has(.of-aurora) { overflow-x: clip; }
+/* 100vw conta a barra de rolagem: corta o excedente para não abrir rolagem
+   lateral. O corte fica no body, que tem a largura da tela; no <main> (máx.
+   80rem) ele cortaria os fundos em telas largas. */
+html:has(.of-aurora),
+body:has(.of-aurora) { overflow-x: clip; }
 
 .of-aurora,
 .of-comece {
