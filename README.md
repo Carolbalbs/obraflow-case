@@ -5,14 +5,9 @@
 Pedidos de compra que percorrem uma **cadeia de aprovadores definida pela alçada da obra**: faixas
 de valor, cada uma com os seus aprovadores em ordem. O total do pedido escolhe a faixa; a faixa
 escolhe quem assina e em que sequência; e só o aprovador da vez decide.
-
-Resposta ao [enunciado do case](https://github.com/ObraFlow/obraflow-case/blob/main/README.md).
-
 ## Documentação
 
 **<https://carolbalbs.github.io/obraflow-case/>**
-
-A documentação está publicada no GitHub Pages, em páginas, com os diagramas e as screenshots:
 
 | Página | O que tem |
 |---|---|
@@ -46,12 +41,8 @@ Abra <http://localhost:3000> e escolha quem entrar como — a sessão é de demo
 ## Decisões técnicas
 
 Cada ponto que o enunciado pede está no [Guia](https://carolbalbs.github.io/obraflow-case/docs/guia/)
-e na seção [Decisões técnicas](docs/README.md#decisões-técnicas) do README completo:
 
 - [Tecnologias, e por que cada uma](https://carolbalbs.github.io/obraflow-case/docs/guia/tecnologias/)
 - [Como a alçada é modelada, calculada e persistida](https://carolbalbs.github.io/obraflow-case/docs/guia/alcada/)
 - [Como o front-end conversa com o back-end](https://carolbalbs.github.io/obraflow-case/docs/guia/comunicacao/)
 - [Consistência, integridade e concorrência](https://carolbalbs.github.io/obraflow-case/docs/guia/consistencia/)
-- [O que mudaria em produção](https://carolbalbs.github.io/obraflow-case/docs/guia/producao/)
-
-As sete decisões registradas estão em [`docs/adr/`](docs/adr/).
