@@ -1,0 +1,452 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ObraFlow · Aprovações – Guia</title><link>https://carolbalbs.github.io/obraflow-case/docs/guia/</link><description>Recent content in Guia on ObraFlow · Aprovações</description><generator>Hugo -- gohugo.io</generator><language>pt</language><atom:link href="https://carolbalbs.github.io/obraflow-case/docs/guia/index.xml" rel="self" type="application/rss+xml"/><item><title>Tecnologias e motivos</title><link>https://carolbalbs.github.io/obraflow-case/docs/guia/tecnologias/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://carolbalbs.github.io/obraflow-case/docs/guia/tecnologias/</guid><description>
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/&gt;&lt;/svg&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;Este conteúdo é o mesmo do &lt;a href="https://github.com/Carolbalbs/obraflow-case#readme" target="_blank" rel="noopener"&gt;&lt;code&gt;README.md&lt;/code&gt;&lt;/a&gt; da entrega, que continua sendo a referência exigida pelo enunciado.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Camada&lt;/th&gt;
+&lt;th&gt;Escolha&lt;/th&gt;
+&lt;th&gt;Por quê&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Front + back&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;Next.js 16, App Router&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Um único projeto, um único &lt;code&gt;npm run dev&lt;/code&gt;, sem orquestrar dois servidores. O enunciado pede execução local simples, e duas aplicações separadas custariam um &lt;code&gt;docker compose&lt;/code&gt; que ele dispensa&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Linguagem&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;TypeScript&lt;/strong&gt;, &lt;code&gt;strict&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;O domínio é feito de tipos estreitos (&lt;code&gt;Centavos&lt;/code&gt;, &lt;code&gt;Milesimos&lt;/code&gt;, &lt;code&gt;Ordem&lt;/code&gt;). Trocar centavos por reais numa chamada é erro de compilação, não bug de produção&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Mutações&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;Route Handlers&lt;/strong&gt;, sem Server Actions&lt;/td&gt;
+&lt;td&gt;Porque o contrato precisa ser inspecionável por &lt;code&gt;curl&lt;/code&gt; — é o que torna o &lt;code&gt;scripts/verificar.sh&lt;/code&gt; possível (&lt;a href="https://github.com/Carolbalbs/obraflow-case/blob/main/docs/adr/0003-route-handlers-sem-server-actions.md" target="_blank" rel="noopener"&gt;ADR 0003&lt;/a&gt;)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Persistência&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;SQLite + Prisma 7.10.1&lt;/strong&gt; (pinado)&lt;/td&gt;
+&lt;td&gt;Roda local sem serviço externo; o schema é um arquivo legível; e o cliente tipado fecha o ciclo com o TypeScript. A versão é pinada sem &lt;code&gt;^&lt;/code&gt; porque o Prisma 7 mudou a configuração, e um minor automático quebraria a instalação de quem clonar&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Estilo&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;Tailwind v4&lt;/strong&gt;, com tokens de marca&lt;/td&gt;
+&lt;td&gt;Os tokens saem de &lt;code&gt;site/assets/css/obraflow.css&lt;/code&gt;, o tema do próprio ObraFlow. Nenhum hexadecimal cru na tela: a cor sempre tem nome&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Testes&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;Vitest&lt;/strong&gt; sobre &lt;code&gt;src/domain/&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;O domínio é puro — não importa &lt;code&gt;next/*&lt;/code&gt;, não toca em banco. Isso o torna testável sem subir servidor, e é por isso que a regra de alçada mora lá e não dentro das rotas&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Validação&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;Zod 4&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Um único schema por contrato, rodado nas &lt;strong&gt;duas&lt;/strong&gt; pontas: o formulário valida antes de enviar e a rota revalida ao receber. Mensagem e chave de campo saem do mesmo lugar&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;O que &lt;strong&gt;não&lt;/strong&gt; entrou, e por quê: sem autenticação com senha ou SSO, sem entidade &lt;code&gt;Empresa&lt;/code&gt;, sem
+telas de cadastro de obra/fornecedor/usuário, sem anexo, sem notificação, sem edição de pedido
+submetido, sem aprovação em paralelo. Cada ausência é deliberada e está justificada no
+&lt;a href="https://github.com/Carolbalbs/obraflow-case/blob/main/docs/PRD.md#3-fora-de-escopo--o-que-n%c3%a3o-ser%c3%a1-feito" target="_blank" rel="noopener"&gt;PRD, § 3 Fora de escopo&lt;/a&gt;.&lt;/p&gt;</description></item><item><title>Modelagem da alçada</title><link>https://carolbalbs.github.io/obraflow-case/docs/guia/alcada/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://carolbalbs.github.io/obraflow-case/docs/guia/alcada/</guid><description>
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/&gt;&lt;/svg&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;Este conteúdo é o mesmo do &lt;a href="https://github.com/Carolbalbs/obraflow-case#readme" target="_blank" rel="noopener"&gt;&lt;code&gt;README.md&lt;/code&gt;&lt;/a&gt; da entrega, que continua sendo a referência exigida pelo enunciado.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;Modelada.&lt;/strong&gt; Uma &lt;code&gt;Faixa&lt;/code&gt; guarda &lt;strong&gt;apenas o limite superior&lt;/strong&gt;, e ele é &lt;strong&gt;inclusivo&lt;/strong&gt;:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;model Faixa {
+id String @id
+obraId String
+limiteCentavos Int? // nulo = faixa aberta, sem teto
+aprovadores FaixaAprovador[] // @@unique([faixaId, ordem])
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Copiar código"
+aria-label="Copiar código"
+data-copied-label="Copiado!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Não há coluna de valor mínimo. O mínimo é &lt;strong&gt;derivado&lt;/strong&gt;: é o limite da faixa anterior mais um
+centavo, e a tela o mostra recalculado. A ausência é a invariante — sem um mínimo editável à
+parte, &lt;strong&gt;buraco e sobreposição entre faixas deixam de ser representáveis&lt;/strong&gt;. Não existe estado
+inválido a validar, porque não existe forma de escrevê-lo
+(&lt;a href="https://github.com/Carolbalbs/obraflow-case/blob/main/docs/adr/0002-faixa-por-limite-superior.md" target="_blank" rel="noopener"&gt;ADR 0002&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;A ordem dos aprovadores é coluna, com índice único &lt;code&gt;(faixaId, ordem)&lt;/code&gt;: duas pessoas na mesma
+posição são impossíveis no banco, não só improváveis no código.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Calculada.&lt;/strong&gt; A faixa aplicável sai do &lt;strong&gt;total do pedido&lt;/strong&gt;, nunca do valor de um item isolado. A
+regra inteira cabe em duas funções puras de &lt;code&gt;src/domain/&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-ts" data-lang="ts"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;// src/domain/alcada.ts — o limite superior é inclusivo. Esta linha é a regra.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="kr"&gt;export&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;comporta&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;faixa&lt;/span&gt;: &lt;span class="kt"&gt;Faixa&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;total&lt;/span&gt;: &lt;span class="kt"&gt;Centavos&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kr"&gt;boolean&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;faixa&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;limiteCentavos&lt;/span&gt; &lt;span class="o"&gt;===&lt;/span&gt; &lt;span class="kc"&gt;null&lt;/span&gt; &lt;span class="o"&gt;||&lt;/span&gt; &lt;span class="nx"&gt;total&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="nx"&gt;faixa&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;limiteCentavos&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Copiar código"
+aria-label="Copiar código"
+data-copied-label="Copiado!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;resolverFaixa&lt;/code&gt; ordena as faixas pelo limite (a aberta sempre por último) e devolve a primeira que
+comporta o total — ou falha com &lt;code&gt;SEM_REGRA_APLICAVEL&lt;/code&gt;, que é &lt;strong&gt;estado tratado e não erro
+genérico&lt;/strong&gt;: a submissão é bloqueada com mensagem própria e o rascunho continua existindo para ser
+corrigido. &lt;code&gt;montarCadeia&lt;/code&gt; então transforma os aprovadores da faixa em etapas numeradas.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Persistida.&lt;/strong&gt; O instante em que isso acontece é a &lt;strong&gt;submissão&lt;/strong&gt;, uma vez só, e o resultado é
+gravado como &lt;strong&gt;snapshot&lt;/strong&gt; (&lt;a href="https://github.com/Carolbalbs/obraflow-case/blob/main/docs/adr/0001-cadeia-de-aprovacao-e-snapshot.md" target="_blank" rel="noopener"&gt;ADR 0001&lt;/a&gt;):&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;as &lt;code&gt;Etapa&lt;/code&gt; do pedido, com &lt;code&gt;(pedidoId, ordem)&lt;/code&gt; único e o &lt;code&gt;usuarioId&lt;/code&gt; de quem assina;&lt;/li&gt;
+&lt;li&gt;três colunas no próprio pedido — &lt;code&gt;faixaId&lt;/code&gt;, &lt;code&gt;faixaLimiteCentavos&lt;/code&gt;, &lt;code&gt;faixaSemTeto&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;faixaId&lt;/code&gt; é &lt;code&gt;onDelete: SetNull&lt;/code&gt;, e as outras duas são do pedido. &lt;strong&gt;Apagar a faixa não reescreve o
+histórico&lt;/strong&gt;: é o pedido &lt;code&gt;#1008&lt;/code&gt; do seed, com &lt;code&gt;faixaId&lt;/code&gt; nulo e o limite de R$ 20.000,00 ainda
+visível. &lt;strong&gt;Editar a faixa também não&lt;/strong&gt;: é o &lt;code&gt;#1007&lt;/code&gt;, cuja cadeia gravada (João) difere da faixa
+atual da obra (Amanda). Nenhuma leitura recalcula coisa alguma — &lt;code&gt;src/domain/cadeia.ts&lt;/code&gt; sequer
+recebe a alçada como parâmetro, para que recalcular não seja possível por distração.&lt;/p&gt;
+&lt;p&gt;O rascunho &lt;strong&gt;não&lt;/strong&gt; tem cadeia, de propósito: o total ainda vai mudar, e resolver a faixa ali
+gravaria uma decisão derivada de um número provisório.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="valor-sem-regra-aplicável"&gt;Valor sem regra aplicável&lt;span class="hx:absolute hx:-mt-20" id="valor-sem-regra-aplicável"&gt;&lt;/span&gt;
+&lt;a href="#valor-sem-regra-aplic%c3%a1vel" class="subheading-anchor" aria-label="Link permanente para esta secção"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;É &lt;strong&gt;estado tratado, não erro genérico&lt;/strong&gt;: &lt;code&gt;resolverFaixa&lt;/code&gt; falha com &lt;code&gt;SEM_REGRA_APLICAVEL&lt;/code&gt;, a submissão responde &lt;code&gt;422&lt;/code&gt; com mensagem própria, e o &lt;strong&gt;rascunho continua existindo&lt;/strong&gt; para ser corrigido. A tela avisa antes mesmo do envio quando a obra escolhida não tem faixa nenhuma, e oferece o atalho para a tela de regras. No seed, a obra &lt;strong&gt;Galpão Logístico Norte&lt;/strong&gt; tem faixa só até R$ 5.000,00 e nenhuma faixa aberta — é assim que o estado fica alcançável sem preparar nada (veja &lt;a href="https://carolbalbs.github.io/obraflow-case/tutoriais/dados-demo/"&gt;Dados de demonstração&lt;/a&gt;).&lt;/p&gt;
+&lt;h2 data-hextra-search-id="diagramas"&gt;Diagramas&lt;span class="hx:absolute hx:-mt-20" id="diagramas"&gt;&lt;/span&gt;
+&lt;a href="#diagramas" class="subheading-anchor" aria-label="Link permanente para esta secção"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Os diagramas saem de um canvas feito no planejamento e foram &lt;strong&gt;corrigidos contra o código&lt;/strong&gt;: os nomes de função são os de &lt;code&gt;src/domain&lt;/code&gt; e &lt;code&gt;src/server&lt;/code&gt;, e os campos, os de &lt;code&gt;prisma/schema.prisma&lt;/code&gt;.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="entidades"&gt;Entidades&lt;span class="hx:absolute hx:-mt-20" id="entidades"&gt;&lt;/span&gt;
+&lt;a href="#entidades" class="subheading-anchor" aria-label="Link permanente para esta secção"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;As oito tabelas, as relações com a regra de exclusão de cada uma (cascade, restrict ou set null) e, em cada caixa, as funções puras que aplicam a regra sobre ela.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://carolbalbs.github.io/obraflow-case/diagramas/entidades.png" alt="Diagrama de entidades" loading="lazy" /&gt;&lt;/p&gt;
+&lt;h3 data-hextra-search-id="estados-do-pedido"&gt;Estados do pedido&lt;span class="hx:absolute hx:-mt-20" id="estados-do-pedido"&gt;&lt;/span&gt;
+&lt;a href="#estados-do-pedido" class="subheading-anchor" aria-label="Link permanente para esta secção"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Rascunho, pendente, aprovado e rejeitado, e o que cada passagem exige.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://carolbalbs.github.io/obraflow-case/diagramas/estados-do-pedido.png" alt="Estados do pedido" loading="lazy" /&gt;&lt;/p&gt;
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/&gt;&lt;/svg&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;O enunciado deste ponto está em &lt;a href="https://carolbalbs.github.io/obraflow-case/docs/escopo/regra-de-alcada/"&gt;Escopo → Regra de alçada&lt;/a&gt;.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description></item><item><title>Front-end ↔ back-end</title><link>https://carolbalbs.github.io/obraflow-case/docs/guia/comunicacao/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://carolbalbs.github.io/obraflow-case/docs/guia/comunicacao/</guid><description>
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/&gt;&lt;/svg&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;Este conteúdo é o mesmo do &lt;a href="https://github.com/Carolbalbs/obraflow-case#readme" target="_blank" rel="noopener"&gt;&lt;code&gt;README.md&lt;/code&gt;&lt;/a&gt; da entrega, que continua sendo a referência exigida pelo enunciado.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;fetch&lt;/code&gt; do navegador contra Route Handlers em &lt;code&gt;app/api/*&lt;/code&gt;. JSON nos dois sentidos, cookie
+&lt;code&gt;httpOnly&lt;/code&gt; para a identidade, e &lt;strong&gt;nenhuma Server Action&lt;/strong&gt;: toda escrita tem um endereço que
+&lt;code&gt;curl&lt;/code&gt; alcança.&lt;/p&gt;
+&lt;p&gt;O erro tem um envelope só, em toda rota, sem exceção:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-json" data-lang="json"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="nt"&gt;&amp;#34;error&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="nt"&gt;&amp;#34;code&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;SEM_REGRA_APLICAVEL&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nt"&gt;&amp;#34;message&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;…&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nt"&gt;&amp;#34;fields&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="nt"&gt;&amp;#34;itens.0.quantidade&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;…&amp;#34;&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Copiar código"
+aria-label="Copiar código"
+data-copied-label="Copiado!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;code&lt;/code&gt; vem de um enum do domínio e o número HTTP sai de um mapa único (&lt;code&gt;SITUACAO_HTTP&lt;/code&gt;) — nenhuma
+rota escolhe status de recusa por conta própria, então a mesma regra nunca responde 400 num lugar
+e 422 noutro. &lt;code&gt;fields&lt;/code&gt; é o que permite ao formulário &lt;strong&gt;ancorar a mensagem no campo certo&lt;/strong&gt;, com as
+mesmas chaves que o Zod produziu no cliente.&lt;/p&gt;
+&lt;p&gt;&amp;ldquo;Sessão&amp;rdquo; na tabela abaixo é qualquer um dos quatro papéis; sem sessão, toda rota responde
+&lt;code&gt;403 SEM_PERMISSAO&lt;/code&gt;. Obras, fornecedores e usuários são &lt;strong&gt;só listados&lt;/strong&gt;: o cadastro deles é feito
+pelo seed e está fora de escopo (&lt;a href="https://github.com/Carolbalbs/obraflow-case/blob/main/docs/PRD.md#3-fora-de-escopo--o-que-n%c3%a3o-ser%c3%a1-feito" target="_blank" rel="noopener"&gt;PRD, § 3&lt;/a&gt;).&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Método e rota&lt;/th&gt;
+&lt;th&gt;Quem pode&lt;/th&gt;
+&lt;th&gt;O que faz&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;GET POST DELETE /api/sessao&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;DEMO_MODE&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Quem está dentro · entrar como · sair&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;GET /api/usuarios&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;DEMO_MODE&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;A lista da tela de entrada&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;GET /api/alcada&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;admin&lt;/td&gt;
+&lt;td&gt;Obras e a contagem de faixas de cada uma&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;GET /api/obras&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;sessão&lt;/td&gt;
+&lt;td&gt;Obras cadastradas — &lt;code&gt;id&lt;/code&gt;, &lt;code&gt;nome&lt;/code&gt;, &lt;code&gt;cidade&lt;/code&gt;, por nome&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;GET /api/fornecedores&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;sessão&lt;/td&gt;
+&lt;td&gt;Fornecedores cadastrados — &lt;code&gt;id&lt;/code&gt;, &lt;code&gt;nome&lt;/code&gt;, &lt;code&gt;documento&lt;/code&gt;, por nome&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;GET /api/obras/{id}/faixas&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;sessão&lt;/td&gt;
+&lt;td&gt;Faixas da obra, ordenadas, com os aprovadores na ordem&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;POST /api/obras/{id}/faixas&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;admin&lt;/td&gt;
+&lt;td&gt;Cria a faixa e os aprovadores numa transação (&lt;code&gt;201&lt;/code&gt;)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;PUT /api/faixas/{id}&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;admin&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;Substitui a faixa inteira&lt;/strong&gt; — limite e lista ordenada&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;DELETE /api/faixas/{id}&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;admin&lt;/td&gt;
+&lt;td&gt;Remove, e devolve &lt;code&gt;pedidosAfetados&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;GET /api/pedidos&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;sessão&lt;/td&gt;
+&lt;td&gt;Lista paginada, filtros &lt;code&gt;situacao&lt;/code&gt;, &lt;code&gt;obraId&lt;/code&gt;, &lt;code&gt;page&lt;/code&gt;, &lt;code&gt;perPage&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;GET /api/pedidos/resumo&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;admin&lt;/td&gt;
+&lt;td&gt;Contagem por situação (&lt;code&gt;porSituacao&lt;/code&gt;), filtro &lt;code&gt;obraId&lt;/code&gt; — o gráfico do painel&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;GET /api/pedidos/painel&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;admin&lt;/td&gt;
+&lt;td&gt;KPIs, série semanal, cortes por faixa e por aprovador e fila de atenção, de &lt;strong&gt;uma&lt;/strong&gt; leitura; &lt;code&gt;dias=7|30|90&lt;/code&gt; (padrão 30), &lt;code&gt;obraId&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;POST /api/pedidos&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;comprador&lt;/td&gt;
+&lt;td&gt;Cria o rascunho (&lt;code&gt;201&lt;/code&gt;)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;GET /api/pedidos/{id}&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;sessão&lt;/td&gt;
+&lt;td&gt;Detalhe com itens, cadeia, histórico, &lt;code&gt;etapaAtual&lt;/code&gt; e &lt;code&gt;podeDecidir&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;PUT DELETE /api/pedidos/{id}&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;criador&lt;/td&gt;
+&lt;td&gt;Substitui ou apaga o &lt;strong&gt;rascunho&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;POST /api/pedidos/{id}/submissao&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;comprador&lt;/td&gt;
+&lt;td&gt;Exige a data do pedido, resolve a faixa, grava a cadeia, carimba &lt;code&gt;submetidoEm&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;POST /api/pedidos/{id}/decisoes&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;aprovador&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;{&amp;quot;tipo&amp;quot;:&amp;quot;aprovar&amp;quot;}&lt;/code&gt; ou &lt;code&gt;{&amp;quot;tipo&amp;quot;:&amp;quot;rejeitar&amp;quot;,&amp;quot;motivo&amp;quot;:&amp;quot;…&amp;quot;}&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Exemplo completo, do rascunho à decisão:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nv"&gt;C&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;Cookie: obraflow_sessao=cseedusuariocaio00004&amp;#34;&lt;/span&gt; &lt;span class="c1"&gt;# Caio, comprador&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nv"&gt;J&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;Cookie: obraflow_sessao=cseedusuariojoao00003&amp;#34;&lt;/span&gt; &lt;span class="c1"&gt;# João, aprovador&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# 1. Cria o rascunho. `totalCentavos` não é enviado: o servidor o calcula.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;curl -s -X POST localhost:3000/api/pedidos -H &lt;span class="s2"&gt;&amp;#34;&lt;/span&gt;&lt;span class="nv"&gt;$C&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;&lt;/span&gt; -H &lt;span class="s1"&gt;&amp;#39;Content-Type: application/json&amp;#39;&lt;/span&gt; -d &lt;span class="s1"&gt;&amp;#39;{
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s1"&gt; &amp;#34;obraId&amp;#34;: &amp;#34;cseedobragalpao000002&amp;#34;,
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s1"&gt; &amp;#34;fornecedorId&amp;#34;: &amp;#34;cseedfornecedoreletrica3&amp;#34;,
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s1"&gt; &amp;#34;dataPedido&amp;#34;: &amp;#34;2026-10-31&amp;#34;,
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s1"&gt; &amp;#34;observacoes&amp;#34;: &amp;#34;Quadro de distribuição do mezanino.&amp;#34;,
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s1"&gt; &amp;#34;itens&amp;#34;: [{ &amp;#34;descricao&amp;#34;: &amp;#34;Disjuntor bipolar 40 A&amp;#34;, &amp;#34;quantidade&amp;#34;: &amp;#34;16&amp;#34;, &amp;#34;unidade&amp;#34;: &amp;#34;un&amp;#34;, &amp;#34;precoUnitario&amp;#34;: &amp;#34;78,50&amp;#34; }]
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s1"&gt;}&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# 2. Submete. A rota NÃO lê corpo: ela valida o rascunho que está no banco.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;curl -s -X POST localhost:3000/api/pedidos/1009/submissao -H &lt;span class="s2"&gt;&amp;#34;&lt;/span&gt;&lt;span class="nv"&gt;$C&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# 3. Decide, como o aprovador da vez.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;curl -s -X POST localhost:3000/api/pedidos/1009/decisoes -H &lt;span class="s2"&gt;&amp;#34;&lt;/span&gt;&lt;span class="nv"&gt;$J&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;&lt;/span&gt; &lt;span class="se"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; -H &lt;span class="s1"&gt;&amp;#39;Content-Type: application/json&amp;#39;&lt;/span&gt; -d &lt;span class="s1"&gt;&amp;#39;{&amp;#34;tipo&amp;#34;:&amp;#34;aprovar&amp;#34;}&amp;#39;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Copiar código"
+aria-label="Copiar código"
+data-copied-label="Copiado!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Dois detalhes que valem o comentário. &lt;strong&gt;Número no corpo é centavos; texto é entrada de
+formulário&lt;/strong&gt; — &lt;code&gt;&amp;quot;precoUnitario&amp;quot;: 7850&lt;/code&gt; e &lt;code&gt;&amp;quot;precoUnitario&amp;quot;: &amp;quot;78,50&amp;quot;&lt;/code&gt; são o mesmo valor, e a
+conversão de texto passa pelo parser do domínio, nunca por &lt;code&gt;z.coerce&lt;/code&gt;. E &lt;strong&gt;o pedido tem duas
+datas, com dois donos&lt;/strong&gt;: &lt;code&gt;dataPedido&lt;/code&gt; é a data de emissão que quem compra declara
+(&lt;code&gt;&amp;quot;AAAA-MM-DD&amp;quot;&lt;/code&gt;, obrigatória na submissão, gravada pelo rascunho); &lt;code&gt;submetidoEm&lt;/code&gt; é o horário do
+servidor no instante da submissão — o registro auditável de quando o pedido entrou no fluxo, que
+ninguém escolhe. A submissão não lê corpo: valida o rascunho gravado e não toca na &lt;code&gt;dataPedido&lt;/code&gt;.
+Sem data, ela responde &lt;code&gt;422&lt;/code&gt; com &lt;code&gt;fields.dataPedido&lt;/code&gt;. Nenhuma regra de data futura ou retroativa
+— o enunciado não pede.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="operações-por-camada"&gt;Operações por camada&lt;span class="hx:absolute hx:-mt-20" id="operações-por-camada"&gt;&lt;/span&gt;
+&lt;a href="#opera%c3%a7%c3%b5es-por-camada" class="subheading-anchor" aria-label="Link permanente para esta secção"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Rotas, servidor e domínio puro: quem chama quem. Os diagramas saem de um canvas feito no planejamento e foram &lt;strong&gt;corrigidos contra o código&lt;/strong&gt;: os nomes de função são os de &lt;code&gt;src/domain&lt;/code&gt; e &lt;code&gt;src/server&lt;/code&gt;, e os campos, os de &lt;code&gt;prisma/schema.prisma&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://carolbalbs.github.io/obraflow-case/diagramas/operacoes-por-camada.png" alt="Operações por camada" loading="lazy" /&gt;&lt;/p&gt;</description></item><item><title>Consistência e integridade</title><link>https://carolbalbs.github.io/obraflow-case/docs/guia/consistencia/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://carolbalbs.github.io/obraflow-case/docs/guia/consistencia/</guid><description>
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/&gt;&lt;/svg&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;Este conteúdo é o mesmo do &lt;a href="https://github.com/Carolbalbs/obraflow-case#readme" target="_blank" rel="noopener"&gt;&lt;code&gt;README.md&lt;/code&gt;&lt;/a&gt; da entrega, que continua sendo a referência exigida pelo enunciado.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;Dinheiro nunca passa por ponto flutuante.&lt;/strong&gt; Centavos (&lt;code&gt;Int&lt;/code&gt;) e quantidades em milésimos (&lt;code&gt;Int&lt;/code&gt;),
+do schema ao JSON. Nenhuma coluna é &lt;code&gt;Float&lt;/code&gt; ou &lt;code&gt;Decimal&lt;/code&gt;. Não é preciosismo: um pedido de
+R$ 10.000,00 que vira R$ 9.999,99 &lt;strong&gt;cai em outra faixa e é assinado por outra pessoa&lt;/strong&gt;. O
+arredondamento acontece uma vez só, sobre o produto inteiro — arredondar antes faria a soma dos
+itens divergir do total que o aprovador lê.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;O total é sempre do servidor.&lt;/strong&gt; Nenhuma rota lê &lt;code&gt;totalCentavos&lt;/code&gt; do corpo. Ele é recalculado a
+cada escrita, a partir dos itens. Um &lt;code&gt;curl&lt;/code&gt; enviando um total divergente é simplesmente ignorado.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Integridade pelo banco, não por boa vontade do código.&lt;/strong&gt; &lt;code&gt;@@unique([faixaId, ordem])&lt;/code&gt;,
+&lt;code&gt;@@unique([pedidoId, ordem])&lt;/code&gt; nos itens e nas etapas, &lt;code&gt;onDelete: Restrict&lt;/code&gt; onde apagar destruiria
+história, &lt;code&gt;onDelete: Cascade&lt;/code&gt; onde os filhos não fazem sentido sozinhos, &lt;code&gt;onDelete: SetNull&lt;/code&gt; só
+onde a ausência é um estado legítimo — que é o caso da faixa apagada.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Transações onde o meio do caminho não é um estado observável.&lt;/strong&gt; Criar faixa com seus
+aprovadores, substituir um pedido inteiro, submeter, decidir: tudo ou nada. A alçada é relida
+&lt;strong&gt;dentro&lt;/strong&gt; da transação da submissão, porque a faixa pode ter sido apagada entre a leitura e a
+escrita — se sumiu, o plano falha e nada foi gravado.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Concorrência: a decisão é um &lt;code&gt;UPDATE&lt;/code&gt; condicional&lt;/strong&gt;
+(&lt;a href="https://github.com/Carolbalbs/obraflow-case/blob/main/docs/adr/0004-decisao-por-update-condicional.md" target="_blank" rel="noopener"&gt;ADR 0004&lt;/a&gt;). Não há leitura seguida de escrita
+confiando no que leu. O &lt;code&gt;where&lt;/code&gt; &lt;strong&gt;é&lt;/strong&gt; o contrato:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-ts" data-lang="ts"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nx"&gt;pedidoId&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;ordem&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;usuarioId&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="c1"&gt;// é esta etapa, e é desta pessoa
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nx"&gt;situacao&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;pendente&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="c1"&gt;// ainda não foi decidida — duplo clique, corrida
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nx"&gt;pedido&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nx"&gt;situacao&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;pendente&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="c1"&gt;// o pedido não terminou no meio-tempo
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nx"&gt;etapas&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="nx"&gt;none&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="nx"&gt;ordem&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="nx"&gt;lt&lt;/span&gt;: &lt;span class="kt"&gt;ordem&lt;/span&gt; &lt;span class="p"&gt;},&lt;/span&gt; &lt;span class="nx"&gt;situacao&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;pendente&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="p"&gt;},&lt;/span&gt; &lt;span class="c1"&gt;// nenhuma anterior ficou para trás
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Copiar código"
+aria-label="Copiar código"
+data-copied-label="Copiado!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Zero linhas afetadas é a premissa caída, e vira &lt;code&gt;409&lt;/code&gt; — não um erro a investigar. Isso faz com que
+&lt;strong&gt;decisão fora de ordem, duplo clique e corrida sejam o mesmo mecanismo&lt;/strong&gt;, e não três checagens
+que podem divergir. O bloco 4 do &lt;code&gt;scripts/verificar.sh&lt;/code&gt; dispara dois &lt;code&gt;POST&lt;/code&gt; em paralelo e mostra
+um &lt;code&gt;200&lt;/code&gt;, um &lt;code&gt;409&lt;/code&gt; e &lt;strong&gt;uma única&lt;/strong&gt; etapa decidida no banco.&lt;/p&gt;
+&lt;p&gt;A submissão usa o mesmo recurso, condicionada a &lt;code&gt;situacao: 'rascunho'&lt;/code&gt;: dois envios simultâneos do
+mesmo pedido produzem uma submissão e um &lt;code&gt;409 PEDIDO_IMUTAVEL&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Privacidade do rascunho é cláusula de consulta, não filtro de tela.&lt;/strong&gt; O &lt;code&gt;where&lt;/code&gt; de
+&lt;code&gt;GET /api/pedidos&lt;/code&gt; tem duas famílias — o submetido, que qualquer sessão vê, e o rascunho, que só o
+criador vê. Pedir &lt;code&gt;?situacao=rascunho&lt;/code&gt; como outra pessoa devolve &lt;strong&gt;os rascunhos dela&lt;/strong&gt;, nunca os
+alheios. É o que torna a regra impossível de esquecer numa tela nova.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Identidade vem do cookie, e o papel vem do banco.&lt;/strong&gt; O cookie carrega só o id; forjá-lo com outro
+id faz o servidor responder como &lt;em&gt;aquele&lt;/em&gt; usuário, com o papel &lt;em&gt;dele&lt;/em&gt; — e nunca concede poder a
+mais. Nenhum cabeçalho declarado pelo cliente participa da decisão.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="submissão-e-decisão"&gt;Submissão e decisão&lt;span class="hx:absolute hx:-mt-20" id="submissão-e-decisão"&gt;&lt;/span&gt;
+&lt;a href="#submiss%c3%a3o-e-decis%c3%a3o" class="subheading-anchor" aria-label="Link permanente para esta secção"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Os dois caminhos que mudam um pedido, e onde cada recusa acontece. Os diagramas saem de um canvas feito no planejamento e foram &lt;strong&gt;corrigidos contra o código&lt;/strong&gt;: os nomes de função são os de &lt;code&gt;src/domain&lt;/code&gt; e &lt;code&gt;src/server&lt;/code&gt;, e os campos, os de &lt;code&gt;prisma/schema.prisma&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://carolbalbs.github.io/obraflow-case/diagramas/submissao-e-decisao.png" alt="Submissão e decisão" loading="lazy" /&gt;&lt;/p&gt;
+&lt;h2 data-hextra-search-id="testes-e-verificações"&gt;Testes e verificações&lt;span class="hx:absolute hx:-mt-20" id="testes-e-verificações"&gt;&lt;/span&gt;
+&lt;a href="#testes-e-verifica%c3%a7%c3%b5es" class="subheading-anchor" aria-label="Link permanente para esta secção"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;npx tsc --noEmit &lt;span class="c1"&gt;# tipos&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;npm run lint &lt;span class="c1"&gt;# ESLint (next/core-web-vitals + react-hooks)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;npm &lt;span class="nb"&gt;test&lt;/span&gt; &lt;span class="c1"&gt;# 56 casos&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Copiar código"
+aria-label="Copiar código"
+data-copied-label="Copiado!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;A suíte cobre o que só leitura não pega e o que não exige servidor:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Projeto&lt;/th&gt;
+&lt;th style="text-align: right"&gt;Casos&lt;/th&gt;
+&lt;th&gt;O que afirma&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;dominio&lt;/code&gt;&lt;/td&gt;
+&lt;td style="text-align: right"&gt;47&lt;/td&gt;
+&lt;td&gt;Limite inclusivo, faixa aberta, ordenação, sem regra aplicável, montagem e leitura da cadeia, aprovador da vez, rejeição encerrando o fluxo, arredondamento de centavos e milésimos, schemas (data do pedido obrigatória, preço zero aceito, negativo ou ausente recusado) — e, em 18 desses casos, as derivações do painel: quando cada etapa recebeu a vez, &amp;ldquo;parado há&amp;rdquo;, KPIs contra o período anterior, cortes por faixa e por aprovador, fila de atenção e série semanal&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;ui&lt;/code&gt;&lt;/td&gt;
+&lt;td style="text-align: right"&gt;8&lt;/td&gt;
+&lt;td&gt;Ancoragem de &lt;code&gt;error.fields&lt;/code&gt; nos campos do formulário — chaves, nunca textos de mensagem —, inclusive o envio bloqueado sem data&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;api&lt;/code&gt;&lt;/td&gt;
+&lt;td style="text-align: right"&gt;1&lt;/td&gt;
+&lt;td&gt;Guarda de configuração do projeto de rota&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;O que &lt;strong&gt;não&lt;/strong&gt; é testado por unidade é testado por &lt;code&gt;curl&lt;/code&gt; contra o servidor de verdade, em
+&lt;code&gt;scripts/verificar.sh&lt;/code&gt;: as recusas 403, 409 e 422 e a corrida de decisão. É deliberado — a corrida
+só é real contra o banco de verdade, e um mock dela provaria apenas que o mock foi escrito certo.&lt;/p&gt;</description></item><item><title>O que mudaria em produção</title><link>https://carolbalbs.github.io/obraflow-case/docs/guia/producao/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://carolbalbs.github.io/obraflow-case/docs/guia/producao/</guid><description>
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/&gt;&lt;/svg&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;Este conteúdo é o mesmo do &lt;a href="https://github.com/Carolbalbs/obraflow-case#readme" target="_blank" rel="noopener"&gt;&lt;code&gt;README.md&lt;/code&gt;&lt;/a&gt; da entrega, que continua sendo a referência exigida pelo enunciado.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;O que está aqui é o recorte do case executando local. O que mudaria, e por quê:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Autenticação de verdade.&lt;/strong&gt; &lt;code&gt;DEMO_MODE&lt;/code&gt; sai, e com ela a entrada sem senha. A sessão passa a
+ser emitida por um provedor (OIDC/SSO corporativo), com refresh e expiração curta. O resto do
+código &lt;strong&gt;não muda&lt;/strong&gt;: &lt;code&gt;lerSessao(req)&lt;/code&gt; já é o único lugar que decide quem é quem, e a matriz de
+permissão já cobra do servidor.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Postgres no lugar do SQLite.&lt;/strong&gt; A troca é de &lt;code&gt;datasource&lt;/code&gt; e adapter — o domínio não sabe qual
+banco existe. Mas há um ponto que exige atenção: o &lt;code&gt;UPDATE&lt;/code&gt; condicional da decisão depende de
+atomicidade de linha, que o Postgres dá, e o isolamento passa a precisar de teste explícito
+sob concorrência real (o SQLite serializa as escritas e esconde o caso de duas transações
+lendo o mesmo estado).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Trilha de auditoria imutável.&lt;/strong&gt; Hoje a história está nas &lt;code&gt;Etapa&lt;/code&gt;, que são linhas atualizáveis.
+Em produção, um log append-only de eventos (&lt;code&gt;PedidoSubmetido&lt;/code&gt;, &lt;code&gt;EtapaDecidida&lt;/code&gt;) ao lado do
+estado — porque auditoria que pode ser editada pelo mesmo &lt;code&gt;UPDATE&lt;/code&gt; que escreve o estado não é
+auditoria.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Notificação ao aprovador da vez.&lt;/strong&gt; É o que falta para a cadeia andar sozinha: e-mail ou push
+quando a etapa se torna a sua, com digest para quem acumula fila. Fora do case por exigir
+serviço externo.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Atualização ao vivo da fila.&lt;/strong&gt; Dois aprovadores na mesma tela hoje só descobrem a decisão do
+outro ao recarregar. SSE ou WebSocket resolveriam — o &lt;code&gt;409&lt;/code&gt; já protege o dado, o que falta é
+conforto.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Concorrência na edição da faixa.&lt;/strong&gt; Dois &lt;code&gt;PUT&lt;/code&gt; simultâneos na mesma faixa: o último escreve.
+Produção pediria versão otimista (&lt;code&gt;If-Match&lt;/code&gt; / coluna &lt;code&gt;versao&lt;/code&gt;), como a decisão já tem.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Observabilidade.&lt;/strong&gt; Log estruturado com id de correlação, métrica de tempo por etapa (onde a
+cadeia trava), alerta de pedido parado. Hoje não há nada disso.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Paginação por cursor&lt;/strong&gt; na lista, no lugar de &lt;code&gt;page&lt;/code&gt;/&lt;code&gt;perPage&lt;/code&gt; por &lt;code&gt;OFFSET&lt;/code&gt;, que degrada com
+volume.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;O que continuaria igual, e é de propósito:&lt;/strong&gt; o domínio puro e sem dependência de framework, o
+snapshot da cadeia, o dinheiro inteiro e o envelope único de erro. São as decisões que não
+mudam de resposta quando o sistema cresce.&lt;/li&gt;
+&lt;/ol&gt;</description></item></channel></rss>
