@@ -28,6 +28,7 @@ import {
   CABECALHO,
   CARTAO,
   CODIGO,
+  DESABILITADO_NEUTRO,
   NOTA,
 } from './estilos'
 import { DialogoDeRemocao } from './DialogoDeRemocao'

@@ -392,9 +392,9 @@ function Tabela({ linhas }: { linhas: readonly ResumoDePedido[] }) {
                   ) : (
                     <Link
                       href={`/pedidos/${pedido.id}`}
-                      className={`${BOTAO} ${BOTAO_PEQUENO} inline-flex items-center ${
-                        pedido.podeDecidir ? BOTAO_ESCURO : ''
-                      }`}
+                      className={`${
+                        pedido.podeDecidir ? BOTAO_PEQUENO_ESCURO : BOTAO_PEQUENO
+                      } inline-flex items-center`}
                     >
                       {pedido.podeDecidir ? 'Decidir' : 'Ver mais'}
                     </Link>

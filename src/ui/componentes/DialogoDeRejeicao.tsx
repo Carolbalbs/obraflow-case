@@ -44,7 +44,7 @@ export function DialogoDeRejeicao({
   const [motivo, setMotivo] = useState('')
   const [tocado, setTocado] = useState(false)
   const caixa = useRef<HTMLDivElement>(null)
-  const campo = useRef<HTMLTextAreaElement>(null)
+  const campoDeMotivo = useRef<HTMLTextAreaElement>(null)
   const gatilho = useRef<Element | null>(null)
   const idMotivo = useId()
   const idErro = useId()
@@ -53,7 +53,7 @@ export function DialogoDeRejeicao({
   // fecha por `Esc` ou por clique no fundo, que é justamente quando ninguém pensa em devolver.
   useEffect(() => {
     gatilho.current = document.activeElement
-    campo.current?.focus()
+    campoDeMotivo.current?.focus()
     return () => {
       if (gatilho.current instanceof HTMLElement) gatilho.current.focus()
     }
@@ -102,7 +102,7 @@ export function DialogoDeRejeicao({
     setTocado(true)
     // A validação barra antes do submit: sem motivo, nada é enviado e o foco volta ao campo.
     if (!analise.ok) {
-      campo.current?.focus()
+      campoDeMotivo.current?.focus()
       return
     }
     aoConfirmar(motivo.trim())
@@ -140,7 +140,7 @@ export function DialogoDeRejeicao({
           </label>
           <textarea
             id={idMotivo}
-            ref={campo}
+            ref={campoDeMotivo}
             rows={4}
             value={motivo}
             maxLength={Decisao.MOTIVO_MAXIMO}
