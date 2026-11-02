@@ -48,6 +48,8 @@ compra e em qual ordem, conforme a obra e o valor — e registra a trilha inteir
 </div>
 </div>
 
+{{< of-arte >}}
+
 {{< hextra/feature-grid >}}
   {{< hextra/feature-card
     title="Tecnologias e motivos"
@@ -86,3 +88,5 @@ compra e em qual ordem, conforme a obra e o valor — e registra a trilha inteir
     link="tutoriais/screenshots"
   >}}
 {{< /hextra/feature-grid >}}
+
+{{< of-comece >}}

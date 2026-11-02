@@ -563,3 +563,240 @@ main:has(> div > .of-hero:first-child) { padding-top: 0 !important; }
   color: var(--of-brand-400);
 }
 
+
+/* --------------------------------------------------------------------------
+   Capa — arte das telas: recortes reais sobre o degradê escuro da marca,
+   com o fundo aurora claro da capa continuando por trás
+   -------------------------------------------------------------------------- */
+
+/* 100vw conta a barra de rolagem: corta o excedente para não abrir rolagem lateral. */
+main:has(.of-arte) { overflow-x: clip; }
+
+.of-arte,
+.of-comece {
+  margin-inline: calc(50% - 50vw);
+  padding-inline: max(1.5rem, calc(50vw - 40rem));
+}
+
+.of-arte {
+  padding-block: 5rem 4.5rem;
+  background-color: var(--of-surface-page);
+  background-image:
+    radial-gradient(900px 520px at 6% 30%, rgba(255, 138, 160, 0.26), transparent 64%),
+    radial-gradient(900px 560px at 96% 70%, rgba(167, 139, 250, 0.26), transparent 64%),
+    linear-gradient(173deg,
+      rgba(255, 36, 94, 0.08) 17.37%,
+      rgba(98, 0, 255, 0.08) 52.59%,
+      rgba(255, 0, 204, 0.08) 89.98%);
+}
+.dark .of-arte {
+  background-color: var(--of-levels-950);
+  background-image:
+    radial-gradient(900px 520px at 6% 30%, rgba(255, 0, 77, 0.14), transparent 64%),
+    radial-gradient(900px 560px at 96% 70%, rgba(151, 71, 255, 0.14), transparent 64%);
+}
+
+.of-arte-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1.5rem;
+  max-width: 80rem;
+  margin: 0 auto 2rem;
+}
+.of-arte-eyebrow {
+  display: inline-block;
+  margin: 0 0 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background-image: var(--of-gradient-eyebrow);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.of-arte h2 {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  line-height: 1.08;
+  letter-spacing: var(--of-tracking-display);
+  font-weight: 600;
+  color: var(--of-text-strong);
+}
+.of-arte h2 em {
+  font-family: var(--of-font-serif-italic);
+  font-weight: 500;
+  color: var(--of-brand-500);
+}
+.dark .of-arte h2 { color: #fff; }
+.dark .of-arte h2 em { color: var(--of-brand-300); }
+.of-arte-more {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--of-text-heading);
+  border-bottom: 1px solid var(--of-levels-300);
+  padding-bottom: 2px;
+}
+.dark .of-arte-more { color: rgba(255, 255, 255, 0.78); border-color: rgba(255, 255, 255, 0.24); }
+
+.of-arte-panel {
+  position: relative;
+  max-width: 80rem;
+  margin-inline: auto;
+  min-height: 40rem;
+  padding: 3.5rem 3rem 4rem;
+  box-sizing: border-box;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  background-color: var(--of-levels-950);
+  background-image:
+    radial-gradient(1100px 520px at 8% -8%, rgba(255, 0, 77, 0.20), transparent 62%),
+    radial-gradient(900px 560px at 92% 4%, rgba(151, 71, 255, 0.18), transparent 64%),
+    var(--of-gradient-cta);
+}
+.of-arte-panel figure { margin: 0; }
+.of-arte-panel img { display: block; width: 100%; height: auto; }
+
+.of-arte-tag {
+  position: absolute;
+  top: 1.125rem;
+  left: 3rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--of-brand-100);
+  background: rgba(255, 0, 77, 0.16);
+  border-radius: 999px;
+  padding: 0.25rem 0.625rem;
+}
+
+.of-arte-window,
+.of-arte-card {
+  background: #fff;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 24px 48px -16px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+.of-arte-window { position: relative; width: 66%; }
+.of-arte-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 0.875rem;
+  background: var(--of-levels-100);
+  border-bottom: 1px solid var(--of-levels-200);
+}
+.of-arte-bar i { width: 10px; height: 10px; border-radius: 50%; background: var(--of-levels-300); }
+.of-arte-bar span {
+  margin-left: 0.75rem;
+  font-size: 0.75rem;
+  color: var(--of-levels-600);
+  background: #fff;
+  border-radius: 6px;
+  padding: 0.1875rem 0.75rem;
+}
+
+.of-arte-card { position: absolute; }
+.of-arte-regra {
+  top: 2.5rem;
+  right: 3rem;
+  width: 24%;
+  outline: 2px solid var(--of-brand-500);
+  outline-offset: 4px;
+}
+.of-arte-historico { left: 34%; bottom: 7.5rem; width: 44%; }
+.of-arte-decisao { left: 3rem; right: 30%; bottom: 2.5rem; }
+
+.of-arte-phone {
+  position: absolute;
+  right: 1.5rem;
+  bottom: -9rem;
+  width: 170px;
+  padding: 8px;
+  border-radius: 28px;
+  background: var(--of-levels-950);
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+.of-arte-phone img { border-radius: 22px; }
+
+.of-arte-points {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  max-width: 80rem;
+  margin: 1.5rem auto 0;
+}
+.of-arte-points p { margin: 0; font-size: 0.875rem; line-height: 1.6; color: var(--of-text-body); }
+.of-arte-points b { font-weight: 600; color: var(--of-text-heading); }
+.dark .of-arte-points p { color: rgba(255, 255, 255, 0.6); }
+.dark .of-arte-points b { color: #fff; }
+
+/* Telas estreitas: a composição vira pilha, sem sobreposição. */
+@media (max-width: 900px) {
+  .of-arte-panel { min-height: 0; padding: 3rem 1rem 1rem; display: grid; gap: 1rem; }
+  .of-arte-tag { left: 1rem; }
+  .of-arte-window, .of-arte-card { position: static; width: auto; }
+  .of-arte-regra { display: none; }
+  .of-arte-phone { display: none; }
+  .of-arte-points { grid-template-columns: 1fr; }
+}
+
+/* --------------------------------------------------------------------------
+   Capa — "Comece rápido": instalação e API sobre o mesmo degradê escuro
+   -------------------------------------------------------------------------- */
+
+.of-comece {
+  padding-block: 6rem;
+  color: var(--of-levels-200);
+  background-color: var(--of-levels-950);
+  background-image:
+    radial-gradient(1100px 520px at 8% -8%, rgba(255, 0, 77, 0.20), transparent 62%),
+    radial-gradient(900px 560px at 92% 4%, rgba(151, 71, 255, 0.18), transparent 64%),
+    var(--of-gradient-cta);
+}
+.of-comece-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4rem;
+  max-width: 80rem;
+  margin-inline: auto;
+}
+.of-comece-inner > div { flex: 1 1 28rem; min-width: 0; }
+.of-comece h2,
+.of-comece h3 {
+  margin: 0 0 0.5rem;
+  font-weight: 500;
+  color: #fff;
+  letter-spacing: -0.03em;
+}
+.of-comece h2 { font-size: clamp(2rem, 4vw, 2.75rem); line-height: 1.1; }
+.of-comece h3 { font-size: 2rem; line-height: 1.2; }
+.of-comece p { margin: 0 0 1.5rem; font-size: 1rem; line-height: 1.7; color: var(--of-levels-300); }
+.of-comece p code {
+  font-family: var(--of-font-mono);
+  font-size: 0.875rem;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: var(--of-radius-xs);
+  padding: 0.1em 0.35em;
+}
+.of-comece a { color: var(--of-brand-300); }
+.of-comece a:hover { color: var(--of-brand-200); }
+.of-comece-links { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 1.5rem; }
+
+.of-code {
+  margin: 0 0 1.5rem;
+  padding: 1.25rem 1.375rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(12, 17, 29, 0.72);
+  font-family: var(--of-font-mono);
+  font-size: 0.84rem;
+  line-height: 1.75;
+  color: var(--of-levels-200);
+  overflow-x: auto;
+  white-space: pre;
+}
+.of-code-hole { color: var(--of-brand-200); }
+.of-code-str { color: #9fd7ff; }
