@@ -5,7 +5,7 @@ prev: /docs/escopo/
 next: /docs/escopo/backend
 ---
 
-O **Dokimos** é o serviço de aprovações do ObraFlow. Ele gerencia **alçadas de aprovação**:
+O ObraFlow tem um **serviço de aprovações**. Ele gerencia **alçadas de aprovação**:
 regras que definem **quem** pode autorizar uma decisão e **em qual ordem**, de acordo com
 a **obra** e o **valor total da compra**.
 
@@ -68,7 +68,7 @@ documentado** por você — por exemplo, impedir o envio do pedido com mensagem 
 vale tanto no [servidor](/docs/escopo/backend) quanto na [interface](/docs/escopo/frontend), e é item do
 [checklist do README](/docs/entrega/readme).
 
-## Como o Dokimos resolveu
+## Como o serviço resolveu
 
 {{< callout type="info" >}}
 A regra é resolvida na **submissão** do pedido, não na criação do rascunho: o rascunho é

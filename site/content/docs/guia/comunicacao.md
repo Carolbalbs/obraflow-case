@@ -51,8 +51,8 @@ pelo seed e está fora de escopo ([PRD, § 3](https://github.com/Carolbalbs/obra
 Exemplo completo, do rascunho à decisão:
 
 ```bash
-C="Cookie: dokimos_sessao=cseedusuariocaio00004"   # Caio, comprador
-J="Cookie: dokimos_sessao=cseedusuariojoao00003"   # João, aprovador
+C="Cookie: obraflow_sessao=cseedusuariocaio00004"   # Caio, comprador
+J="Cookie: obraflow_sessao=cseedusuariojoao00003"   # João, aprovador
 
 # 1. Cria o rascunho. `totalCentavos` não é enviado: o servidor o calcula.
 curl -s -X POST localhost:3000/api/pedidos -H "$C" -H 'Content-Type: application/json' -d '{

@@ -7,7 +7,7 @@ next: /docs/getting-started
 Esta é a documentação da minha entrega para o desafio full-stack do **ObraFlow**.
 
 O **ObraFlow** é uma plataforma para empresas de construção civil, concebida como parte de
-um ERP. O **Dokimos** é o seu serviço de aprovações: ele gerencia **alçadas** — regras que
+um ERP. Este é o seu **serviço de aprovações**: ele gerencia **alçadas** — regras que
 definem **quem** pode autorizar uma decisão e **em qual ordem**, de acordo com a **obra** e
 o **valor total** da compra.
 
@@ -16,7 +16,7 @@ O que foi construído é a **versão simplificada** desse fluxo: as telas de um 
 pedidos de compra com aprovação por alçada, mais a API e a persistência que as sustentam.
 {{< /callout >}}
 
-## Dokimos em uma tabela
+## O serviço em uma tabela
 
 Pedidos de compra que percorrem uma **cadeia de aprovadores definida pela alçada da obra**: faixas
 de valor, cada uma com os seus aprovadores em ordem. O total do pedido escolhe a faixa; a faixa
@@ -62,7 +62,7 @@ não é acessório neste desafio.
 
 | Pergunta | Resposta curta |
 |---|---|
-| O que é o Dokimos? | O serviço de aprovações do ObraFlow. |
+| O que é este serviço? | O serviço de aprovações do ObraFlow. |
 | O que ele decide? | Quem aprova um pedido de compra, e em qual ordem. |
 | Com base em quê? | Na **obra** e no **valor total** do pedido. |
 | Quando a cadeia é formada? | Na **submissão** do pedido — e é gravada como snapshot. |

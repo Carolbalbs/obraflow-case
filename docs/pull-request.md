@@ -14,7 +14,7 @@
 ## Título sugerido
 
 ```
-Dokimos — aprovações por alçada: três telas, API e dados de demonstração
+ObraFlow — aprovações por alçada: três telas, API e dados de demonstração
 ```
 
 ---
@@ -28,7 +28,7 @@ Dokimos — aprovações por alçada: três telas, API e dados de demonstração
 
 ---
 
-Entrega do desafio full-stack do ObraFlow: o **Dokimos**, serviço de aprovações de pedidos de
+Entrega do desafio full-stack do ObraFlow: o **serviço de aprovações** de pedidos de
 compra por alçada. Pedidos com N itens, cadeia de aprovadores definida pelo total do pedido na
 obra, decisão em ordem, rejeição com motivo e configuração das faixas por obra.
 

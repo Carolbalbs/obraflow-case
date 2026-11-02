@@ -1,6 +1,6 @@
 {
   "meta": {
-    "project": "Dokimos — aprovações do ObraFlow",
+    "project": "ObraFlow — aprovações por alçada",
     "version": "1.0.0",
     "prd": "docs/PRD.md",
     "updated_at": "2026-10-30",
@@ -92,7 +92,7 @@
           "sprints": [
             "s3"
           ],
-          "parcial": "Só o painel de marca e a faixa de estados valem. O formulário de senha e o botão de SSO estão fora do escopo do PRD: a entrada do Dokimos é sem senha, atrás de DEMO_MODE (ADR 0005)."
+          "parcial": "Só o painel de marca e a faixa de estados valem. O formulário de senha e o botão de SSO estão fora do escopo do PRD: a entrada do serviço de aprovações é sem senha, atrás de DEMO_MODE (ADR 0005)."
         },
         {
           "id": "Perfis",

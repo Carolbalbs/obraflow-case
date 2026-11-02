@@ -34,7 +34,7 @@ Entrada sem senha atrás de DEMO_MODE, sessão em cookie httpOnly lida do Reques
 Fidelidade total ao desenho. Canvas: <https://claude.ai/artifact/YaiNTMMrDgGBtGFei6eCQo> — leia `project/<Artboard>.dc.html` antes de escrever tela.
 
 - **`TrocarConta`** — 6 · Trocar de usuário (modo demo)
-- **`Login`** — 7 · Login (entrada e SSO). Só o painel de marca e a faixa de estados valem. O formulário de senha e o botão de SSO estão fora do escopo do PRD: a entrada do Dokimos é sem senha, atrás de DEMO_MODE (ADR 0005).
+- **`Login`** — 7 · Login (entrada e SSO). Só o painel de marca e a faixa de estados valem. O formulário de senha e o botão de SSO estão fora do escopo do PRD: a entrada do serviço de aprovações é sem senha, atrás de DEMO_MODE (ADR 0005).
 - **`Perfis`** — 8 · Perfis, permissões e multi-tenant. A matriz de papéis e o bloco "O que muda na interface" valem. O escopo por tenant e o seletor de empresa ficam como desenho (ADR 0006).
 
 As divergências deliberadas estão na SPEC, em Mockups. A lista é fechada.

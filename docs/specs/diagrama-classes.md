@@ -1,4 +1,4 @@
-# Dokimos — diagrama de classes
+# Aprovações do ObraFlow — diagrama de classes
 
 Cada caixa é **uma responsabilidade única**. O critério aplicado: uma classe só existe se houver
 um motivo de mudança que seja exclusivamente dela. Se duas caixas mudam sempre juntas, são uma.

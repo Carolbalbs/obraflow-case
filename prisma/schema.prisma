@@ -1,4 +1,4 @@
-// Dokimos — aprovações do ObraFlow
+// ObraFlow — aprovações por alçada
 // Convenções: dinheiro sempre em centavos (Int), quantidade sempre em milésimos (Int).
 // Nenhum ponto flutuante participa de cálculo monetário.
 // SQLite não suporta enum no Prisma: campos de domínio fechado são String validada no domínio.

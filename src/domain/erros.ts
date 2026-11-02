@@ -1,7 +1,7 @@
 /**
  * Códigos de erro do domínio.
  *
- * Responsabilidade única: ser a lista fechada de motivos pelos quais uma operação do Dokimos
+ * Responsabilidade única: ser a lista fechada de motivos pelos quais uma operação do serviço de aprovações
  * pode ser recusada, e o tipo que carrega um desses motivos até a borda.
  *
  * A interface decide o que mostrar pelo código, nunca pela mensagem. Mensagem é texto para

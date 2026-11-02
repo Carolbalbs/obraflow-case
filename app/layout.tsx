@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const lora = Lora({ subsets: ["latin"], style: ["italic"], variable: "--font-lora" });
 
 export const metadata: Metadata = {
-  title: "ObraFlow · Dokimos",
+  title: "ObraFlow · Aprovações",
   description: "Aprovação de pedidos de compra por alçada.",
 };
 

@@ -1,6 +1,6 @@
-# Dokimos — aprovações do ObraFlow
+# ObraFlow — aprovações por alçada
 
-O Dokimos decide **quem autoriza cada pedido de compra e em qual ordem**, conforme a obra e o
+O ObraFlow decide **quem autoriza cada pedido de compra e em qual ordem**, conforme a obra e o
 valor total, e registra a trilha completa de quem decidiu o quê.
 
 ## Language

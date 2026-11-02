@@ -24,7 +24,7 @@ if (!pedidoId || !usuarioId) {
 const url = `${baseUrl}/api/pedidos/${pedidoId}/decisoes`
 const init = {
   method: 'POST',
-  headers: { 'Content-Type': 'application/json', Cookie: `dokimos_sessao=${usuarioId}` },
+  headers: { 'Content-Type': 'application/json', Cookie: `obraflow_sessao=${usuarioId}` },
   body: JSON.stringify({ tipo: 'aprovar' }),
 }
 
@@ -45,7 +45,7 @@ console.log(esperado ? '\nOK: exatamente um 200 e um 409.' : `\nFALHOU: ${situac
 // A contagem no banco é a outra metade da prova: dois 200 seriam flagrantes, mas um 200 e um 409
 // com duas decisões gravadas seria o mesmo defeito, silencioso.
 const detalhe = await fetch(`${baseUrl}/api/pedidos/${pedidoId}`, {
-  headers: { Cookie: `dokimos_sessao=${usuarioId}` },
+  headers: { Cookie: `obraflow_sessao=${usuarioId}` },
 }).then((r) => r.json())
 
 const decididas = detalhe.cadeia.filter((etapa) => etapa.situacao !== 'pendente')

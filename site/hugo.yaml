@@ -1,5 +1,5 @@
 baseURL: "/"
-title: ObraFlow · Dokimos
+title: ObraFlow · Aprovações
 locale: pt
 defaultContentLanguage: pt
 theme: hextra
@@ -24,7 +24,7 @@ languages:
   pt:
     label: Português
     weight: 1
-    title: ObraFlow · Dokimos
+    title: ObraFlow · Aprovações
 
 menu:
   main:
@@ -60,7 +60,7 @@ menu:
       weight: 3
 
 params:
-  description: Escopo de documentação do desafio ObraFlow — Dokimos, o serviço de alçadas de aprovação.
+  description: Escopo de documentação do desafio ObraFlow — o serviço de alçadas de aprovação.
 
   navbar:
     displayTitle: true

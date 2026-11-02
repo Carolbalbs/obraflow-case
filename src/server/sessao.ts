@@ -1,5 +1,5 @@
 /**
- * Sessão do Dokimos.
+ * Sessão do serviço de aprovações.
  *
  * Responsabilidade única: dizer quem está dentro, a partir do cookie que veio no `Request`, e
  * produzir os cabeçalhos que abrem e encerram essa sessão.
@@ -18,7 +18,7 @@
 import { prisma } from '@/src/db/prisma'
 import { ehPapel, type Papel } from '@/src/domain'
 
-export const NOME_DO_COOKIE = 'dokimos_sessao'
+export const NOME_DO_COOKIE = 'obraflow_sessao'
 
 /** Uma semana. Demonstração não precisa de renovação nem de refresh (fora de escopo). */
 const DURACAO_EM_SEGUNDOS = 60 * 60 * 24 * 7

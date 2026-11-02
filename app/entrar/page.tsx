@@ -12,6 +12,7 @@
  * caminho.
  */
 
+import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { connection } from 'next/server'
 
@@ -19,7 +20,7 @@ import { prisma } from '@/src/db/prisma'
 import { ListaDeUsuarios } from '@/src/ui/componentes/ListaDeUsuarios'
 import { IconeAviso } from '@/src/ui/componentes/icones'
 
-export const metadata = { title: 'Entrar · Dokimos' }
+export const metadata = { title: 'Entrar · ObraFlow' }
 
 // A flag é lida por requisição, não no build: prerrenderizada, a tela nasceria com o valor que
 // `DEMO_MODE` tinha na máquina que compilou, e seguiria aberta num servidor que a desligou.
@@ -37,9 +38,10 @@ export default async function Entrar() {
     <div className="flex flex-1 flex-wrap items-stretch">
       <section className="flex min-w-0 flex-[1_1_440px] flex-col gap-10 bg-neutro-950 px-11 py-12 text-white">
         <div className="flex items-center gap-2.5">
-          <span className="size-2.5 shrink-0 rounded-full bg-marca-500" aria-hidden="true" />
-          <span className="text-[16px] font-[650] tracking-[-0.025em] text-white">ObraFlow</span>
-          <span className="font-serif text-[14px] italic text-neutro-300">Dokimos</span>
+          <Image src="/obraflow-icone.svg" alt="" width={26} height={26} unoptimized />
+          <span className="text-[16px] font-[650] tracking-[-0.025em] text-white">
+            Obra<span className="text-marca-500">Flow</span>
+          </span>
         </div>
 
         <div className="my-auto">
@@ -55,7 +57,7 @@ export default async function Entrar() {
             </em>
           </h1>
           <p className="mt-[18px] max-w-[420px] text-[15px] leading-[1.6] text-neutro-300">
-            O Dokimos decide quem autoriza cada pedido de compra e em qual ordem, conforme a obra
+            O ObraFlow decide quem autoriza cada pedido de compra e em qual ordem, conforme a obra
             e o valor — e registra a trilha inteira.
           </p>
         </div>

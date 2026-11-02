@@ -14,6 +14,7 @@
  * declarada pelo mesmo mecanismo.
  */
 
+import Image from 'next/image'
 import Link from 'next/link'
 
 import { pode } from '@/src/server/permissao'
@@ -74,8 +75,8 @@ export function CabecalhoEsqueleto() {
 /**
  * O bloco de marca do artboard, mais o nome da construtora.
  *
- * O artboard mostra só `ObraFlow · Dokimos` no topo e põe `Construtora Vértice` no cabeçalho do
- * seletor; a sprint exige a construtora como marca fixa no cabeçalho. Os dois cabem: o produto
+ * A marca é a da documentação: o ícone e `Obra` + `Flow` na cor da marca. O artboard mostra só
+ * a marca no topo e põe `Construtora Vértice` no cabeçalho do seletor; a sprint exige a construtora como marca fixa no cabeçalho. Os dois cabem: o produto
  * à esquerda, a construtora logo depois, em texto — nunca em botão, porque um seletor de empresa
  * anunciaria uma troca que não existe (ADR 0006).
  */
@@ -83,9 +84,10 @@ function Marca() {
   return (
     <div className="flex items-center gap-[9px]">
       <Link href="/" className="flex items-center gap-[9px]">
-        <span className="size-[9px] shrink-0 rounded-full bg-marca-500" aria-hidden="true" />
-        <span className="text-[15px] font-[650] tracking-[-0.025em] text-forte">ObraFlow</span>
-        <span className="-ml-[7px] font-serif text-[13px] italic text-neutro-600">Dokimos</span>
+        <Image src="/obraflow-icone.svg" alt="" width={22} height={22} unoptimized />
+        <span className="text-[15px] font-[650] tracking-[-0.025em] text-forte">
+          Obra<span className="text-marca-500">Flow</span>
+        </span>
       </Link>
       <span className="h-3.5 w-px bg-neutro-200" aria-hidden="true" />
       <span className="text-[13px] text-neutro-600">{CONSTRUTORA}</span>

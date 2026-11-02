@@ -1,5 +1,5 @@
 ---
-title: ObraFlow · Dokimos
+title: ObraFlow · Aprovações
 layout: hextra-home
 ---
 
@@ -12,7 +12,7 @@ layout: hextra-home
 <h1>Alçadas de aprovação,<br><em>resolvidas na origem.</em></h1>
 
 <p class="of-hero-sub">
-O Dokimos é o serviço de aprovações do ObraFlow. Ele decide quem autoriza cada pedido de
+O ObraFlow tem um serviço de aprovações. Ele decide quem autoriza cada pedido de
 compra e em qual ordem, conforme a obra e o valor — e registra a trilha inteira.
 </p>
 

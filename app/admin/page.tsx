@@ -21,7 +21,7 @@ import { sessaoAtual } from '@/src/ui/sessao-no-servidor'
 // Página por sessão: o conteúdo depende do cookie e não há casca estática a validar.
 export const instant = false
 
-export const metadata = { title: 'Painel da empresa · Dokimos' }
+export const metadata = { title: 'Painel da empresa · ObraFlow' }
 
 export default async function Administracao() {
   const sessao = await sessaoAtual()

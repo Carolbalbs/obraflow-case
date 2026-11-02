@@ -1,7 +1,7 @@
 /**
  * A chamada de API da interface, num lugar só.
  *
- * Responsabilidade única: fazer a requisição e desembrulhar o envelope de erro do Dokimos —
+ * Responsabilidade única: fazer a requisição e desembrulhar o envelope de erro do serviço de aprovações —
  * `{ error: { code, message, fields? } }` —, que é o mesmo em toda recusa, de toda rota. Por ser
  * o mesmo, a leitura cabe numa função; espalhada por tela, ela divergiria na primeira rota nova.
  *
@@ -57,7 +57,7 @@ export async function pedir<T>(url: string, init?: RequestInit): Promise<T> {
   return corpo as T
 }
 
-/** O corpo JSON de uma escrita, com o cabeçalho que toda rota do Dokimos espera. */
+/** O corpo JSON de uma escrita, com o cabeçalho que toda rota do serviço de aprovações espera. */
 export function corpoJson(dados: unknown): RequestInit {
   return { headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(dados) }
 }

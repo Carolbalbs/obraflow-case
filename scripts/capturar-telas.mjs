@@ -80,7 +80,7 @@ for (const tela of TELAS) {
   await cdp('Network.clearBrowserCookies')
   if (tela.usuario) {
     await cdp('Network.setCookie', {
-      name: 'dokimos_sessao', value: tela.usuario, domain: 'localhost', path: '/',
+      name: 'obraflow_sessao', value: tela.usuario, domain: 'localhost', path: '/',
     })
   }
   await cdp('Emulation.setDeviceMetricsOverride', {

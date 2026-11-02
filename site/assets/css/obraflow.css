@@ -1,5 +1,5 @@
 /* ==========================================================================
-   ObraFlow · Dokimos — tema derivado do design system de obraflow.io
+   ObraFlow · Aprovações — tema derivado do design system de obraflow.io
    Fontes: Inter (sans) + Lora italic (acento), como no site de referência.
    ========================================================================== */
 
@@ -563,10 +563,3 @@ main:has(> div > .of-hero:first-child) { padding-top: 0 !important; }
   color: var(--of-brand-400);
 }
 
-/* navbar: produto ao lado da marca */
-.of-navbar-product {
-  font-size: 0.875rem;
-  font-weight: 400;
-  color: var(--of-text-muted);
-  letter-spacing: var(--of-tracking-body);
-}

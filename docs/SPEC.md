@@ -1,4 +1,4 @@
-# SPEC — Dokimos — aprovações do ObraFlow
+# SPEC — ObraFlow — aprovações por alçada
 
 > **Gerado por `npm run spec:md` a partir de [`docs/spec/`](spec/). Não edite este arquivo à mão.**
 > Fonte: [`spec/base.json`](spec/base.json) + um JSON por sprint.
@@ -45,7 +45,7 @@ O CSS dos artboards usa os mesmos hexadecimais de site/assets/css/obraflow.css, 
 | `Alcadas` | 3 · Regras da alçada | `s4` |
 | `Estados` | 4 · Estados e validações | `s7` |
 | `TrocarConta` | 6 · Trocar de usuário (modo demo) | `s3` |
-| `Login` | 7 · Login (entrada e SSO) — Só o painel de marca e a faixa de estados valem. O formulário de senha e o botão de SSO estão fora do escopo do PRD: a entrada do Dokimos é sem senha, atrás de DEMO_MODE (ADR 0005). | `s3` |
+| `Login` | 7 · Login (entrada e SSO) — Só o painel de marca e a faixa de estados valem. O formulário de senha e o botão de SSO estão fora do escopo do PRD: a entrada do serviço de aprovações é sem senha, atrás de DEMO_MODE (ADR 0005). | `s3` |
 | `Perfis` | 8 · Perfis, permissões e multi-tenant — A matriz de papéis e o bloco "O que muda na interface" valem. O escopo por tenant e o seletor de empresa ficam como desenho (ADR 0006). | `s3` |
 | `Dashboard` | 10 · Painel do admin (KPIs e gráficos) | `e3` |
 | `TempoReal` | 5 · Tempo real: as duas pontas — Referência para a seção de produção do README. Nada dele é implementado. | — |

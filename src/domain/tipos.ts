@@ -1,5 +1,5 @@
 /**
- * Tipos fundamentais do domínio Dokimos.
+ * Tipos fundamentais do domínio de aprovações.
  *
  * Responsabilidade única: dar nome aos valores que o resto do domínio manipula, de modo que o
  * compilador recuse trocas silenciosas entre eles.

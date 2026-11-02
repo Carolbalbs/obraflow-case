@@ -1,4 +1,4 @@
-# PRD — Dokimos, o serviço de aprovações do ObraFlow
+# PRD — o serviço de aprovações do ObraFlow
 
 Construído a partir de [`PRD-TEMPLATE.md`](PRD-TEMPLATE.md).
 Vocabulário em [`GLOSSARY.md`](../GLOSSARY.md). Decisões em [`docs/adr/`](adr/).

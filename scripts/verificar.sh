@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Prova por curl das quatro recusas que sustentam o Dokimos.
+# Prova por curl das quatro recusas que sustentam o serviço de aprovações.
 #
 # Cada bloco abaixo diz, antes de rodar, o que está sendo provado — e imprime o status HTTP e o
 # código de erro de cada chamada. O script sai com 0 somente quando **todos** os status
@@ -55,7 +55,7 @@ campo() {
 chamar() {
   local metodo="$1" caminho="$2" usuario="${3:-}" corpo="${4:-}"
   local args=(-s -w '\n%{http_code}' -X "$metodo" "$BASE$caminho")
-  [ -n "$usuario" ] && args+=(-H "Cookie: dokimos_sessao=$usuario")
+  [ -n "$usuario" ] && args+=(-H "Cookie: obraflow_sessao=$usuario")
   [ -n "$corpo" ] && args+=(-H 'Content-Type: application/json' -d "$corpo")
   curl "${args[@]}"
 }
@@ -104,7 +104,7 @@ bloco() { printf '\n%s%s%s\n' "$forte" "$1" "$zero"; printf '%s%s%s\n' "$cinza" 
 # Pré-condições. Falhar aqui, cedo e com instrução, é melhor do que quatro blocos vermelhos
 # dizendo "connection refused".
 # ─────────────────────────────────────────────────────────────────────────────────────────────
-printf '%sDokimos · verificação por curl%s  %s(%s)%s\n' "$forte" "$zero" "$cinza" "$BASE" "$zero"
+printf '%sObraFlow · verificação por curl%s  %s(%s)%s\n' "$forte" "$zero" "$cinza" "$BASE" "$zero"
 
 if ! curl -s -o /dev/null --max-time 5 "$BASE/api/usuarios"; then
   printf '\n%sO servidor não respondeu em %s.%s\n' "$vermelho" "$BASE" "$zero"

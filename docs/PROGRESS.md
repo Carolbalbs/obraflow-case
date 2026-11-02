@@ -138,7 +138,7 @@ Decisões e nas Pendências abaixo.
 ### Pronto
 
 - `src/server/sessao.ts` — `lerSessao(req: Request)`, `lerCookie`, `cookieDeEntrada` e
-  `cookieDeSaida`. O cookie `dokimos_sessao` é httpOnly, `SameSite=Lax`, `Path=/`, `Max-Age` de
+  `cookieDeSaida`. O cookie `obraflow_sessao` é httpOnly, `SameSite=Lax`, `Path=/`, `Max-Age` de
   uma semana, e `Secure` só em produção (em `localhost` ele faria o navegador descartá-lo).
 - `src/server/permissao.ts` — as cinco ações (`ver_pedidos`, `criar_pedido`, `submeter_pedido`,
   `decidir`, `gerir_alcada`), a `MATRIZ` como `Record<Papel, Record<Acao, boolean>>`, `pode()` e
@@ -158,7 +158,7 @@ Decisões e nas Pendências abaixo.
   lista de quem pode entrar, com esqueleto, vazio e erro com repetição, mais a faixa âmbar de
   demonstração e o aviso de confidencialidade.
 - `src/ui/componentes/Cabecalho.tsx`, `SeletorDeUsuario.tsx`, `BotaoSair.tsx`, `Avatar.tsx`,
-  `icones.tsx` e `rotulos.ts` — a barra superior do artboard `TrocarConta`: marca `ObraFlow · Dokimos` mais a
+  `icones.tsx` e `rotulos.ts` — a barra superior do artboard `TrocarConta`: marca `ObraFlow · Aprovações` mais a
   construtora, o menu que varia por papel e o seletor com a etiqueta DEMO, que abre o diálogo
   de troca com busca, os três grupos, a linha "Em uso" e a confirmação com desfazer, mais o
   botão `Sair`, que encerra a sessão pela rota.

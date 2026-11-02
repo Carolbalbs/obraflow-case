@@ -9,7 +9,7 @@ andamento.
 A alternativa era derivar a cadeia da regra a cada leitura, mantendo apenas o ponteiro da etapa
 atual. Foi rejeitada porque trocar o aprovador de uma faixa removeria do fluxo alguém que já
 havia decidido: o histórico passaria a contradizer o que de fato aconteceu, e a trilha auditável
-— razão de existir do Dokimos — deixaria de valer.
+— razão de existir do serviço de aprovações — deixaria de valer.
 
 ## Consequences
 

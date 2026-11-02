@@ -235,7 +235,7 @@ export function rota<C = unknown>(
       if (capturado instanceof FalhaDeBorda) {
         return respostaDeBorda(capturado.codigo, capturado.message)
       }
-      console.error('[dokimos] erro não previsto na rota', capturado)
+      console.error('[obraflow] erro não previsto na rota', capturado)
       return respostaDeBorda('ERRO_INTERNO', 'Erro inesperado ao processar a requisição.')
     } finally {
       if (expirar) clearTimeout(expirar)
