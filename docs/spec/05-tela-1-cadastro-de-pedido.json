@@ -1,0 +1,410 @@
+{
+  "sprint": {
+    "id": "s5",
+    "index": 5,
+    "name": "Tela 1 — Cadastro de pedido",
+    "description": "Rascunho salvável e incompleto, itens N com total calculado, e submissão separada da criação.",
+    "entregavel": "Montar um pedido de três itens, salvar como rascunho, sair, voltar, completar e submeter — e a cadeia aparece gravada no banco.",
+    "risco": "alto",
+    "pre_requisito": "s4",
+    "coder_agent_id": "ag-fullstack",
+    "stack": [
+      "next",
+      "react",
+      "typescript",
+      "tailwind",
+      "prisma",
+      "zod"
+    ],
+    "features": [
+      {
+        "id": "s5f1",
+        "categoria": "api_endpoint",
+        "name": "Rascunho: criar, editar e apagar",
+        "description": "Rascunho é privado do criador. Pedido submetido é imutável.",
+        "user_story": "Como comprador, quero salvar um rascunho incompleto e voltar depois, para que interrupção na obra não custe o trabalho feito.",
+        "steps": [
+          "Escrever POST /api/pedidos criando rascunho do usuário da sessão",
+          "Escrever PUT /api/pedidos/[id] substituindo cabeçalho e itens do rascunho",
+          "Escrever DELETE /api/pedidos/[id]",
+          "Recusar qualquer escrita em pedido não-rascunho",
+          "Recusar acesso de quem não criou"
+        ],
+        "acceptance_criteria": [
+          "POST cria rascunho com situacao 'rascunho', totalCentavos 0 e criadoPorId igual ao usuário da sessão",
+          "POST aceita corpo com todos os campos ausentes, porque rascunho é incompleto por natureza",
+          "PUT recalcula totalCentavos como a soma dos totais dos itens; um totalCentavos enviado no corpo é ignorado",
+          "PUT em pedido com situacao diferente de 'rascunho' responde 409 com código PEDIDO_IMUTAVEL",
+          "GET, PUT e DELETE de rascunho de outro usuário respondem 404 NAO_ENCONTRADO, não 403 — rascunho alheio não existe para quem não o criou",
+          "PUT com mais de 100 itens responde 422",
+          "DELETE de rascunho responde 200 e apaga os itens em cascata",
+          "DELETE de pedido submetido responde 409 PEDIDO_IMUTAVEL",
+          "Usuário com papel aprovador ou visualizador recebe 403 ao tentar POST",
+          "POST e PUT gravam a dataPedido enviada (\"AAAA-MM-DD\") e a devolvem; ausente ou vazia, fica nula",
+          "Item sem preço informado é gravado com precoUnitarioCentavos nulo, nunca zero; preço zero informado é gravado como zero"
+        ],
+        "edge_cases": [
+          "dataPedido malformada ou fora do calendário no corpo: 422 com fields.dataPedido; vazia ou ausente é aceita no rascunho",
+          "Item com ordem duplicada no array: a ordem é reindexada pela posição",
+          "Pedido inexistente: 404",
+          "Obra inexistente no corpo: 422"
+        ],
+        "api_spec": [
+          {
+            "method": "POST",
+            "path": "/api/pedidos",
+            "auth": "sessao + papel comprador ou admin",
+            "request": {
+              "params": {},
+              "query": {},
+              "body": {
+                "obraId": "string cuid, opcional no rascunho",
+                "dataPedido": "string \"AAAA-MM-DD\", opcional no rascunho"
+              }
+            },
+            "responses": {
+              "201": "{ id, situacao: 'rascunho', totalCentavos: 0 }",
+              "403": "SEM_PERMISSAO",
+              "413": "payload acima de 1MB",
+              "422": "VALIDACAO"
+            },
+            "timeout_ms": 5000,
+            "payload_limit": "1MB",
+            "side_effects": [
+              "cria Pedido com criadoPorId da sessão"
+            ],
+            "idempotent": false
+          },
+          {
+            "method": "PUT",
+            "path": "/api/pedidos/{id}",
+            "auth": "sessao + ser o criador",
+            "request": {
+              "params": {
+                "id": "int"
+              },
+              "query": {},
+              "body": {
+                "obraId": "string cuid, opcional",
+                "fornecedorId": "string cuid, opcional",
+                "dataPedido": "string \"AAAA-MM-DD\", opcional no rascunho",
+                "observacoes": "string, máx 2000, opcional",
+                "itens": "array 0..100 de { descricao máx 200, quantidade > 0, unidade, precoUnitario >= 0 e <= R$ 10.000.000,00 }"
+              }
+            },
+            "responses": {
+              "200": "{ id, totalCentavos, itens }",
+              "403": "SEM_PERMISSAO",
+              "404": "NAO_ENCONTRADO — inexistente ou de outro usuário",
+              "409": "PEDIDO_IMUTAVEL — já submetido",
+              "413": "payload acima de 1MB",
+              "422": "VALIDACAO com fields por item"
+            },
+            "timeout_ms": 5000,
+            "payload_limit": "1MB",
+            "side_effects": [
+              "substitui os itens numa transação",
+              "recalcula totalCentavos no servidor"
+            ],
+            "idempotent": true
+          },
+          {
+            "method": "DELETE",
+            "path": "/api/pedidos/{id}",
+            "auth": "sessao + ser o criador",
+            "request": {
+              "params": {
+                "id": "int"
+              },
+              "query": {},
+              "body": {}
+            },
+            "responses": {
+              "200": "{ removido: true }",
+              "404": "NAO_ENCONTRADO",
+              "409": "PEDIDO_IMUTAVEL"
+            },
+            "timeout_ms": 5000,
+            "payload_limit": "1MB",
+            "side_effects": [
+              "apaga Pedido e ItemPedido em cascata"
+            ],
+            "idempotent": true
+          }
+        ],
+        "models": [
+          "Pedido",
+          "ItemPedido"
+        ],
+        "files": [
+          "app/api/pedidos/route.ts",
+          "app/api/pedidos/[id]/route.ts"
+        ],
+        "tests": [
+          "tests/api/pedidos.test.ts"
+        ],
+        "depends_on": [
+          "s3f4",
+          "s2f6"
+        ],
+        "out_of_scope": [
+          "Editar pedido submetido (fora de escopo no PRD)",
+          "Cancelar pedido submetido (decisão 5 da revisão)",
+          "Duplicar pedido rejeitado (extra E4)"
+        ]
+      },
+      {
+        "id": "s5f2",
+        "categoria": "api_endpoint",
+        "name": "Submissão: resolve a faixa e grava a cadeia",
+        "description": "Valida por inteiro, carimba submetidoEm, resolve a faixa, grava o snapshot e as etapas — tudo numa transação.",
+        "user_story": "Como comprador, quero que a cadeia seja definida na submissão, para que o pedido siga o caminho certo sem eu escolher ninguém.",
+        "steps": [
+          "Escrever POST /api/pedidos/[id]/submissao",
+          "Validar com submissaoSchema",
+          "Carimbar submetidoEm no servidor, sem tocar a dataPedido do rascunho",
+          "Resolver a faixa pelo total e montar a cadeia",
+          "Gravar snapshot, etapas e situacao pendente numa transação"
+        ],
+        "acceptance_criteria": [
+          "Pedido de R$ 8.000 numa obra cuja faixa até R$ 10.000 tem [Amanda] grava cadeia com exatamente uma etapa, de Amanda, ordem 0",
+          "Pedido de R$ 12.500 cuja faixa acima tem [Amanda, João] grava duas etapas nessa ordem, ambas pendentes",
+          "Pedido de exatamente R$ 10.000,00 resolve para a faixa 'até R$ 10.000,00'",
+          "Pedido com 5 itens de R$ 3.000 (total R$ 15.000) resolve pela faixa do TOTAL, não pelo valor de item isolado",
+          "Total que não cai em nenhuma faixa responde 422 com código SEM_REGRA_APLICAVEL, e o pedido continua com situacao 'rascunho'",
+          "Após a submissão, o pedido tem faixaLimiteCentavos e faixaSemTeto preenchidos a partir da faixa aplicada",
+          "Rascunho sem dataPedido é recusado com 422 VALIDACAO e fields.dataPedido; com data, a dataPedido gravada é a do rascunho e submetidoEm é o horário do servidor no instante da submissão",
+          "Submissão sem itens responde 422",
+          "Submissão sem fornecedor ou sem obra responde 422 com fields",
+          "Falha de validação não deixa etapa órfã: contagem de Etapa do pedido permanece zero",
+          "Submeter pedido já submetido responde 409 PEDIDO_IMUTAVEL",
+          "Submeter pedido de outro usuário responde 404"
+        ],
+        "edge_cases": [
+          "A faixa é apagada entre a leitura e a escrita: a transação relê e, se a faixa sumiu, responde 422 SEM_REGRA_APLICAVEL",
+          "Obra sem faixa nenhuma: 422 SEM_REGRA_APLICAVEL com mensagem de obra sem faixas",
+          "Faixa aplicável sem aprovador: 422 SEM_REGRA_APLICAVEL",
+          "Dois POST de submissão concorrentes no mesmo pedido: a transação condiciona a situacao 'rascunho', e o segundo recebe 409"
+        ],
+        "api_spec": [
+          {
+            "method": "POST",
+            "path": "/api/pedidos/{id}/submissao",
+            "auth": "sessao + ser o criador + papel comprador ou admin",
+            "request": {
+              "params": {
+                "id": "int"
+              },
+              "query": {},
+              "body": {}
+            },
+            "responses": {
+              "200": "{ id, situacao: 'pendente', cadeia: [{ ordem, usuarioId, nome, situacao }], faixa: { limiteCentavos, semTeto } }",
+              "403": "SEM_PERMISSAO",
+              "404": "NAO_ENCONTRADO",
+              "409": "PEDIDO_IMUTAVEL — já submetido",
+              "422": "VALIDACAO ou SEM_REGRA_APLICAVEL"
+            },
+            "timeout_ms": 8000,
+            "payload_limit": "1MB",
+            "side_effects": [
+              "carimba submetidoEm (dataPedido é a do rascunho)",
+              "grava o snapshot da faixa no pedido",
+              "cria as Etapa da cadeia",
+              "muda situacao para pendente"
+            ],
+            "idempotent": false
+          }
+        ],
+        "models": [
+          "Pedido",
+          "Etapa",
+          "Faixa"
+        ],
+        "files": [
+          "app/api/pedidos/[id]/submissao/route.ts"
+        ],
+        "tests": [
+          "tests/api/submissao.test.ts"
+        ],
+        "depends_on": [
+          "s5f1",
+          "s2f3",
+          "s2f4"
+        ],
+        "out_of_scope": [
+          "Notificar o aprovador da vez (fora de escopo no PRD)"
+        ]
+      },
+      {
+        "id": "s5f3",
+        "categoria": "frontend",
+        "name": "Formulário de pedido com itens N",
+        "description": "Dados gerais, editor de itens com total calculado e não editável, e total do pedido somado ao vivo.",
+        "user_story": "Como comprador, quero ver o total somado enquanto digito, para saber de antemão qual alçada vou acionar.",
+        "steps": [
+          "Formulário de obra, fornecedor e observações",
+          "Editor de itens começando com um item em branco, com adicionar, editar e remover",
+          "Total do item calculado e exibido como leitura",
+          "Total do pedido somado e visível",
+          "Habilitar o envio só com tudo válido, dizendo o que falta quando apagado"
+        ],
+        "acceptance_criteria": [
+          "Adicionar 3 itens válidos exibe, para cada um, total igual a quantidade x preço unitário",
+          "Nenhum campo de total é editável: os inputs de total têm readonly",
+          "O total do pedido é a soma dos totais dos itens e atualiza a cada alteração",
+          "Item inválido fica fora da soma exibida",
+          "O botão de cadastrar permanece desabilitado com o motivo visível enquanto houver campo inválido",
+          "Quantidade negativa ou não numérica acende o erro NO ITEM correspondente, via error.fields",
+          "Submeter sem nenhum item é recusado com mensagem clara",
+          "Salvar rascunho, sair da tela e voltar restaura o que foi preenchido",
+          "O formulário tem o campo obrigatório \"Data do pedido\" (input type=date), na posição do artboard; vazio, o erro acende no campo via fields.dataPedido e o botão de cadastrar fica desabilitado com o motivo visível"
+        ],
+        "edge_cases": [
+          "SEM_REGRA_APLICAVEL na submissão: mensagem específica, o rascunho permanece e a tela sugere criar a faixa na tela de regras",
+          "Obra sem faixas escolhida: aviso antes mesmo de tentar submeter",
+          "Nenhuma obra ou nenhum fornecedor no banco: empty state apontando o seed",
+          "API fora do ar ao salvar: erro com repetição, sem perder o que está na tela",
+          "Mais de 100 itens: o botão de adicionar desabilita com o motivo"
+        ],
+        "api_spec": [],
+        "models": [
+          "Pedido",
+          "ItemPedido",
+          "Obra",
+          "Fornecedor"
+        ],
+        "files": [
+          "app/pedidos/novo/page.tsx",
+          "src/ui/componentes/",
+          "src/ui/hooks/"
+        ],
+        "tests": [],
+        "depends_on": [
+          "s5f1",
+          "s5f2"
+        ],
+        "out_of_scope": [
+          "Simulador de cadeia ao vivo (extra E1)",
+          "Anexos (fora de escopo no PRD)"
+        ]
+      },
+      {
+        "id": "s5f4",
+        "categoria": "api_endpoint",
+        "name": "Listagem de obras e fornecedores",
+        "description": "As duas entidades que a Tela 1 seleciona, listadas por API. Só leitura: o cadastro delas continua fora de escopo, e o seed é quem as cria.",
+        "user_story": "Como cliente da API, quero listar obras e fornecedores, para montar um pedido sem depender da página que já os traz carregados.",
+        "steps": [
+          "Escrever GET /api/obras devolvendo id, nome e cidade, por nome",
+          "Escrever GET /api/fornecedores devolvendo id, nome e documento, por nome",
+          "Exigir sessão nas duas, sem restrição de papel"
+        ],
+        "acceptance_criteria": [
+          "GET /api/obras com sessão de qualquer um dos quatro papéis responde 200 com um array de { id, nome, cidade } em ordem alfabética de nome",
+          "GET /api/fornecedores com sessão de qualquer um dos quatro papéis responde 200 com um array de { id, nome, documento } em ordem alfabética de nome; documento é null quando não informado",
+          "As duas rotas, sem sessão, respondem 403 com o envelope { error: { code: 'SEM_PERMISSAO', message } }",
+          "A quantidade de itens devolvida é igual à contagem da tabela correspondente no banco (3 obras e 4 fornecedores com o seed)",
+          "Nenhum campo além dos declarados atravessa a borda (criadoEm não aparece)",
+          "A forma devolvida é a mesma que app/pedidos/novo/page.tsx entrega ao formulário"
+        ],
+        "edge_cases": [
+          "Tabela vazia: 200 com array vazio, não 404",
+          "POST, PUT ou DELETE nas duas rotas: 405, porque só GET está exportado"
+        ],
+        "api_spec": [
+          {
+            "method": "GET",
+            "path": "/api/obras",
+            "auth": "sessao, qualquer papel",
+            "request": {
+              "params": {},
+              "query": {},
+              "body": {}
+            },
+            "responses": {
+              "200": "[{ id, nome, cidade }] ordenado por nome; lista vazia quando não há obra",
+              "403": "SEM_PERMISSAO — sem sessão"
+            },
+            "timeout_ms": 5000,
+            "payload_limit": "1MB",
+            "side_effects": [],
+            "idempotent": true
+          },
+          {
+            "method": "GET",
+            "path": "/api/fornecedores",
+            "auth": "sessao, qualquer papel",
+            "request": {
+              "params": {},
+              "query": {},
+              "body": {}
+            },
+            "responses": {
+              "200": "[{ id, nome, documento | null }] ordenado por nome; lista vazia quando não há fornecedor",
+              "403": "SEM_PERMISSAO — sem sessão"
+            },
+            "timeout_ms": 5000,
+            "payload_limit": "1MB",
+            "side_effects": [],
+            "idempotent": true
+          }
+        ],
+        "models": [
+          "Obra",
+          "Fornecedor"
+        ],
+        "files": [
+          "app/api/obras/route.ts",
+          "app/api/fornecedores/route.ts"
+        ],
+        "tests": [],
+        "depends_on": [
+          "s3f1",
+          "s3f4"
+        ],
+        "out_of_scope": [
+          "Cadastro, edição e remoção de obra e fornecedor (fora de escopo no PRD)",
+          "Paginação: as tabelas são pequenas e criadas pelo seed"
+        ]
+      }
+    ],
+    "definition_of_done": [
+      "Pedido de três itens montado, salvo como rascunho, retomado e submetido",
+      "A cadeia aparece gravada no banco com as etapas na ordem da faixa",
+      "SEM_REGRA_APLICAVEL bloqueia a submissão sem perder o rascunho",
+      "npx tsc --noEmit limpo, lint limpo, npm test verde"
+    ]
+  },
+  "contexto": {
+    "base": "docs/spec/base.json",
+    "spec_completa": "docs/SPEC.md",
+    "progresso": "docs/PROGRESS.md",
+    "agente": {
+      "id": "ag-fullstack",
+      "name": "Agente de fatia vertical",
+      "role": "Rota e tela da mesma capacidade, entregues juntas e funcionando.",
+      "model": "claude-opus-5",
+      "rules": [
+        "A sprint só fecha com a tela usando a rota de verdade, nunca com dado simulado.",
+        "Toda lista nasce com carregando, vazio e erro com repetição — não é passada posterior.",
+        "Validação da tela usa o mesmo schema Zod do servidor, ancorada por error.fields.",
+        "Regra de negócio fica no domínio; componente não decide alçada.",
+        "Fidelidade total ao artboard da sua sprint (meta.mockups): estrutura, textos, estados, cores, tipografia e espaçamento saem do mockup, não de estimativa. Divergir só pelo que já está na lista de divergências deliberadas."
+      ]
+    },
+    "modelos_tocados": [
+      "Etapa",
+      "Faixa",
+      "Fornecedor",
+      "ItemPedido",
+      "Obra",
+      "Pedido"
+    ],
+    "verificacoes": [
+      "npx tsc --noEmit",
+      "npm run lint",
+      "npm test"
+    ]
+  }
+}

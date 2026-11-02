@@ -1,0 +1,1078 @@
+{
+  "meta": {
+    "project": "Dokimos — aprovações do ObraFlow",
+    "version": "1.0.0",
+    "prd": "docs/PRD.md",
+    "updated_at": "2026-10-30",
+    "status": "aprovada",
+    "glossario": "GLOSSARY.md",
+    "adrs": "docs/adr/",
+    "prazo": "2026-11-01T23:59:00-03:00",
+    "notas": [
+      "Sprint = incremento do plano original (docs/plano-incremental.md). INC0 vira Sprint 1.",
+      "As sprints 4, 5 e 6 são fatias verticais (rota + tela), e não sprints de back e front separadas como o SPEC-TEMPLATE sugere. A divergência é deliberada: o plano exige que cada incremento termine com a aplicação rodando e demonstrando algo a mais. Uma sprint só de API não é entregável nesse critério.",
+      "Estado em 2026-10-30: Sprint 1 concluída; Sprint 2 com o domínio escrito (src/domain, 585 linhas, tsc limpo) e sem a suíte Vitest; Sprints 3 a 8 não iniciadas."
+    ],
+    "decisoes_da_revisao": [
+      "Escopo de leitura: todos veem todos os pedidos submetidos; a lista do aprovador abre filtrada em 'aguardando minha decisão', com o filtro removível.",
+      "O criador pode aprovar o próprio pedido. Segregação de função é out_of_scope declarado.",
+      "Rascunho é privado do criador e não aparece na lista principal.",
+      "Apagar ou editar faixa em uso é permitido, com aviso contando os pedidos em andamento.",
+      "Não existe cancelamento de pedido submetido; desfazer é rejeitar.",
+      "Limites: 100 itens, 20 faixas, 10 aprovadores, 200/2000/500 caracteres, R$ 10.000.000,00 unitário, payload 1 MB.",
+      "dataPedido é a data de emissão do pedido, campo obrigatório do formulário como o enunciado pede (revisto em 2026-11-01; antes era carimbada pelo servidor). O rascunho a aceita vazia; a submissão a exige. O servidor carimba só submetidoEm, o registro auditável de quando o pedido entrou no fluxo. Sem regra de data futura ou retroativa: o enunciado não pede.",
+      "Quantidade deve ser maior que zero; preço unitário deve ser não negativo — zero é aceito, como o enunciado pede (revisto em 2026-11-01). No rascunho, preço não informado é nulo, nunca zero.",
+      "Reaproveitar pedido rejeitado fica como extra E4."
+    ],
+    "mockups": {
+      "canvas": "https://claude.ai/artifact/YaiNTMMrDgGBtGFei6eCQo",
+      "regra": "Os artboards são especificação visual, não referência solta. O que está dentro do recorte de uma sprint é implementado com fidelidade total ao artboard dela: estrutura, hierarquia, ordem dos elementos, textos, estados, cores, tipografia, espaçamento e raio. \"Parecido\" é reprovação; divergir exige constar da lista de divergências deliberadas abaixo, que é fechada — o agente não acrescenta item a ela.",
+      "como_consultar": "O canvas serve os arquivos em project/<Artboard>.dc.html, um por artboard, com o CSS e o markup completos. Leia o artboard da sua sprint antes de escrever tela, e tire dele os valores — não os estime a partir da imagem.",
+      "tokens": "O CSS dos artboards usa os mesmos hexadecimais de site/assets/css/obraflow.css, que já viraram tokens Tailwind na Sprint 1. Use o token, nunca o hexadecimal cru.",
+      "artboards": [
+        {
+          "id": "Main",
+          "titulo": "1 · Cadastro de pedido",
+          "sprints": [
+            "s5"
+          ]
+        },
+        {
+          "id": "Aprovacoes",
+          "titulo": "2A · Aprovação (base)",
+          "sprints": [
+            "s6"
+          ]
+        },
+        {
+          "id": "AprovacoesB",
+          "titulo": "2B · Aprovação ao vivo",
+          "sprints": [
+            "e1"
+          ]
+        },
+        {
+          "id": "AprovacoesC",
+          "titulo": "2C · Overview do pedido (jornada)",
+          "sprints": [
+            "s6"
+          ]
+        },
+        {
+          "id": "PedidoDetalhe",
+          "titulo": "2C · Pedido completo (detalhamento)",
+          "sprints": [
+            "s6"
+          ]
+        },
+        {
+          "id": "Alcadas",
+          "titulo": "3 · Regras da alçada",
+          "sprints": [
+            "s4"
+          ]
+        },
+        {
+          "id": "Estados",
+          "titulo": "4 · Estados e validações",
+          "sprints": [
+            "s7"
+          ]
+        },
+        {
+          "id": "TrocarConta",
+          "titulo": "6 · Trocar de usuário (modo demo)",
+          "sprints": [
+            "s3"
+          ]
+        },
+        {
+          "id": "Login",
+          "titulo": "7 · Login (entrada e SSO)",
+          "sprints": [
+            "s3"
+          ],
+          "parcial": "Só o painel de marca e a faixa de estados valem. O formulário de senha e o botão de SSO estão fora do escopo do PRD: a entrada do Dokimos é sem senha, atrás de DEMO_MODE (ADR 0005)."
+        },
+        {
+          "id": "Perfis",
+          "titulo": "8 · Perfis, permissões e multi-tenant",
+          "sprints": [
+            "s3"
+          ],
+          "parcial": "A matriz de papéis e o bloco \"O que muda na interface\" valem. O escopo por tenant e o seletor de empresa ficam como desenho (ADR 0006)."
+        },
+        {
+          "id": "Dashboard",
+          "titulo": "10 · Painel do admin (KPIs e gráficos)",
+          "sprints": [
+            "e3"
+          ]
+        },
+        {
+          "id": "TempoReal",
+          "titulo": "5 · Tempo real: as duas pontas",
+          "sprints": [],
+          "parcial": "Referência para a seção de produção do README. Nada dele é implementado."
+        },
+        {
+          "id": "Empresa",
+          "titulo": "9 · Empresa (obras, usuários, fornecedores)",
+          "sprints": [],
+          "parcial": "Fora do recorte: o enunciado dispensa cadastros. Nenhum item \"Empresa\" entra no menu."
+        }
+      ],
+      "divergencias_deliberadas": [
+        "Senha e SSO (artboard Login): a entrada é sem senha atrás de DEMO_MODE (ADR 0005). O formulário de e-mail e senha, o \"Manter conectada\", o \"Esqueci minha senha\" e o botão de SSO não são implementados.",
+        "Seletor de empresa e tenant_id (artboard Perfis): não existe entidade Empresa (ADR 0006). O nome da construtora é marca fixa no cabeçalho, sem troca.",
+        "Perfil \"Suporte ObraFlow\" (artboard Perfis): o domínio tem quatro papéis fechados. A quinta linha da matriz é desenho de produção.",
+        "Item \"Empresa\" no menu (artboards Perfis e TrocarConta): a tela de cadastros está fora do recorte, então o item não existe para papel nenhum.",
+        "Item \"Estados\" no menu (artboard TrocarConta): é um artboard de catálogo de estados, não uma rota do produto.",
+        "A palavra \"nível\" nas legendas dos mockups (\"nível 1\", \"nível 2\"): o vocabulário do produto é faixa e ordem na cadeia (GLOSSARY).",
+        "Os nomes das pessoas e os números dos artboards são ilustrativos; o que vale é o seed (prisma/seed.ts).",
+        "Botão \"Sair\" no cabeçalho (artboard TrocarConta): o artboard não desenha encerramento de sessão, só a troca de pessoa. DELETE /api/sessao existe e precisa de um controle na tela — sem ele a única saída seria apagar o cookie à mão. O estilo é emprestado do \"Desfazer\" do próprio artboard, para não introduzir linguagem visual nova.",
+        "Navegação lateral (artboards Alcadas, Main e Aprovacoes): o artboard desenha a navegação numa coluna à esquerda, com a marca, o menu e a identidade de quem está dentro; o artboard TrocarConta desenha a mesma navegação como barra superior. Os dois não cabem juntos, e a barra superior é a que a Sprint 3 implementou e as telas seguintes herdam — trocá-la agora mudaria a casca de toda a aplicação por causa de uma tela. As telas 1 e 3 ocupam a área de conteúdo, e o item \"Regras de alçada\" vive no menu do cabeçalho, onde só o admin o enxerga.",
+        "Campo \"Valor mínimo\" editável (artboard Alcadas): a faixa guarda apenas o limite superior (ADR 0002), e o mínimo é o limite da faixa anterior mais um centavo. O campo existe na tela, na posição em que o artboard o desenha, mas é de leitura e se recalcula a cada tecla digitada no valor máximo. Torná-lo editável criaria uma segunda fonte para o mesmo intervalo, e com ela buracos e sobreposições que o modelo torna irrepresentáveis.",
+        "Texto do aviso \"Valor sem faixa aplicável\" (artboard Alcadas): o artboard escreve \"o pedido não é criado\", e isso contradiz o vocabulário do produto — o rascunho é criado, e é a submissão que a falta de faixa impede (GLOSSARY, verbete \"Sem regra aplicável\"; ADR 0001, a faixa só é resolvida na submissão). A tela escreve \"o pedido não é submetido\". A frase final do artboard, \"Decisão documentada no README\", também não é implementada: o README é da Sprint 8, e um aviso de tela não aponta para documento que ainda não existe.",
+        "Botão \"Salvar rascunho\" (artboard Main): o artboard desenha só \"Cancelar\" e \"Cadastrar pedido\", e a sprint exige salvar um rascunho incompleto e voltar depois — é a história de usuário da s5f1. Sem o controle, a única forma de gravar um rascunho seria chamar a rota por fora da tela. O botão entra entre os dois do artboard, com o estilo do secundário do próprio mockup, para não introduzir linguagem visual nova.",
+        "Cartão \"Alçada prevista\" e a lista de aprovadores do artboard Main: é o simulador de cadeia ao vivo, que a própria sprint declara fora do escopo e que o extra E1 implementa (artboard AprovacoesB). A coluna lateral mantém o Resumo e as duas notas do artboard; o cartão da cadeia entra com o E1. No lugar dele, e só quando a obra escolhida não tem faixa nenhuma, a tela mostra o aviso que a própria sprint pede — a tela não resolve faixa, que é decisão do servidor na submissão (ADR 0001).",
+        "Lista de pedidos em tabela de nove colunas (artboard Aprovacoes): o artboard desenha cada pedido como uma faixa com as informações agrupadas em dois blocos. As informações são exatamente as mesmas — identificador, obra, fornecedor, data, itens, total, situação, alçada atual e ações —, e o enunciado do case pede nove colunas. A tabela é o que torna \"nove colunas\" verificável em vez de inferida; a linguagem visual do artboard (etiqueta de situação, pastilhas da cadeia, total tabular) é preservada dentro das células. Em tela estreita a tabela rola dentro do próprio cartão, sem dar barra lateral à página.",
+        "Campo de busca e contadores nas abas (artboard Aprovacoes): o artboard desenha \"Buscar pedido, obra ou fornecedor\" e um número ao lado de cada aba. Busca por texto é declarada fora do escopo desta sprint, e o contador por aba exigiria uma consulta por situação a cada carga — cinco contagens para escrever cinco números que `GET /api/pedidos` não devolve. A aba ativa mostra o total que a rota devolveu, que é o número que existe.",
+        "Painel de detalhe ao lado da lista (artboard Aprovacoes): o artboard mostra a lista e o detalhe do pedido selecionado lado a lado. Aqui o detalhe é a sua própria rota, `/pedidos/[id]`, porque é dele que a decisão parte e é ele que precisa de endereço próprio — um pedido para decidir é coisa que se manda por link. O cartão \"Exemplo de rejeição registrada (#1035)\" do mesmo artboard é anotação do mockup sobre um segundo pedido, não elemento da tela: a rejeição aparece no detalhe do pedido rejeitado, com o motivo em destaque.",
+        "Modo sugestão e \"Sugerir edição\" (artboards PedidoDetalhe e AprovacoesC): sugerir alteração devolve o pedido a quem o criou e pausa a alçada — é um fluxo de produto inteiro, com estado novo no modelo, que nenhuma sprint do recorte descreve. O pedido submetido é imutável (ADR 0001) e a tela o declara como somente leitura.",
+        "Anexos (artboards PedidoDetalhe e AprovacoesC): não existe entidade de arquivo em modelo nenhum, e upload não aparece em sprint nenhuma.",
+        "Cartão \"Contexto para decidir\" (artboard AprovacoesC): orçamento do mês da obra, preço da última compra do mesmo material e histórico de entregas do fornecedor. Nenhum desses números existe no modelo, e inventá-los seria a tela fingir ter servidor — que é justamente o que as regras do agente proíbem.",
+        "\"Pular por agora\", \"A seguir na fila\", os atalhos de teclado R e A, a folha \"Depois de clicar em Aprovar\" e os prazos (\"parado há 3 h\", \"Prazo-alvo: 24/10\") do artboard AprovacoesC: são conforto de fila e de prazo que o domínio não tem — não há ordem de fila persistida, nem prazo, nem confirmação em duas etapas para aprovar. A rejeição, essa, tem a sua confirmação, porque ela exige motivo e encerra o pedido.",
+        "Passo \"Registro e envio ao fornecedor\" da trilha macro (artboard AprovacoesC): o ciclo do produto termina em aprovado ou rejeitado (GLOSSARY). Não há envio ao fornecedor em sprint nenhuma, e desenhá-lo como etapa prometeria um passo que não acontece."
+      ]
+    }
+  },
+  "coder_agents": [
+    {
+      "id": "ag-fundacao",
+      "name": "Agente de fundação",
+      "role": "Estrutura do projeto, tooling, schema e migrations. Não escreve regra de negócio nem tela.",
+      "model": "claude-opus-5",
+      "rules": [
+        "Nenhuma decisão de produto: o que não estiver na SPEC, pergunte em vez de inventar.",
+        "Migration é única e inicial; schema novo depois disso é sinal de decisão fora de hora.",
+        "Dinheiro em centavos Int e quantidade em milésimos Int, sem exceção.",
+        "Entrega com npx tsc --noEmit limpo."
+      ]
+    },
+    {
+      "id": "ag-dominio",
+      "name": "Agente de domínio",
+      "role": "Funções puras em src/domain e sua suíte Vitest. Não toca em banco, rota ou React.",
+      "model": "claude-opus-5",
+      "rules": [
+        "Nenhum import de next/*, @prisma/* ou react em src/domain. É erro de aceite, não estilo.",
+        "Falha prevista é Resultado, não exceção.",
+        "Todo teste afirma o código do erro, nunca o texto da mensagem.",
+        "Cada caso de teste monta os próprios dados; sem fixture compartilhada."
+      ]
+    },
+    {
+      "id": "ag-backend",
+      "name": "Agente de back-end",
+      "role": "Route Handlers em app/api, sessão, permissão e acesso a dados.",
+      "model": "claude-opus-5",
+      "rules": [
+        "Toda escrita por Route Handler. Server Action para mutação é reprovação automática (ADR 0003).",
+        "lerSessao recebe Request; cookies() de next/headers é proibido em código que o teste chama.",
+        "Toda resposta de erro usa o envelope { error: { code, message, fields? } } e o código do enum.",
+        "A rota não contém regra: lê sessão, valida, chama o domínio, traduz o resultado.",
+        "Fidelidade total ao artboard da sua sprint (meta.mockups): estrutura, textos, estados, cores, tipografia e espaçamento saem do mockup, não de estimativa. Divergir só pelo que já está na lista de divergências deliberadas."
+      ]
+    },
+    {
+      "id": "ag-fullstack",
+      "name": "Agente de fatia vertical",
+      "role": "Rota e tela da mesma capacidade, entregues juntas e funcionando.",
+      "model": "claude-opus-5",
+      "rules": [
+        "A sprint só fecha com a tela usando a rota de verdade, nunca com dado simulado.",
+        "Toda lista nasce com carregando, vazio e erro com repetição — não é passada posterior.",
+        "Validação da tela usa o mesmo schema Zod do servidor, ancorada por error.fields.",
+        "Regra de negócio fica no domínio; componente não decide alçada.",
+        "Fidelidade total ao artboard da sua sprint (meta.mockups): estrutura, textos, estados, cores, tipografia e espaçamento saem do mockup, não de estimativa. Divergir só pelo que já está na lista de divergências deliberadas."
+      ]
+    },
+    {
+      "id": "ag-integracao",
+      "name": "Agente de integração e prova",
+      "role": "Seed completo, scripts de verificação, screenshots e README.",
+      "model": "claude-opus-5",
+      "rules": [
+        "O seed precisa produzir os estados sem edição manual depois.",
+        "Todo número citado no README tem que ser reproduzível pelo seed.",
+        "Script de verificação demonstra as recusas por curl, com saída legível.",
+        "Fidelidade total ao artboard da sua sprint (meta.mockups): estrutura, textos, estados, cores, tipografia e espaçamento saem do mockup, não de estimativa. Divergir só pelo que já está na lista de divergências deliberadas."
+      ]
+    }
+  ],
+  "data_models": [
+    {
+      "name": "Usuario",
+      "table": "Usuario",
+      "description": "Pessoa que pode figurar como aprovador numa cadeia. Não confundir com Aprovador, que é o papel exercido num pedido específico.",
+      "fields": [
+        {
+          "name": "id",
+          "type": "String",
+          "required": true,
+          "unique": true,
+          "pk": true,
+          "default": "cuid()",
+          "notes": ""
+        },
+        {
+          "name": "nome",
+          "type": "String",
+          "required": true,
+          "unique": false,
+          "pk": false,
+          "default": null,
+          "notes": "máx. 120 caracteres"
+        },
+        {
+          "name": "email",
+          "type": "String",
+          "required": true,
+          "unique": true,
+          "pk": false,
+          "default": null,
+          "notes": ""
+        },
+        {
+          "name": "papel",
+          "type": "String",
+          "required": true,
+          "unique": false,
+          "pk": false,
+          "default": null,
+          "notes": "admin | aprovador | comprador | visualizador. SQLite não tem enum: validado no domínio"
+        },
+        {
+          "name": "criadoEm",
+          "type": "DateTime",
+          "required": true,
+          "unique": false,
+          "pk": false,
+          "default": "now()",
+          "notes": ""
+        }
+      ],
+      "relations": [
+        {
+          "field": "faixaAprovadores",
+          "type": "1:N",
+          "target": "FaixaAprovador",
+          "on_delete": "restrict"
+        },
+        {
+          "field": "etapas",
+          "type": "1:N",
+          "target": "Etapa",
+          "on_delete": "restrict"
+        },
+        {
+          "field": "pedidosCriados",
+          "type": "1:N",
+          "target": "Pedido",
+          "on_delete": "restrict"
+        }
+      ],
+      "indexes": [],
+      "invariants": [
+        "papel pertence ao conjunto fechado dos quatro valores",
+        "um usuário que decidiu uma etapa nunca pode ser apagado (on_delete restrict) — apagá-lo destruiria a trilha"
+      ]
+    },
+    {
+      "name": "Obra",
+      "table": "Obra",
+      "description": "Projeto de construção ao qual um pedido pertence. É o contexto que determina quais regras de alçada se aplicam, e o escopo máximo do sistema (ADR 0006).",
+      "fields": [
+        {
+          "name": "id",
+          "type": "String",
+          "required": true,
+          "unique": true,
+          "pk": true,
+          "default": "cuid()",
+          "notes": ""
+        },
+        {
+          "name": "nome",
+          "type": "String",
+          "required": true,
+          "unique": false,
+          "pk": false,
+          "default": null,
+          "notes": "máx. 120 caracteres"
+        },
+        {
+          "name": "cidade",
+          "type": "String",
+          "required": true,
+          "unique": false,
+          "pk": false,
+          "default": null,
+          "notes": ""
+        },
+        {
+          "name": "criadoEm",
+          "type": "DateTime",
+          "required": true,
+          "unique": false,
+          "pk": false,
+          "default": "now()",
+          "notes": ""
+        }
+      ],
+      "relations": [
+        {
+          "field": "faixas",
+          "type": "1:N",
+          "target": "Faixa",
+          "on_delete": "cascade"
+        },
+        {
+          "field": "pedidos",
+          "type": "1:N",
+          "target": "Pedido",
+          "on_delete": "restrict"
+        }
+      ],
+      "indexes": [],
+      "invariants": [
+        "não existe entidade Empresa acima de Obra (ADR 0006)"
+      ]
+    },
+    {
+      "name": "Fornecedor",
+      "table": "Fornecedor",
+      "description": "Organização a quem o pedido de compra é dirigido.",
+      "fields": [
+        {
+          "name": "id",
+          "type": "String",
+          "required": true,
+          "unique": true,
+          "pk": true,
+          "default": "cuid()",
+          "notes": ""
+        },
+        {
+          "name": "nome",
+          "type": "String",
+          "required": true,
+          "unique": false,
+          "pk": false,
+          "default": null,
+          "notes": "máx. 120 caracteres"
+        },
+        {
+          "name": "documento",
+          "type": "String",
+          "required": false,
+          "unique": false,
+          "pk": false,
+          "default": null,
+          "notes": "CNPJ, sem validação de dígito neste recorte"
+        },
+        {
+          "name": "criadoEm",
+          "type": "DateTime",
+          "required": true,
+          "unique": false,
+          "pk": false,
+          "default": "now()",
+          "notes": ""
+        }
+      ],
+      "relations": [
+        {
+          "field": "pedidos",
+          "type": "1:N",
+          "target": "Pedido",
+          "on_delete": "restrict"
+        }
+      ],
+      "indexes": [],
+      "invariants": []
+    },
+    {
+      "name": "Faixa",
+      "table": "Faixa",
+      "description": "Intervalo de valor dentro da alçada de uma obra, definido pelo seu limite superior inclusivo e associado a uma sequência ordenada de aprovadores (ADR 0002).",
+      "fields": [
+        {
+          "name": "id",
+          "type": "String",
+          "required": true,
+          "unique": true,
+          "pk": true,
+          "default": "cuid()",
+          "notes": ""
+        },
+        {
+          "name": "obraId",
+          "type": "String",
+          "required": true,
+          "unique": false,
+          "pk": false,
+          "default": null,
+          "notes": ""
+        },
+        {
+          "name": "limiteCentavos",
+          "type": "Int",
+          "required": false,
+          "unique": false,
+          "pk": false,
+          "default": null,
+          "notes": "INCLUSIVO. Nulo = faixa aberta, cobre todo valor acima da anterior. NÃO existe limite inferior: o intervalo é implícito pela ordenação"
+        },
+        {
+          "name": "criadoEm",
+          "type": "DateTime",
+          "required": true,
+          "unique": false,
+          "pk": false,
+          "default": "now()",
+          "notes": ""
+        }
+      ],
+      "relations": [
+        {
+          "field": "obra",
+          "type": "N:1",
+          "target": "Obra",
+          "on_delete": "cascade"
+        },
+        {
+          "field": "aprovadores",
+          "type": "1:N",
+          "target": "FaixaAprovador",
+          "on_delete": "cascade"
+        },
+        {
+          "field": "pedidos",
+          "type": "1:N",
+          "target": "Pedido",
+          "on_delete": "set_null"
+        }
+      ],
+      "indexes": [
+        "(obraId, limiteCentavos)"
+      ],
+      "invariants": [
+        "no máximo uma faixa com limiteCentavos nulo por obra",
+        "buraco e sobreposição entre faixas são irrepresentáveis, porque não há limite inferior",
+        "no máximo 20 faixas por obra",
+        "apagar a faixa não apaga o pedido: faixaId vira nulo e o snapshot denormalizado sobrevive"
+      ]
+    },
+    {
+      "name": "FaixaAprovador",
+      "table": "FaixaAprovador",
+      "description": "Um usuário na sequência de aprovadores de uma faixa, com a posição que ocupará na cadeia.",
+      "fields": [
+        {
+          "name": "id",
+          "type": "String",
+          "required": true,
+          "unique": true,
+          "pk": true,
+          "default": "cuid()",
+          "notes": ""
+        },
+        {
+          "name": "faixaId",
+          "type": "String",
+          "required": true,
+          "unique": false,
+          "pk": false,
+          "default": null,
+          "notes": ""
+        },
+        {
+          "name": "usuarioId",
+          "type": "String",
+          "required": true,
+          "unique": false,
+          "pk": false,
+          "default": null,
+          "notes": ""
+        },
+        {
+          "name": "ordem",
+          "type": "Int",
+          "required": true,
+          "unique": false,
+          "pk": false,
+          "default": null,
+          "notes": "posição na sequência"
+        }
+      ],
+      "relations": [
+        {
+          "field": "faixa",
+          "type": "N:1",
+          "target": "Faixa",
+          "on_delete": "cascade"
+        },
+        {
+          "field": "usuario",
+          "type": "N:1",
+          "target": "Usuario",
+          "on_delete": "restrict"
+        }
+      ],
+      "indexes": [
+        "unique(faixaId, ordem)",
+        "unique(faixaId, usuarioId)"
+      ],
+      "invariants": [
+        "o mesmo usuário não aparece duas vezes na mesma faixa",
+        "duas posições iguais na mesma faixa são impossíveis por construção",
+        "no máximo 10 aprovadores por faixa"
+      ]
+    },
+    {
+      "name": "Pedido",
+      "table": "Pedido",
+      "description": "Solicitação de materiais ou serviços a um fornecedor no contexto de uma obra. Nasce rascunho; a submissão resolve a faixa e grava a cadeia (ADR 0001).",
+      "fields": [
+        {
+          "name": "id",
+          "type": "Int",
+          "required": true,
+          "unique": true,
+          "pk": true,
+          "default": "autoincrement()",
+          "notes": "identificador visível: o pedido é citado como #1002"
+        },
+        {
+          "name": "obraId",
+          "type": "String",
+          "required": true,
+          "unique": false,
+          "pk": false,
+          "default": null,
+          "notes": ""
+        },
+        {
+          "name": "fornecedorId",
+          "type": "String",
+          "required": false,
+          "unique": false,
+          "pk": false,
+          "default": null,
+          "notes": "nulo enquanto rascunho; obrigatório na submissão"
+        },
+        {
+          "name": "dataPedido",
+          "type": "DateTime",
+          "required": false,
+          "unique": false,
+          "pk": false,
+          "default": null,
+          "notes": "Data de emissão declarada no formulário (\"AAAA-MM-DD\", gravada ao meio-dia UTC). Nula só no rascunho; obrigatória na submissão. Não se confunde com submetidoEm, que o servidor carimba"
+        },
+        {
+          "name": "observacoes",
+          "type": "String",
+          "required": false,
+          "unique": false,
+          "pk": false,
+          "default": null,
+          "notes": "máx. 2000 caracteres"
+        },
+        {
+          "name": "situacao",
+          "type": "String",
+          "required": true,
+          "unique": false,
+          "pk": false,
+          "default": "rascunho",
+          "notes": "rascunho | pendente | aprovado | rejeitado. Não existe cancelado"
+        },
+        {
+          "name": "totalCentavos",
+          "type": "Int",
+          "required": true,
+          "unique": false,
+          "pk": false,
+          "default": "0",
+          "notes": "soma dos itens, calculada pelo servidor. Valor enviado pelo cliente é ignorado"
+        },
+        {
+          "name": "criadoPorId",
+          "type": "String",
+          "required": true,
+          "unique": false,
+          "pk": false,
+          "default": null,
+          "notes": ""
+        },
+        {
+          "name": "submetidoEm",
+          "type": "DateTime",
+          "required": false,
+          "unique": false,
+          "pk": false,
+          "default": null,
+          "notes": ""
+        },
+        {
+          "name": "faixaId",
+          "type": "String",
+          "required": false,
+          "unique": false,
+          "pk": false,
+          "default": null,
+          "notes": "faixa aplicada na submissão; vira nulo se a faixa for apagada"
+        },
+        {
+          "name": "faixaLimiteCentavos",
+          "type": "Int",
+          "required": false,
+          "unique": false,
+          "pk": false,
+          "default": null,
+          "notes": "SNAPSHOT: sobrevive à exclusão da faixa"
+        },
+        {
+          "name": "faixaSemTeto",
+          "type": "Boolean",
+          "required": true,
+          "unique": false,
+          "pk": false,
+          "default": "false",
+          "notes": "SNAPSHOT: a faixa aplicada era a aberta"
+        },
+        {
+          "name": "criadoEm",
+          "type": "DateTime",
+          "required": true,
+          "unique": false,
+          "pk": false,
+          "default": "now()",
+          "notes": ""
+        },
+        {
+          "name": "atualizadoEm",
+          "type": "DateTime",
+          "required": true,
+          "unique": false,
+          "pk": false,
+          "default": "updatedAt",
+          "notes": ""
+        }
+      ],
+      "relations": [
+        {
+          "field": "obra",
+          "type": "N:1",
+          "target": "Obra",
+          "on_delete": "restrict"
+        },
+        {
+          "field": "fornecedor",
+          "type": "N:1",
+          "target": "Fornecedor",
+          "on_delete": "restrict"
+        },
+        {
+          "field": "criadoPor",
+          "type": "N:1",
+          "target": "Usuario",
+          "on_delete": "restrict"
+        },
+        {
+          "field": "faixa",
+          "type": "N:1",
+          "target": "Faixa",
+          "on_delete": "set_null"
+        },
+        {
+          "field": "itens",
+          "type": "1:N",
+          "target": "ItemPedido",
+          "on_delete": "cascade"
+        },
+        {
+          "field": "etapas",
+          "type": "1:N",
+          "target": "Etapa",
+          "on_delete": "cascade"
+        }
+      ],
+      "indexes": [
+        "(situacao, obraId)"
+      ],
+      "invariants": [
+        "totalCentavos é sempre a soma dos totais dos itens — nunca vem do cliente",
+        "depois da submissão, cabeçalho e itens são imutáveis",
+        "um pedido pendente, aprovado ou rejeitado tem ao menos uma etapa",
+        "um rascunho não tem etapa nenhuma",
+        "o snapshot da faixa é gravado na submissão e nunca recalculado (ADR 0001)",
+        "no máximo 100 itens por pedido",
+        "rascunho é visível e editável apenas pelo usuário que o criou"
+      ]
+    },
+    {
+      "name": "ItemPedido",
+      "table": "ItemPedido",
+      "description": "Uma linha do pedido: o que se compra, quanto, em que unidade e por qual preço unitário.",
+      "fields": [
+        {
+          "name": "id",
+          "type": "String",
+          "required": true,
+          "unique": true,
+          "pk": true,
+          "default": "cuid()",
+          "notes": ""
+        },
+        {
+          "name": "pedidoId",
+          "type": "Int",
+          "required": true,
+          "unique": false,
+          "pk": false,
+          "default": null,
+          "notes": ""
+        },
+        {
+          "name": "descricao",
+          "type": "String",
+          "required": true,
+          "unique": false,
+          "pk": false,
+          "default": null,
+          "notes": "máx. 200 caracteres"
+        },
+        {
+          "name": "quantidadeMilesimos",
+          "type": "Int",
+          "required": true,
+          "unique": false,
+          "pk": false,
+          "default": null,
+          "notes": "2,5 kg = 2500. Deve ser > 0"
+        },
+        {
+          "name": "unidade",
+          "type": "String",
+          "required": true,
+          "unique": false,
+          "pk": false,
+          "default": null,
+          "notes": "un, kg, m, m2, m3, sc, L, h"
+        },
+        {
+          "name": "precoUnitarioCentavos",
+          "type": "Int",
+          "required": false,
+          "unique": false,
+          "pk": false,
+          "default": null,
+          "notes": "nulo enquanto rascunho; obrigatório e >= 0 na submissão (<= 1000000000, R$ 10.000.000,00). Nulo é preço não informado; zero é preço válido"
+        },
+        {
+          "name": "totalCentavos",
+          "type": "Int",
+          "required": true,
+          "unique": false,
+          "pk": false,
+          "default": null,
+          "notes": "round(quantidadeMilesimos * precoUnitarioCentavos / 1000), calculado no domínio"
+        },
+        {
+          "name": "ordem",
+          "type": "Int",
+          "required": true,
+          "unique": false,
+          "pk": false,
+          "default": null,
+          "notes": ""
+        }
+      ],
+      "relations": [
+        {
+          "field": "pedido",
+          "type": "N:1",
+          "target": "Pedido",
+          "on_delete": "cascade"
+        }
+      ],
+      "indexes": [
+        "unique(pedidoId, ordem)"
+      ],
+      "invariants": [
+        "totalCentavos = round(quantidadeMilesimos * precoUnitarioCentavos / 1000), arredondado uma única vez no produto",
+        "quantidade é estritamente maior que zero; preço unitário é não negativo (zero é aceito)",
+        "nenhum ponto flutuante participa do cálculo"
+      ]
+    },
+    {
+      "name": "Etapa",
+      "table": "Etapa",
+      "description": "Uma posição da cadeia de aprovação, gravada na submissão. A decisão vive na própria etapa, e é ela o alvo do UPDATE condicional (ADR 0004).",
+      "fields": [
+        {
+          "name": "id",
+          "type": "String",
+          "required": true,
+          "unique": true,
+          "pk": true,
+          "default": "cuid()",
+          "notes": ""
+        },
+        {
+          "name": "pedidoId",
+          "type": "Int",
+          "required": true,
+          "unique": false,
+          "pk": false,
+          "default": null,
+          "notes": ""
+        },
+        {
+          "name": "ordem",
+          "type": "Int",
+          "required": true,
+          "unique": false,
+          "pk": false,
+          "default": null,
+          "notes": "posição na cadeia, começando em 0"
+        },
+        {
+          "name": "usuarioId",
+          "type": "String",
+          "required": true,
+          "unique": false,
+          "pk": false,
+          "default": null,
+          "notes": "copiado da faixa na submissão; não acompanha edição posterior da faixa"
+        },
+        {
+          "name": "situacao",
+          "type": "String",
+          "required": true,
+          "unique": false,
+          "pk": false,
+          "default": "pendente",
+          "notes": "pendente | aprovada | rejeitada"
+        },
+        {
+          "name": "decididoEm",
+          "type": "DateTime",
+          "required": false,
+          "unique": false,
+          "pk": false,
+          "default": null,
+          "notes": ""
+        },
+        {
+          "name": "motivo",
+          "type": "String",
+          "required": false,
+          "unique": false,
+          "pk": false,
+          "default": null,
+          "notes": "obrigatório quando rejeitada. Máx. 500 caracteres"
+        }
+      ],
+      "relations": [
+        {
+          "field": "pedido",
+          "type": "N:1",
+          "target": "Pedido",
+          "on_delete": "cascade"
+        },
+        {
+          "field": "usuario",
+          "type": "N:1",
+          "target": "Usuario",
+          "on_delete": "restrict"
+        }
+      ],
+      "indexes": [
+        "unique(pedidoId, ordem)",
+        "(usuarioId, situacao)"
+      ],
+      "invariants": [
+        "só a primeira etapa pendente, em ordem crescente, pode ser decidida",
+        "uma etapa decidida nunca volta a pendente",
+        "situacao rejeitada exige motivo não vazio",
+        "uma etapa rejeitada encerra o pedido: nenhuma etapa posterior se torna decidível",
+        "a decisão é um UPDATE condicionado a situacao = pendente e todas as anteriores aprovadas; zero linhas afetadas vira 409"
+      ]
+    }
+  ],
+  "file_structure": {
+    "app/": {
+      "layout.tsx": "Shell com cabeçalho, sessão e tokens de tema",
+      "page.tsx": "Entrada: redireciona conforme sessão",
+      "entrar/page.tsx": "Tela de entrada do modo demo",
+      "pedidos/page.tsx": "Tela 2 — lista de aprovação",
+      "pedidos/[id]/page.tsx": "Tela 2 — detalhe do pedido",
+      "pedidos/novo/page.tsx": "Tela 1 — cadastro de pedido",
+      "alcadas/page.tsx": "Tela 3 — regras da alçada",
+      "api/sessao/route.ts": "POST entrar, DELETE sair",
+      "api/obras/route.ts": "GET lista de obras",
+      "api/obras/[id]/faixas/route.ts": "GET e POST faixas da obra",
+      "api/faixas/[id]/route.ts": "PUT e DELETE faixa",
+      "api/pedidos/route.ts": "GET lista com filtros, POST rascunho",
+      "api/pedidos/[id]/route.ts": "GET detalhe, PUT rascunho, DELETE rascunho",
+      "api/pedidos/[id]/submissao/route.ts": "POST submissão",
+      "api/pedidos/[id]/decisoes/route.ts": "POST decisão"
+    },
+    "src/domain/": {
+      "tipos.ts": "Tipos marcados, papéis, situações, Resultado",
+      "erros.ts": "Códigos fechados e mapa para situação HTTP",
+      "dinheiro.ts": "Centavos: entrada, soma, total de item, formatação",
+      "quantidade.ts": "Milésimos: entrada e formatação",
+      "alcada.ts": "Faixa, Alcada, resolverFaixa, comporta",
+      "cadeia.ts": "Etapa, montarCadeia, aprovadorDaVez, histórico",
+      "decisao.ts": "Decisao, validar, podeDecidir, situacaoApos",
+      "schemas.ts": "Um schema Zod por operação",
+      "index.ts": "Fachada do domínio"
+    },
+    "src/server/": {
+      "sessao.ts": "lerSessao(req: Request), criar e destruir sessão",
+      "permissao.ts": "Matriz dos quatro papéis",
+      "http.ts": "Envelope de erro e wrapper de rota"
+    },
+    "src/db/": {
+      "prisma.ts": "Cliente singleton com driver adapter"
+    },
+    "src/ui/": {
+      "hooks/": "Hooks de dados devolvendo { dados, carregando, erro, recarregar }",
+      "componentes/": "Cadeia, tabela de itens, diálogo, estados vazios"
+    },
+    "prisma/": {
+      "schema.prisma": "Oito modelos",
+      "seed.ts": "Seed completo com os oito pedidos",
+      "migrations/": "Migration inicial"
+    },
+    "tests/api/": "Suíte no seam de Route Handler (extra E2)",
+    "scripts/verificar.sh": "curl demonstrando 403 e 409",
+    "docs/": "PRD, SPEC, ADRs, planos"
+  },
+  "sprints_index": [
+    {
+      "id": "s1",
+      "index": 1,
+      "name": "Fundação",
+      "arquivo": "docs/spec/01-fundacao.json",
+      "pre_requisito": null,
+      "tipo": "principal",
+      "status": "concluida"
+    },
+    {
+      "id": "s2",
+      "index": 2,
+      "name": "Domínio e testes",
+      "arquivo": "docs/spec/02-dominio-e-testes.json",
+      "pre_requisito": "s1",
+      "tipo": "principal",
+      "status": "em_andamento"
+    },
+    {
+      "id": "s3",
+      "index": 3,
+      "name": "Sessão e papéis",
+      "arquivo": "docs/spec/03-sessao-e-papeis.json",
+      "pre_requisito": "s2",
+      "tipo": "principal",
+      "status": "nao_iniciada"
+    },
+    {
+      "id": "s4",
+      "index": 4,
+      "name": "Tela 3 — Regras da alçada",
+      "arquivo": "docs/spec/04-tela-3-regras-da-alcada.json",
+      "pre_requisito": "s3",
+      "tipo": "principal",
+      "status": "nao_iniciada"
+    },
+    {
+      "id": "s5",
+      "index": 5,
+      "name": "Tela 1 — Cadastro de pedido",
+      "arquivo": "docs/spec/05-tela-1-cadastro-de-pedido.json",
+      "pre_requisito": "s4",
+      "tipo": "principal",
+      "status": "nao_iniciada"
+    },
+    {
+      "id": "s6",
+      "index": 6,
+      "name": "Tela 2 — Aprovação",
+      "arquivo": "docs/spec/06-tela-2-aprovacao.json",
+      "pre_requisito": "s5",
+      "tipo": "principal",
+      "status": "nao_iniciada"
+    },
+    {
+      "id": "s7",
+      "index": 7,
+      "name": "Estados, validações e responsividade",
+      "arquivo": "docs/spec/07-estados-validacoes-e-responsividade.json",
+      "pre_requisito": "s6",
+      "tipo": "principal",
+      "status": "nao_iniciada"
+    },
+    {
+      "id": "s8",
+      "index": 8,
+      "name": "Seed completo, prova e documentação",
+      "arquivo": "docs/spec/08-seed-completo-prova-e-documentacao.json",
+      "pre_requisito": "s7",
+      "tipo": "principal",
+      "status": "nao_iniciada"
+    },
+    {
+      "id": "e1",
+      "index": 9,
+      "name": "Extra E1 — Simulador de alçada ao vivo",
+      "arquivo": "docs/spec/09-extra-simulador-de-alcada-ao-vivo.json",
+      "pre_requisito": "s8",
+      "tipo": "extra",
+      "status": "nao_iniciada"
+    },
+    {
+      "id": "e2",
+      "index": 10,
+      "name": "Extra E2 — Suíte de integração da API",
+      "arquivo": "docs/spec/10-extra-suite-de-integracao-da-api.json",
+      "pre_requisito": "s8",
+      "tipo": "extra",
+      "status": "nao_iniciada"
+    },
+    {
+      "id": "e3",
+      "index": 11,
+      "name": "Extra E3 — Gráfico na administração",
+      "arquivo": "docs/spec/11-extra-grafico-na-administracao.json",
+      "pre_requisito": "e2",
+      "tipo": "extra",
+      "status": "nao_iniciada"
+    },
+    {
+      "id": "e4",
+      "index": 12,
+      "name": "Extra E4 — Duplicar pedido rejeitado",
+      "arquivo": "docs/spec/12-extra-duplicar-pedido-rejeitado.json",
+      "pre_requisito": "e3",
+      "tipo": "extra",
+      "status": "nao_iniciada"
+    }
+  ]
+}

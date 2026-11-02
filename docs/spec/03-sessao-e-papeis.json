@@ -1,0 +1,312 @@
+{
+  "sprint": {
+    "id": "s3",
+    "index": 3,
+    "name": "Sessão e papéis",
+    "description": "Entrada sem senha atrás de DEMO_MODE, sessão em cookie httpOnly lida do Request, e a matriz dos quatro papéis imposta no servidor.",
+    "entregavel": "Dá para entrar como cada usuário do seed, o menu muda conforme o papel, e uma rota protegida responde 403 para quem não deve.",
+    "risco": "medio",
+    "pre_requisito": "s2",
+    "coder_agent_id": "ag-backend",
+    "stack": [
+      "next",
+      "react",
+      "typescript",
+      "prisma",
+      "zod"
+    ],
+    "features": [
+      {
+        "id": "s3f1",
+        "categoria": "auth",
+        "name": "lerSessao recebendo Request",
+        "description": "A sessão é lida do Request, nunca de cookies() de next/headers.",
+        "user_story": "Como desenvolvedora, quero a sessão legível fora do contexto do Next, para que o teste de rota seja possível.",
+        "steps": [
+          "Escrever src/server/sessao.ts com lerSessao(req: Request)",
+          "Ler o cookie do header do Request",
+          "Resolver o usuário e o papel no banco",
+          "Devolver null quando o cookie é ausente ou inválido"
+        ],
+        "acceptance_criteria": [
+          "lerSessao é chamável com um Request montado à mão, fora de uma requisição do Next",
+          "grep por 'next/headers' em src/server/ não retorna nada",
+          "Cookie ausente devolve null, não lança",
+          "Cookie apontando para usuário inexistente devolve null",
+          "O papel devolvido vem do banco, nunca do cookie"
+        ],
+        "edge_cases": [
+          "Cookie forjado com id de outro usuário: o servidor resolve pelo id e o papel vem do banco, então forjar não concede poder",
+          "Cookie com formato inválido: devolve null"
+        ],
+        "api_spec": [],
+        "models": [
+          "Usuario"
+        ],
+        "files": [
+          "src/server/sessao.ts"
+        ],
+        "tests": [],
+        "depends_on": [],
+        "out_of_scope": [
+          "Senha, SSO e refresh de token"
+        ]
+      },
+      {
+        "id": "s3f2",
+        "categoria": "auth",
+        "name": "Entrar e sair, atrás de DEMO_MODE",
+        "description": "POST abre sessão nova em cookie httpOnly; DELETE encerra. Com a flag desligada a rota não responde.",
+        "user_story": "Como avaliador do case, quero trocar de usuário sem senha, para conferir a cadeia inteira em poucos cliques.",
+        "steps": [
+          "Escrever POST /api/sessao recebendo o id do usuário",
+          "Gravar cookie httpOnly, sameSite lax, path /",
+          "Escrever DELETE /api/sessao",
+          "Guardar as duas rotas atrás de DEMO_MODE"
+        ],
+        "acceptance_criteria": [
+          "POST /api/sessao com id válido responde 200 e devolve Set-Cookie com HttpOnly",
+          "O cookie não é legível por document.cookie",
+          "Trocar de usuário cria sessão nova: o papel efetivo muda, não só o nome na tela",
+          "Com DEMO_MODE diferente de 'true', POST /api/sessao responde 404",
+          "POST com id de usuário inexistente responde 404 com código NAO_ENCONTRADO",
+          "DELETE /api/sessao responde 200 e expira o cookie"
+        ],
+        "edge_cases": [
+          "DEMO_MODE não definida: tratada como desligada",
+          "Corpo sem usuarioId: 422 com código VALIDACAO e campos.usuarioId",
+          "Chamar DELETE sem sessão: 200, idempotente"
+        ],
+        "api_spec": [
+          {
+            "method": "POST",
+            "path": "/api/sessao",
+            "auth": "publica, atrás de DEMO_MODE",
+            "request": {
+              "params": {},
+              "query": {},
+              "body": {
+                "usuarioId": "string, obrigatório, cuid"
+              }
+            },
+            "responses": {
+              "200": "{ usuario: { id, nome, papel } } + Set-Cookie httpOnly",
+              "404": "NAO_ENCONTRADO — usuário inexistente, ou DEMO_MODE desligada",
+              "422": "VALIDACAO — corpo inválido"
+            },
+            "timeout_ms": 5000,
+            "payload_limit": "1MB",
+            "side_effects": [
+              "cria sessão no servidor",
+              "grava cookie httpOnly"
+            ],
+            "idempotent": false
+          },
+          {
+            "method": "DELETE",
+            "path": "/api/sessao",
+            "auth": "sessao",
+            "request": {
+              "params": {},
+              "query": {},
+              "body": {}
+            },
+            "responses": {
+              "200": "sessão encerrada, cookie expirado",
+              "404": "DEMO_MODE desligada"
+            },
+            "timeout_ms": 5000,
+            "payload_limit": "1MB",
+            "side_effects": [
+              "expira o cookie"
+            ],
+            "idempotent": true
+          }
+        ],
+        "models": [
+          "Usuario"
+        ],
+        "files": [
+          "app/api/sessao/route.ts",
+          "src/server/sessao.ts"
+        ],
+        "tests": [],
+        "depends_on": [
+          "s3f1"
+        ],
+        "out_of_scope": [
+          "Autenticação com senha ou SSO (fora de escopo no PRD)"
+        ]
+      },
+      {
+        "id": "s3f3",
+        "categoria": "auth",
+        "name": "Matriz de permissão dos quatro papéis",
+        "description": "Uma função consultada por toda rota, decidindo o que cada papel pode fazer.",
+        "user_story": "Como admin, quero que papel seja imposto no servidor, para que esconder item de menu não seja o controle.",
+        "steps": [
+          "Escrever src/server/permissao.ts com pode(papel, acao)",
+          "Declarar as ações: ver_pedidos, criar_pedido, submeter_pedido, decidir, gerir_alcada",
+          "Aplicar a consulta em toda rota protegida"
+        ],
+        "acceptance_criteria": [
+          "admin pode gerir_alcada; aprovador, comprador e visualizador não",
+          "comprador pode criar_pedido e submeter_pedido; aprovador e visualizador não",
+          "aprovador pode decidir; comprador, admin e visualizador não",
+          "Os quatro papéis podem ver_pedidos",
+          "A matriz é exaustiva em tipo: acrescentar um papel sem mapeá-lo não compila",
+          "Toda rota protegida responde 403 com código SEM_PERMISSAO antes de tocar no banco"
+        ],
+        "edge_cases": [
+          "Sessão ausente numa rota protegida: 403 SEM_PERMISSAO, não 401 — o case não tem autenticação",
+          "Papel vindo do banco fora do conjunto: tratado como sem permissão"
+        ],
+        "api_spec": [],
+        "models": [
+          "Usuario"
+        ],
+        "files": [
+          "src/server/permissao.ts"
+        ],
+        "tests": [],
+        "depends_on": [
+          "s3f1"
+        ],
+        "out_of_scope": [
+          "Permissão por obra",
+          "Delegação e substituto"
+        ]
+      },
+      {
+        "id": "s3f4",
+        "categoria": "api_endpoint",
+        "name": "Envelope de erro e wrapper de rota",
+        "description": "Toda resposta de erro no mesmo formato, convertendo ErroDominio em resposta pelo mapa do domínio.",
+        "user_story": "Como desenvolvedora da tela, quero um formato só de erro, para que o tratamento seja escrito uma vez.",
+        "steps": [
+          "Escrever src/server/http.ts com o envelope",
+          "Escrever o wrapper que captura ErroDominio e traduz pelo SITUACAO_HTTP",
+          "Converter erro inesperado em 500 com código genérico, sem vazar stack"
+        ],
+        "acceptance_criteria": [
+          "Toda resposta de erro tem o corpo { error: { code, message, fields? } }",
+          "O status HTTP vem de SITUACAO_HTTP, nunca escolhido na rota",
+          "Erro não previsto devolve 500 sem expor stack nem mensagem interna",
+          "Corpo que não é JSON devolve 422 VALIDACAO",
+          "Payload acima de 1 MB devolve 413 antes de interpretar o corpo"
+        ],
+        "edge_cases": [
+          "Erro lançado dentro de transação: rollback antes de responder",
+          "Timeout de 5s excedido: 504 com código genérico"
+        ],
+        "api_spec": [],
+        "models": [],
+        "files": [
+          "src/server/http.ts"
+        ],
+        "tests": [],
+        "depends_on": [
+          "s3f3"
+        ],
+        "out_of_scope": [
+          "Observabilidade, log estruturado e tracing"
+        ]
+      },
+      {
+        "id": "s3f5",
+        "categoria": "frontend",
+        "name": "Tela de entrada e cabeçalho",
+        "description": "Lista os usuários do seed com seu papel; cabeçalho mostra quem está dentro, com trocar de usuário e a marca fixa.",
+        "user_story": "Como avaliador, quero entrar como cada usuário em um clique, para percorrer a cadeia sem digitar credencial.",
+        "steps": [
+          "Tela listando usuários do seed com nome e papel",
+          "Chamar POST /api/sessao ao escolher",
+          "Cabeçalho com nome, papel e ação de trocar",
+          "Menu variando conforme o papel"
+        ],
+        "acceptance_criteria": [
+          "A tela lista todos os usuários do seed com o papel de cada um",
+          "Escolher um usuário leva à lista de pedidos autenticado como ele",
+          "O cabeçalho mostra o nome da construtora como marca fixa, sem seletor de empresa",
+          "O item de menu de regras da alçada só aparece para admin",
+          "A lista de usuários tem estado de carregando e de erro com repetição"
+        ],
+        "edge_cases": [
+          "DEMO_MODE desligada: a tela de entrada não é acessível",
+          "Nenhum usuário no banco: empty state explicando que o seed precisa rodar",
+          "API fora do ar: estado de erro com botão de tentar de novo"
+        ],
+        "api_spec": [
+          {
+            "method": "GET",
+            "path": "/api/usuarios",
+            "auth": "publica, atrás de DEMO_MODE",
+            "request": {
+              "params": {},
+              "query": {},
+              "body": {}
+            },
+            "responses": {
+              "200": "[{ id, nome, papel }]",
+              "404": "DEMO_MODE desligada"
+            },
+            "timeout_ms": 5000,
+            "payload_limit": "1MB",
+            "side_effects": [],
+            "idempotent": true
+          }
+        ],
+        "models": [
+          "Usuario"
+        ],
+        "files": [
+          "app/entrar/page.tsx",
+          "app/layout.tsx",
+          "src/ui/componentes/"
+        ],
+        "tests": [],
+        "depends_on": [
+          "s3f2",
+          "s3f3"
+        ],
+        "out_of_scope": [
+          "SSO desenhado no artboard Login",
+          "Seletor de empresa (ADR 0006)"
+        ]
+      }
+    ],
+    "definition_of_done": [
+      "Entrar como cada usuário do seed funciona",
+      "O menu muda conforme o papel",
+      "Uma rota de alçada responde 403 para não-admin, verificado por curl",
+      "Com DEMO_MODE desligada a rota de entrada responde 404",
+      "npx tsc --noEmit limpo, lint limpo, npm test verde"
+    ]
+  },
+  "contexto": {
+    "base": "docs/spec/base.json",
+    "spec_completa": "docs/SPEC.md",
+    "progresso": "docs/PROGRESS.md",
+    "agente": {
+      "id": "ag-backend",
+      "name": "Agente de back-end",
+      "role": "Route Handlers em app/api, sessão, permissão e acesso a dados.",
+      "model": "claude-opus-5",
+      "rules": [
+        "Toda escrita por Route Handler. Server Action para mutação é reprovação automática (ADR 0003).",
+        "lerSessao recebe Request; cookies() de next/headers é proibido em código que o teste chama.",
+        "Toda resposta de erro usa o envelope { error: { code, message, fields? } } e o código do enum.",
+        "A rota não contém regra: lê sessão, valida, chama o domínio, traduz o resultado.",
+        "Fidelidade total ao artboard da sua sprint (meta.mockups): estrutura, textos, estados, cores, tipografia e espaçamento saem do mockup, não de estimativa. Divergir só pelo que já está na lista de divergências deliberadas."
+      ]
+    },
+    "modelos_tocados": [
+      "Usuario"
+    ],
+    "verificacoes": [
+      "npx tsc --noEmit",
+      "npm run lint",
+      "npm test"
+    ]
+  }
+}

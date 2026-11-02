@@ -1,0 +1,90 @@
+{
+  "meta": {
+    "project": "",
+    "version": "",
+    "prd": "",
+    "updated_at": "",
+    "status": ""
+  },
+
+  "coder_agents": [
+    {
+      "id": "",
+      "name": "",
+      "role": "",
+      "model": "",
+      "rules": []
+    }
+  ],
+
+  "data_models": [
+    {
+      "name": "",
+      "table": "",
+      "description": "",
+      "fields": [
+        {
+          "name": "",
+          "type": "",
+          "required": true,
+          "unique": false,
+          "pk": false,
+          "default": null,
+          "notes": ""
+        }
+      ],
+      "relations": [
+        { "field": "", "type": "", "target": "", "on_delete": "" }
+      ],
+      "indexes": [],
+      "invariants": []
+    }
+  ],
+
+  "file_structure": {},
+
+  "sprints": [
+    {
+      "id": "",
+      "index": 0,
+      "name": "",
+      "description": "",
+      "entregavel": "",
+      "risco": "",
+      "pre_requisito": null,
+      "coder_agent_id": "",
+      "stack": [],
+      "features": [
+        {
+          "id": "",
+          "categoria": "",
+          "name": "",
+          "description": "",
+          "user_story": "",
+          "steps": [],
+          "acceptance_criteria": [],
+          "edge_cases": [],
+          "api_spec": [
+            {
+              "method": "",
+              "path": "",
+              "auth": "",
+              "request": { "params": {}, "query": {}, "body": {} },
+              "responses": {},
+              "timeout_ms": null,
+              "payload_limit": "",
+              "side_effects": [],
+              "idempotent": false
+            }
+          ],
+          "models": [],
+          "files": [],
+          "tests": [],
+          "depends_on": [],
+          "out_of_scope": []
+        }
+      ],
+      "definition_of_done": []
+    }
+  ]
+}

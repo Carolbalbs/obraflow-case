@@ -1,0 +1,183 @@
+{
+  "sprint": {
+    "id": "e3",
+    "index": 11,
+    "name": "Extra E3 — Gráfico na administração",
+    "tipo": "extra",
+    "description": "Menor prioridade do backlog: não melhora nenhum critério do enunciado diretamente.",
+    "entregavel": "Gráfico de pedidos por situação na tela de administração.",
+    "risco": "baixo",
+    "pre_requisito": "e2",
+    "coder_agent_id": "ag-fullstack",
+    "stack": [
+      "next",
+      "react",
+      "typescript"
+    ],
+    "features": [
+      {
+        "id": "e3f1",
+        "categoria": "frontend",
+        "name": "Gráfico de pedidos por situação",
+        "description": "Contagem por situação, exibida na tela de administração.",
+        "user_story": "Como admin, quero ver a distribuição dos pedidos, para saber onde está o acúmulo.",
+        "steps": [
+          "Rota de contagem agrupada por situação",
+          "Gráfico de barras na tela de administração"
+        ],
+        "acceptance_criteria": [
+          "A contagem exibida bate com a contagem do banco por situação",
+          "Rascunho de outro usuário não entra na contagem de ninguém",
+          "O gráfico tem estado de carregando, vazio e erro",
+          "Banco vazio mostra empty state em vez de gráfico com eixos zerados"
+        ],
+        "edge_cases": [
+          "Uma única situação presente: o gráfico continua legível"
+        ],
+        "api_spec": [
+          {
+            "method": "GET",
+            "path": "/api/pedidos/resumo",
+            "auth": "sessao + papel admin",
+            "request": {
+              "params": {},
+              "query": {
+                "obraId": "string cuid, opcional"
+              },
+              "body": {}
+            },
+            "responses": {
+              "200": "{ porSituacao: { rascunho, pendente, aprovado, rejeitado } }",
+              "403": "SEM_PERMISSAO"
+            },
+            "timeout_ms": 5000,
+            "payload_limit": "1MB",
+            "side_effects": [],
+            "idempotent": true
+          }
+        ],
+        "models": [
+          "Pedido"
+        ],
+        "files": [
+          "app/api/pedidos/resumo/route.ts"
+        ],
+        "tests": [],
+        "depends_on": [
+          "s6f1"
+        ],
+        "out_of_scope": [
+          "Série temporal",
+          "Exportação"
+        ]
+      },
+      {
+        "id": "e3f2",
+        "categoria": "api_endpoint",
+        "name": "Painel da administração em uma leitura",
+        "description": "KPIs do período, série semanal de valor aprovado, cortes por faixa e por aprovador e fila de atenção, todos derivados do mesmo conjunto de pedidos lido num instante só. Entrou depois da E3, a pedido da autora (PROGRESS, § Painel da administração completo), sem feature na SPEC; registrada aqui para que a rota tenha dono, descrevendo o comportamento que ela já tem.",
+        "user_story": "Como admin, quero ver numa tela só volume, valor aprovado, tempo de decisão, rejeição e o que está parado, para saber onde a cadeia de aprovação trava.",
+        "steps": [
+          "Rota que lê os pedidos visíveis à sessão, com etapas, e calcula tudo a partir de um único 'agora'",
+          "Derivações puras em src/domain/painel.ts, com caso de teste",
+          "Tela /admin consumindo a rota, com período de 7, 30 ou 90 dias e filtro de obra"
+        ],
+        "acceptance_criteria": [
+          "Sem sessão, ou com papel diferente de admin, GET /api/pedidos/painel responde 403 SEM_PERMISSAO antes de consultar pedidos",
+          "Sem o parâmetro dias, o período é de 30 dias; dias aceita só 7, 30 ou 90, e qualquer outro valor responde 422 VALIDACAO com fields.dias",
+          "obraId com formato inválido responde 422 VALIDACAO com fields.obraId, pelo mesmo schema de GET /api/pedidos",
+          "O escopo de leitura é o mesmo de GET /api/pedidos: rascunho de outro usuário não entra em número nenhum",
+          "kpis.pedidos, valorAprovadoCentavos, tempoMedioEmMs e rejeicao contam só pedidos submetidos dentro da janela, e trazem o valor da janela anterior de mesmo tamanho; variacao é null quando o anterior é zero",
+          "kpis.parados conta os pendentes com a vez parada há 24 h ou mais no momento da chamada, independente da janela; criticos são os de 72 h ou mais",
+          "serie tem 6 pontos S1..S6, blocos de 7 dias contados para trás a partir de agora, com o valor aprovado por obra posto na semana em que a cadeia foi concluída",
+          "porFaixa agrupa os submetidos pelo snapshot de faixa gravado no pedido (ADR 0001), não pela alçada vigente",
+          "porAprovador mede, por usuário, o tempo entre receber a vez e decidir, considerando só etapas decididas",
+          "fila lista os pendentes parados há 24 h ou mais, do mais antigo para o mais novo, com quem tem a vez e o nível",
+          "obras traz todas as obras cadastradas, por nome, para o seletor não perder opções ao filtrar",
+          "submetidos é a contagem de pedidos não rascunho no recorte; a tela mostra empty state quando é zero",
+          "A contagem por situação não está neste payload: o gráfico de e3f1 a lê de GET /api/pedidos/resumo"
+        ],
+        "edge_cases": [
+          "Nenhum pedido concluído no período: tempoMedioEmMs.valor é null, não zero",
+          "Período sem pedido submetido: rejeicao.taxa é null"
+        ],
+        "api_spec": [
+          {
+            "method": "GET",
+            "path": "/api/pedidos/painel",
+            "auth": "sessao + papel admin",
+            "request": {
+              "params": {},
+              "query": {
+                "dias": "7 | 30 | 90, opcional, padrão 30",
+                "obraId": "string cuid, opcional"
+              },
+              "body": {}
+            },
+            "responses": {
+              "200": "{ agora, dias, obraId | null, obras: [{ id, nome }], kpis: { pedidos, valorAprovadoCentavos, tempoMedioEmMs, rejeicao, parados }, serie: { obras, pontos }, porFaixa, porAprovador, fila, comUmaAssinatura, submetidos }",
+              "403": "SEM_PERMISSAO",
+              "422": "VALIDACAO — dias fora de 7/30/90 ou obraId malformado"
+            },
+            "timeout_ms": 5000,
+            "payload_limit": "1MB",
+            "side_effects": [],
+            "idempotent": true
+          }
+        ],
+        "models": [
+          "Pedido",
+          "Etapa",
+          "Obra",
+          "Fornecedor"
+        ],
+        "files": [
+          "app/api/pedidos/painel/route.ts",
+          "src/domain/painel.ts",
+          "src/ui/painel.ts",
+          "src/ui/componentes/PainelDoAdmin.tsx",
+          "app/admin/page.tsx"
+        ],
+        "tests": [
+          "src/domain/painel.test.ts"
+        ],
+        "depends_on": [
+          "e3f1"
+        ],
+        "out_of_scope": [
+          "Exportação",
+          "Contagem por situação (é de e3f1)"
+        ]
+      }
+    ],
+    "definition_of_done": [
+      "O gráfico existe e não atrapalha nenhuma tela"
+    ]
+  },
+  "contexto": {
+    "base": "docs/spec/base.json",
+    "spec_completa": "docs/SPEC.md",
+    "progresso": "docs/PROGRESS.md",
+    "agente": {
+      "id": "ag-fullstack",
+      "name": "Agente de fatia vertical",
+      "role": "Rota e tela da mesma capacidade, entregues juntas e funcionando.",
+      "model": "claude-opus-5",
+      "rules": [
+        "A sprint só fecha com a tela usando a rota de verdade, nunca com dado simulado.",
+        "Toda lista nasce com carregando, vazio e erro com repetição — não é passada posterior.",
+        "Validação da tela usa o mesmo schema Zod do servidor, ancorada por error.fields.",
+        "Regra de negócio fica no domínio; componente não decide alçada.",
+        "Fidelidade total ao artboard da sua sprint (meta.mockups): estrutura, textos, estados, cores, tipografia e espaçamento saem do mockup, não de estimativa. Divergir só pelo que já está na lista de divergências deliberadas."
+      ]
+    },
+    "modelos_tocados": [
+      "Pedido"
+    ],
+    "verificacoes": [
+      "npx tsc --noEmit",
+      "npm run lint",
+      "npm test"
+    ]
+  }
+}
