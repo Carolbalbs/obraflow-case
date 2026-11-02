@@ -18,7 +18,7 @@ Os [critérios de avaliação e seus pesos](/docs/) estão na Introdução.
 
 {{< cards >}}
   {{< card link="https://wa.me/5571983002588" title="WhatsApp" icon="phone" subtitle="+55 71 98300-2588">}}
-  {{< card link="mailto:carolbalbino4@fgmail.com" title="E-mail" icon="mail" subtitle="carolbalbino4@fgmail.com" >}}
+  {{< card link="mailto:carolbalbinosilva4@gmail.com" title="E-mail" icon="mail" subtitle="carolbalbinosilva4@gmail.com" >}}
 {{< /cards >}}
 
 ## As sete decisões registradas
