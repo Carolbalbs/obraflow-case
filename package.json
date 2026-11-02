@@ -10,8 +10,7 @@
     "test:watch": "vitest",
     "lint": "eslint",
     "seed": "tsx prisma/seed.ts",
-    "db:reset": "prisma migrate reset --force",
-    "spec:md": "node scripts/spec-md.mjs"
+    "db:reset": "prisma migrate reset --force"
   },
   "dependencies": {
     "@prisma/adapter-better-sqlite3": "^7.10.1",

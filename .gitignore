@@ -52,3 +52,19 @@ prisma/test.db
 # banco local
 /dev.db
 /dev.db-journal
+
+# documentos de processo (ciclo coder–evaluator): ficam no disco, fora do repositório
+/AGENTS.md
+/docs/PRD.md
+/docs/PRD-TEMPLATE.md
+/docs/PROGRESS.md
+/docs/SPEC.md
+/docs/SPEC-TEMPLATE.*
+/docs/spec/
+/docs/specs/
+/docs/sprints/
+/docs/plano-incremental.md
+/docs/plano-testes-etapa2.md
+/docs/ciclo-coder-evaluator.md
+/docs/checklist.md
+/scripts/spec-md.mjs

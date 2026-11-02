@@ -21,5 +21,4 @@ Este conteúdo é o mesmo do [`README.md`](https://github.com/Carolbalbs/obraflo
 
 O que **não** entrou, e por quê: sem autenticação com senha ou SSO, sem entidade `Empresa`, sem
 telas de cadastro de obra/fornecedor/usuário, sem anexo, sem notificação, sem edição de pedido
-submetido, sem aprovação em paralelo. Cada ausência é deliberada e está justificada no
-[PRD, § 3 Fora de escopo](https://github.com/Carolbalbs/obraflow-case/blob/main/docs/PRD.md#3-fora-de-escopo--o-que-não-será-feito).
+submetido, sem aprovação em paralelo. Cada ausência é deliberada.

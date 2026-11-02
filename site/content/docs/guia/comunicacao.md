@@ -26,7 +26,7 @@ mesmas chaves que o Zod produziu no cliente.
 
 "Sessão" na tabela abaixo é qualquer um dos quatro papéis; sem sessão, toda rota responde
 `403 SEM_PERMISSAO`. Obras, fornecedores e usuários são **só listados**: o cadastro deles é feito
-pelo seed e está fora de escopo ([PRD, § 3](https://github.com/Carolbalbs/obraflow-case/blob/main/docs/PRD.md#3-fora-de-escopo--o-que-não-será-feito)).
+pelo seed e está fora de escopo.
 
 | Método e rota | Quem pode | O que faz |
 |---|---|---|

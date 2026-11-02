@@ -2,8 +2,7 @@
 
 Cada exigência do enunciado do case (o `README.md` original do fork, no commit `2b90b3e`) cruzada
 com o lugar do projeto que a implementa. Levantado em 31/10/2026 lendo o código e exercitando a
-API contra o servidor local; atualizado em 01/11/2026 depois dos fixes finais (ver
-[PROGRESS.md, § Fixes finais](PROGRESS.md)) e conferido de novo na mesma data, antes de
+API contra o servidor local; atualizado em 01/11/2026 depois dos fixes finais e conferido de novo na mesma data, antes de
 fechar o PR: referências de linha revistas e cada validação reexecutada por `curl`.
 
 **Legenda:** ✅ atendido · ◐ atendido com divergência deliberada · ⚠️ parcial ou risco · ❌ pendente
@@ -108,20 +107,19 @@ fechar o PR: referências de linha revistas e cada validação reexecutada por `
 | README: como o front conversa com o back | ✅ | [README.md:337](../README.md#L337) |
 | README: consistência e integridade | ✅ | [README.md:411](../README.md#L411) |
 | README: o que mudaria em produção | ✅ | [README.md:532](../README.md#L532) |
-| Fork e Pull Request até 01/11/2026 23h59 | ⚠️ | Commitado no branch `resolucao-obraflow` do fork e PR aberto **dentro do fork** ([Carolbalbs/obraflow-case#1](https://github.com/Carolbalbs/obraflow-case/pull/1)). O destino previsto em [pull-request.md](pull-request.md) é `ObraFlow/obraflow-case` |
-| E-mail e telefone na descrição do PR | ❌ | Ainda não preenchidos — os marcadores continuam em [pull-request.md](pull-request.md) |
+| Fork e Pull Request até 01/11/2026 23h59 | ✅ | Branch `resolucao-obraflow` do fork `Carolbalbs/obraflow-case`, PR aberto para `ObraFlow/obraflow-case` |
+| E-mail e telefone na descrição do PR | ✅ | Seção "Contato" de [pull-request.md](pull-request.md), copiada na descrição do PR |
 
 ---
 
 ## Riscos antes do PR, do mais grave ao menos
 
-1. **❌ Contato no PR.** E-mail e telefone ainda não estão na descrição do PR.
-2. **⚠️ Destino do PR.** O PR está aberto dentro do fork; o enunciado pede o PR para o
-   repositório original. É decisão da autora.
+Nenhum risco aberto.
 
 ### Resolvidos em 01/11/2026
 
-- ~~Commit~~ — feito no branch `resolucao-obraflow`, com a composição proposta em PROGRESS.md.
+- ~~Contato no PR~~ — e-mail e WhatsApp na descrição.
+- ~~Commit~~ — feito no branch `resolucao-obraflow`.
 - ~~Erros de tipo na UI~~ — três referências quebradas (`BOTAO`, `DESABILITADO_NEUTRO` e o ref
   `campo` sombreando o helper de estilos) corrigidas; `tsc` limpo.
 

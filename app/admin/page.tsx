@@ -3,8 +3,7 @@
  *
  * Rota própria, e não uma seção no topo de `/alcadas`: a tela de alçada responde ao artboard
  * `Alcadas`, que não desenha gráfico nenhum, e ela já foi aprovada com critério de fidelidade a
- * esse desenho. O painel é **outra** tela do mesmo canvas, e tem endereço próprio — a
- * justificativa inteira está em `docs/PROGRESS.md`.
+ * esse desenho. O painel é **outra** tela do mesmo canvas, e tem endereço próprio.
  *
  * Como em `/alcadas`, a decisão de papel aqui não é o controle de acesso: o controle é o 403 de
  * `GET /api/pedidos/painel` e de `GET /api/pedidos/resumo`, que vale para quem chamar as rotas

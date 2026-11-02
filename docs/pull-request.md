@@ -1,10 +1,6 @@
 # Descrição do Pull Request
 
-> **Arquivo de preparação — o PR ainda NÃO foi aberto.**
->
-> Antes de abrir, substitua os dois marcadores `⟨…⟩` abaixo pelo e-mail e pelo telefone de
-> contato: o enunciado exige os dois **na descrição do PR**, e eles são o único conteúdo deste
-> texto que não pode ser preenchido por quem o escreveu.
+> Texto da descrição do Pull Request, com o contato que o enunciado exige.
 >
 > Destino: `Carolbalbs/obraflow-case` → `ObraFlow/obraflow-case`, base `main`.
 > Prazo do enunciado: **01/11/2026 às 23:59**.
@@ -23,8 +19,8 @@ ObraFlow — aprovações por alçada: três telas, API e dados de demonstraçã
 
 ### Contato
 
-- **E-mail:** ⟨preencher⟩
-- **WhatsApp:** ⟨preencher⟩
+- **E-mail:** carolbalbinosilva4@gmail.com
+- **WhatsApp:** (71) 98300-2588
 
 ---
 

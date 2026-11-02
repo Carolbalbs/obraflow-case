@@ -63,5 +63,5 @@ O levantamento completo, critério a critério, está em [`docs/criterios-do-enu
 | README: como o front conversa com o back | ✅ | README.md:337 |
 | README: consistência e integridade | ✅ | README.md:411 |
 | README: o que mudaria em produção | ✅ | README.md:532 |
-| Fork e Pull Request até 01/11/2026 23h59 | ⚠️ | Commitado no branch `resolucao-obraflow` do fork e PR aberto dentro do fork ([Carolbalbs/obraflow-case#1](https://github.com/Carolbalbs/obraflow-case/pull/1)); o destino previsto é `ObraFlow/obraflow-case` |
-| E-mail e telefone na descrição do PR | ❌ | Ainda não preenchidos — os marcadores continuam em pull-request.md |
+| Fork e Pull Request até 01/11/2026 23h59 | ✅ | Branch `resolucao-obraflow` do fork, PR aberto para `ObraFlow/obraflow-case` |
+| E-mail e telefone na descrição do PR | ✅ | Na descrição do PR |

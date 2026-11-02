@@ -95,8 +95,5 @@ endereço da tabela de endpoints.
 | Documento | O que é |
 |---|---|
 | [`docs/enunciado.md`](https://github.com/Carolbalbs/obraflow-case/blob/main/docs/enunciado.md) | O enunciado do case, preservado na íntegra |
-| [`docs/PRD.md`](https://github.com/Carolbalbs/obraflow-case/blob/main/docs/PRD.md) | Problema, 12 goals verificáveis, fora de escopo e user stories |
-| [`docs/SPEC.md`](https://github.com/Carolbalbs/obraflow-case/blob/main/docs/SPEC.md) | A especificação completa — **gerada** de `docs/spec/*.json` por `npm run spec:md` |
 | [`docs/adr/`](https://github.com/Carolbalbs/obraflow-case/blob/main/docs/adr/) | As sete decisões que o resto do código assume |
 | [`GLOSSARY.md`](https://github.com/Carolbalbs/obraflow-case/blob/main/GLOSSARY.md) | O vocabulário: faixa, cadeia, etapa, alçada, aprovador da vez |
-| [`docs/PROGRESS.md`](https://github.com/Carolbalbs/obraflow-case/blob/main/docs/PROGRESS.md) | O que cada sprint deixou pronto, decidiu e deixou pendente |

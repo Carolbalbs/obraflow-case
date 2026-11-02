@@ -11,7 +11,7 @@
  *
  * O pedido precisa estar pendente e o usuário precisa ser o aprovador da vez. Como o seed ainda
  * não traz faixa nem pedido (isso é da Sprint 8), o cenário é montado antes pelas rotas das
- * Sprints 4 e 5 — está descrito na seção da Sprint 6 em docs/PROGRESS.md.
+ * Sprints 4 e 5.
  */
 
 const [, , pedidoId, usuarioId, baseUrl = 'http://localhost:3000'] = process.argv

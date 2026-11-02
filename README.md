@@ -279,8 +279,7 @@ da demonstração.
 
 O que **não** entrou, e por quê: sem autenticação com senha ou SSO, sem entidade `Empresa`, sem
 telas de cadastro de obra/fornecedor/usuário, sem anexo, sem notificação, sem edição de pedido
-submetido, sem aprovação em paralelo. Cada ausência é deliberada e está justificada no
-[PRD, § 3 Fora de escopo](docs/PRD.md#3-fora-de-escopo--o-que-não-será-feito).
+submetido, sem aprovação em paralelo. Cada ausência é deliberada.
 
 ### Como a alçada é modelada, calculada e persistida
 
@@ -353,7 +352,7 @@ mesmas chaves que o Zod produziu no cliente.
 
 "Sessão" na tabela abaixo é qualquer um dos quatro papéis; sem sessão, toda rota responde
 `403 SEM_PERMISSAO`. Obras, fornecedores e usuários são **só listados**: o cadastro deles é feito
-pelo seed e está fora de escopo ([PRD, § 3](docs/PRD.md#3-fora-de-escopo--o-que-não-será-feito)).
+pelo seed e está fora de escopo.
 
 | Método e rota | Quem pode | O que faz |
 |---|---|---|
@@ -526,9 +525,6 @@ diverge do enunciado do case. As que valem para quem avalia:
   controle; sem ele a única saída seria apagar o cookie à mão.
 - **Nomes e números dos mockups são ilustrativos.** O que vale é o seed.
 
-A lista fechada, com as justificativas por extenso, está em
-[`docs/SPEC.md`, § Mockups](docs/SPEC.md).
-
 ### O que mudaria em produção
 
 O que está aqui é o recorte do case executando local. O que mudaria, e por quê:
@@ -637,11 +633,8 @@ endereço da tabela de endpoints.
 | Documento | O que é |
 |---|---|
 | [`docs/enunciado.md`](docs/enunciado.md) | O enunciado do case, preservado na íntegra |
-| [`docs/PRD.md`](docs/PRD.md) | Problema, 12 goals verificáveis, fora de escopo e user stories |
-| [`docs/SPEC.md`](docs/SPEC.md) | A especificação completa — **gerada** de `docs/spec/*.json` por `npm run spec:md` |
 | [`docs/adr/`](docs/adr/) | As sete decisões que o resto do código assume |
 | [`GLOSSARY.md`](GLOSSARY.md) | O vocabulário: faixa, cadeia, etapa, alçada, aprovador da vez |
-| [`docs/PROGRESS.md`](docs/PROGRESS.md) | O que cada sprint deixou pronto, decidiu e deixou pendente |
 
 ### As sete decisões registradas
 

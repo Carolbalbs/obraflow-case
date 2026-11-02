@@ -187,6 +187,3 @@ diverge do enunciado do case. As que valem para quem avalia:
 - **O botão "Sair"** foi acrescentado ao cabeçalho: `DELETE /api/sessao` existe e precisava de um
   controle; sem ele a única saída seria apagar o cookie à mão.
 - **Nomes e números dos mockups são ilustrativos.** O que vale é o seed.
-
-A lista fechada, com as justificativas por extenso, está em
-[`docs/SPEC.md`, § Mockups](https://github.com/Carolbalbs/obraflow-case/blob/main/docs/SPEC.md).
