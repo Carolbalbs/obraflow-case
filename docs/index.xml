@@ -139,13 +139,13 @@
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;Fork e Pull Request até 01/11/2026 23h59&lt;/td&gt;
-&lt;td style="text-align: center"&gt;❌&lt;/td&gt;
-&lt;td&gt;&lt;strong&gt;Nada commitado.&lt;/strong&gt; Texto do PR pronto em pull-request.md, não aberto. Composição de commit proposta em PROGRESS.md, § Fixes finais&lt;/td&gt;
+&lt;td style="text-align: center"&gt;✅&lt;/td&gt;
+&lt;td&gt;Branch &lt;code&gt;resolucao-obraflow&lt;/code&gt; do fork, PR aberto para &lt;code&gt;ObraFlow/obraflow-case&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;E-mail e telefone na descrição do PR&lt;/td&gt;
-&lt;td style="text-align: center"&gt;❌&lt;/td&gt;
-&lt;td&gt;Ainda não preenchidos — os marcadores continuam em pull-request.md&lt;/td&gt;
+&lt;td style="text-align: center"&gt;✅&lt;/td&gt;
+&lt;td&gt;Na descrição do PR&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;</description></item><item><title>Dados de demonstração</title><link>https://carolbalbs.github.io/obraflow-case/tutoriais/dados-demo/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://carolbalbs.github.io/obraflow-case/tutoriais/dados-demo/</guid><description>
@@ -466,8 +466,7 @@ depois não reescreve pedido em andamento. Detalhes em &lt;a href="https://carol
 &lt;/table&gt;
 &lt;p&gt;O que &lt;strong&gt;não&lt;/strong&gt; entrou, e por quê: sem autenticação com senha ou SSO, sem entidade &lt;code&gt;Empresa&lt;/code&gt;, sem
 telas de cadastro de obra/fornecedor/usuário, sem anexo, sem notificação, sem edição de pedido
-submetido, sem aprovação em paralelo. Cada ausência é deliberada e está justificada no
-&lt;a href="https://github.com/Carolbalbs/obraflow-case/blob/main/docs/PRD.md#3-fora-de-escopo--o-que-n%c3%a3o-ser%c3%a1-feito" target="_blank" rel="noopener"&gt;PRD, § 3 Fora de escopo&lt;/a&gt;.&lt;/p&gt;</description></item><item><title>Backend e persistência</title><link>https://carolbalbs.github.io/obraflow-case/docs/escopo/backend/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://carolbalbs.github.io/obraflow-case/docs/escopo/backend/</guid><description>
+submetido, sem aprovação em paralelo. Cada ausência é deliberada.&lt;/p&gt;</description></item><item><title>Backend e persistência</title><link>https://carolbalbs.github.io/obraflow-case/docs/escopo/backend/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://carolbalbs.github.io/obraflow-case/docs/escopo/backend/</guid><description>
 &lt;p&gt;Você deve projetar e implementar a &lt;strong&gt;API&lt;/strong&gt; (ou outro mecanismo de comunicação entre
 front-end e servidor) e a &lt;strong&gt;persistência&lt;/strong&gt; necessários para suportar o desafio. O contrato,
 as rotas e o formato dos dados são &lt;strong&gt;livres&lt;/strong&gt;, desde que atendam aos comportamentos abaixo.&lt;/p&gt;
@@ -1453,9 +1452,7 @@ rascunho incompleto exigiria chamar a rota por fora da tela.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;O botão &amp;ldquo;Sair&amp;rdquo;&lt;/strong&gt; foi acrescentado ao cabeçalho: &lt;code&gt;DELETE /api/sessao&lt;/code&gt; existe e precisava de um
 controle; sem ele a única saída seria apagar o cookie à mão.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Nomes e números dos mockups são ilustrativos.&lt;/strong&gt; O que vale é o seed.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;A lista fechada, com as justificativas por extenso, está em
-&lt;a href="https://github.com/Carolbalbs/obraflow-case/blob/main/docs/SPEC.md" target="_blank" rel="noopener"&gt;&lt;code&gt;docs/SPEC.md&lt;/code&gt;, § Mockups&lt;/a&gt;.&lt;/p&gt;</description></item><item><title>Front-end ↔ back-end</title><link>https://carolbalbs.github.io/obraflow-case/docs/guia/comunicacao/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://carolbalbs.github.io/obraflow-case/docs/guia/comunicacao/</guid><description>
+&lt;/ul&gt;</description></item><item><title>Front-end ↔ back-end</title><link>https://carolbalbs.github.io/obraflow-case/docs/guia/comunicacao/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://carolbalbs.github.io/obraflow-case/docs/guia/comunicacao/</guid><description>
 &lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200"&gt;
 &lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/&gt;&lt;/svg&gt;&lt;/div&gt;
 &lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
@@ -1485,7 +1482,7 @@ e 422 noutro. &lt;code&gt;fields&lt;/code&gt; é o que permite ao formulário &l
 mesmas chaves que o Zod produziu no cliente.&lt;/p&gt;
 &lt;p&gt;&amp;ldquo;Sessão&amp;rdquo; na tabela abaixo é qualquer um dos quatro papéis; sem sessão, toda rota responde
 &lt;code&gt;403 SEM_PERMISSAO&lt;/code&gt;. Obras, fornecedores e usuários são &lt;strong&gt;só listados&lt;/strong&gt;: o cadastro deles é feito
-pelo seed e está fora de escopo (&lt;a href="https://github.com/Carolbalbs/obraflow-case/blob/main/docs/PRD.md#3-fora-de-escopo--o-que-n%c3%a3o-ser%c3%a1-feito" target="_blank" rel="noopener"&gt;PRD, § 3&lt;/a&gt;).&lt;/p&gt;
+pelo seed e está fora de escopo.&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;

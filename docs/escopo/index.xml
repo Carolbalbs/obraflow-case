@@ -648,6 +648,4 @@ rascunho incompleto exigiria chamar a rota por fora da tela.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;O botão &amp;ldquo;Sair&amp;rdquo;&lt;/strong&gt; foi acrescentado ao cabeçalho: &lt;code&gt;DELETE /api/sessao&lt;/code&gt; existe e precisava de um
 controle; sem ele a única saída seria apagar o cookie à mão.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Nomes e números dos mockups são ilustrativos.&lt;/strong&gt; O que vale é o seed.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;A lista fechada, com as justificativas por extenso, está em
-&lt;a href="https://github.com/Carolbalbs/obraflow-case/blob/main/docs/SPEC.md" target="_blank" rel="noopener"&gt;&lt;code&gt;docs/SPEC.md&lt;/code&gt;, § Mockups&lt;/a&gt;.&lt;/p&gt;</description></item></channel></rss>
+&lt;/ul&gt;</description></item></channel></rss>
