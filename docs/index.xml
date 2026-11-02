@@ -1042,6 +1042,7 @@ com o período anterior de mesmo tamanho), valor aprovado por semana e por obra,
 (pelo &lt;strong&gt;snapshot&lt;/strong&gt; de cada pedido, não pela alçada de hoje), tempo de decisão por aprovador, a fila
 de pedidos parados há mais de 24 h e a contagem de pedidos por situação. O filtro de obra recorta
 tudo. Os números saem de &lt;code&gt;src/domain/painel.ts&lt;/code&gt;, que tem 18 casos de teste.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://carolbalbs.github.io/obraflow-case/screenshots/administracao-painel.png" alt="Administração — painel da empresa, como Marina" loading="lazy" /&gt;&lt;/p&gt;
 &lt;h2 data-hextra-search-id="a-prova-visual-do-snapshot"&gt;A prova visual do snapshot&lt;span class="hx:absolute hx:-mt-20" id="a-prova-visual-do-snapshot"&gt;&lt;/span&gt;
 &lt;a href="#a-prova-visual-do-snapshot" class="subheading-anchor" aria-label="Link permanente para esta secção"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;O pedido &lt;code&gt;#1007&lt;/code&gt; foi submetido quando a faixa da obra era &lt;strong&gt;&amp;ldquo;até R$ 6.000,00 → João Ferreira&amp;rdquo;&lt;/strong&gt;.
 Depois disso a faixa foi editada e hoje é &lt;strong&gt;&amp;ldquo;até R$ 10.000,00 → Amanda Prado&amp;rdquo;&lt;/strong&gt; (veja a tela 3
