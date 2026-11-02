@@ -3,7 +3,8 @@
 Cada exigência do enunciado do case (o `README.md` original do fork, no commit `2b90b3e`) cruzada
 com o lugar do projeto que a implementa. Levantado em 31/10/2026 lendo o código e exercitando a
 API contra o servidor local; atualizado em 01/11/2026 depois dos fixes finais (ver
-[PROGRESS.md, § Fixes finais](PROGRESS.md)).
+[PROGRESS.md, § Fixes finais](PROGRESS.md)) e conferido de novo na mesma data, antes de
+fechar o PR: referências de linha revistas e cada validação reexecutada por `curl`.
 
 **Legenda:** ✅ atendido · ◐ atendido com divergência deliberada · ⚠️ parcial ou risco · ❌ pendente
 
@@ -51,7 +52,7 @@ API contra o servidor local; atualizado em 01/11/2026 depois dos fixes finais (v
 | Fornecedor, obrigatório | ✅ | `submissaoSchema`, [schemas.ts:214](../src/domain/schemas.ts#L214) |
 | **Data do pedido, obrigatória** | ✅ | Campo `type="date"` em [FormularioDePedido.tsx:298](../src/ui/componentes/FormularioDePedido.tsx#L298); obrigatória na submissão ([schemas.ts:151](../src/domain/schemas.ts#L151), `fields.dataPedido` = "Informe a data do pedido."), opcional no rascunho. A submissão não a sobrescreve: carimba só `submetidoEm` ([submissao/route.ts:73](../app/api/pedidos/[id]/submissao/route.ts#L73)). Distinção documentada em [README.md:403](../README.md#L403). Verificado por `curl`: sem data, 422; com data, a gravada é a enviada |
 | Observações internas, opcional | ✅ | `observacoes`, até 2.000 caracteres |
-| Começa com um item em branco; adicionar, editar, remover N itens | ✅ | [FormularioDePedido.tsx:137](../src/ui/componentes/FormularioDePedido.tsx#L137) `itemEmBranco`; adicionar em [ItensDoPedido.tsx:49](../src/ui/componentes/ItensDoPedido.tsx#L49), remover em [:247](../src/ui/componentes/ItensDoPedido.tsx#L247) |
+| Começa com um item em branco; adicionar, editar, remover N itens | ✅ | [FormularioDePedido.tsx:137](../src/ui/componentes/FormularioDePedido.tsx#L137) `itemEmBranco`; adicionar em [ItensDoPedido.tsx:134](../src/ui/componentes/ItensDoPedido.tsx#L134), remover em [:247](../src/ui/componentes/ItensDoPedido.tsx#L247) |
 | Quantidade positiva, aceitando decimais | ✅ | [schemas.ts:67](../src/domain/schemas.ts#L67) — até três casas, precisão excedente recusada, nunca truncada |
 | **Preço unitário: valor monetário não negativo** | ✅ | Zero aceito, negativo recusado ("O preço unitário não pode ser negativo.", [schemas.ts:57](../src/domain/schemas.ts#L57)). No rascunho, preço não informado é `null` — migration `20261101110631_preco_unitario_opcional_no_rascunho` —, para que ausência não passe pela submissão como R$ 0,00 |
 | Total do item calculado, não editável | ✅ | `<input readOnly>` em [ItensDoPedido.tsx:233](../src/ui/componentes/ItensDoPedido.tsx#L233) |
@@ -65,9 +66,9 @@ API contra o servidor local; atualizado em 01/11/2026 depois dos fixes finais (v
 |---|:---:|---|
 | Identificador, obra, fornecedor, data, itens, total, situação, alçada atual, ações | ✅ | [ListaDePedidos.tsx](../src/ui/componentes/ListaDePedidos.tsx) sobre `GET /api/pedidos` |
 | Detalhe com itens (descrição, quantidade, unidade, preço, total) e histórico | ✅ | [DetalheDoPedido.tsx](../src/ui/componentes/DetalheDoPedido.tsx), cadeia em [CadeiaDoPedido.tsx:26](../src/ui/componentes/CadeiaDoPedido.tsx#L26) |
-| Pendentes refletem o nível atual, calculado e persistido pelo back | ✅ | `etapaAtual` e `podeDecidir` vêm da API ([server/pedido.ts:94](../src/server/pedido.ts#L94)); a lista do aprovador abre em "aguardando minha decisão" ([ListaDePedidos.tsx:46](../src/ui/componentes/ListaDePedidos.tsx#L46)) |
+| Pendentes refletem o nível atual, calculado e persistido pelo back | ✅ | `etapaAtual` e `podeDecidir` vêm da API ([server/pedido.ts:94](../src/server/pedido.ts#L94)); a lista do aprovador abre em "aguardando minha decisão" ([ListaDePedidos.tsx:52](../src/ui/componentes/ListaDePedidos.tsx#L52)) |
 | Rejeição exige motivo, interrompe o fluxo, fica no histórico | ✅ | [DialogoDeRejeicao.tsx](../src/ui/componentes/DialogoDeRejeicao.tsx) (foco preso, Esc); efeito em [decisao.ts:122](../src/domain/decisao.ts#L122) `situacaoApos` |
-| Cadeia concluída: decisão desabilitada com explicação | ✅ | [DetalheDoPedido.tsx:285](../src/ui/componentes/DetalheDoPedido.tsx#L285) — explicação própria para cada motivo |
+| Cadeia concluída: decisão desabilitada com explicação | ✅ | [DetalheDoPedido.tsx:358](../src/ui/componentes/DetalheDoPedido.tsx#L358) — explicação própria para cada motivo |
 
 ## Tela 3 — Regras da alçada
 
@@ -77,7 +78,7 @@ API contra o servidor local; atualizado em 01/11/2026 depois dos fixes finais (v
 | Listar usuários disponíveis | ✅ | [EditorDeFaixa.tsx](../src/ui/componentes/EditorDeFaixa.tsx) |
 | Criar, editar e remover faixas | ✅ | `RegrasDaAlcada`, `EditorDeFaixa`, `DialogoDeRemocao` (que conta os pedidos em andamento afetados) |
 | Definir o limite de valor de cada faixa | ✅ | `limiteCentavos`, inclusivo; a faixa aberta é a sem limite |
-| Adicionar, remover e reordenar aprovadores | ✅ | [EditorDeFaixa.tsx:53](../src/ui/componentes/EditorDeFaixa.tsx#L53); verificado: reordenar e salvar persiste |
+| Adicionar, remover e reordenar aprovadores | ✅ | [EditorDeFaixa.tsx:112](../src/ui/componentes/EditorDeFaixa.tsx#L112); verificado: reordenar e salvar persiste |
 | Listar as regras salvas da obra | ✅ | `GET /api/obras/{id}/faixas` |
 | Comportamento sem regra aplicável definido e documentado | ✅ | Três caminhos em [alcada.ts:76](../src/domain/alcada.ts#L76); 422 `SEM_REGRA_APLICAVEL` mantendo o rascunho; documentado em [README.md:191](../README.md#L191) e [:318](../README.md#L318) |
 
@@ -91,7 +92,7 @@ API contra o servidor local; atualizado em 01/11/2026 depois dos fixes finais (v
 | Nenhuma obra cadastrada | ✅ | Empty state em [RegrasDaAlcada.tsx:223](../src/ui/componentes/RegrasDaAlcada.tsx#L223) e [FormularioDePedido.tsx:263](../src/ui/componentes/FormularioDePedido.tsx#L263) |
 | API fora do ar / 500 | ✅ | `CaixaDeErro` com "Tentar novamente" em [estados.tsx:73](../src/ui/componentes/estados.tsx#L73) |
 | Rejeitar sem motivo | ✅ | Barrado no diálogo antes do envio; o servidor responde 422 com `fields.motivo` (verificado) |
-| Cadeia já concluída | ✅ | [DetalheDoPedido.tsx:285](../src/ui/componentes/DetalheDoPedido.tsx#L285) |
+| Cadeia já concluída | ✅ | [DetalheDoPedido.tsx:358](../src/ui/componentes/DetalheDoPedido.tsx#L358) |
 | Loading em toda lista | ✅ | `Recurso` em [estados.tsx:122](../src/ui/componentes/estados.tsx#L122) escolhe esqueleto, vazio ou erro pela forma do hook |
 
 ## Entrega
@@ -107,17 +108,22 @@ API contra o servidor local; atualizado em 01/11/2026 depois dos fixes finais (v
 | README: como o front conversa com o back | ✅ | [README.md:337](../README.md#L337) |
 | README: consistência e integridade | ✅ | [README.md:411](../README.md#L411) |
 | README: o que mudaria em produção | ✅ | [README.md:532](../README.md#L532) |
-| Fork e Pull Request até 01/11/2026 23h59 | ❌ | **Nada commitado.** Texto do PR pronto em [pull-request.md](pull-request.md), não aberto. Composição de commit proposta em [PROGRESS.md, § Fixes finais](PROGRESS.md) |
+| Fork e Pull Request até 01/11/2026 23h59 | ⚠️ | Commitado no branch `resolucao-obraflow` do fork e PR aberto **dentro do fork** ([Carolbalbs/obraflow-case#1](https://github.com/Carolbalbs/obraflow-case/pull/1)). O destino previsto em [pull-request.md](pull-request.md) é `ObraFlow/obraflow-case` |
 | E-mail e telefone na descrição do PR | ❌ | Ainda não preenchidos — os marcadores continuam em [pull-request.md](pull-request.md) |
 
 ---
 
 ## Riscos antes do PR, do mais grave ao menos
 
-1. **❌ Commit e PR.** Nada está commitado e o PR não existe. Faltam também e-mail e telefone na
-   descrição. É decisão da autora, inclusive o que entra no commit.
+1. **❌ Contato no PR.** E-mail e telefone ainda não estão na descrição do PR.
+2. **⚠️ Destino do PR.** O PR está aberto dentro do fork; o enunciado pede o PR para o
+   repositório original. É decisão da autora.
 
 ### Resolvidos em 01/11/2026
+
+- ~~Commit~~ — feito no branch `resolucao-obraflow`, com a composição proposta em PROGRESS.md.
+- ~~Erros de tipo na UI~~ — três referências quebradas (`BOTAO`, `DESABILITADO_NEUTRO` e o ref
+  `campo` sombreando o helper de estilos) corrigidas; `tsc` limpo.
 
 - ~~Preço zero~~ — aceito, como o enunciado pede; negativo recusado. Preço não informado no
   rascunho passou a ser `null` (migration nova), para não virar R$ 0,00 na submissão.
