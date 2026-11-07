@@ -4,7 +4,16 @@ weight: 1
 next: /docs/getting-started
 ---
 
-Esta é a documentação da minha entrega para o desafio full-stack do **ObraFlow**.
+## Como navegar
+
+{{< cards >}}
+  {{< card link="getting-started" title="Primeiros passos" icon="play" subtitle="Como rodar, o roteiro de avaliação em 5 minutos e a verificação por curl." >}}
+  {{< card link="guia/" title="Guia" icon="book-open" subtitle="As decisões técnicas: stack, modelagem da alçada, comunicação, consistência e produção." >}}
+  {{< card link="/tutoriais/" title="Tutoriais" icon="academic-cap" subtitle="Dados de demonstração e screenshots das telas." >}}
+  {{< card link="escopo/" title="Escopo do desafio" icon="clipboard-list" subtitle="O enunciado original e como cada parte foi resolvida." >}}
+{{< /cards >}}
+
+Documentação de entrega para o desafio full-stack do **ObraFlow**.
 
 O **ObraFlow** é uma plataforma para empresas de construção civil, concebida como parte de
 um ERP. Este é o seu **serviço de aprovações**: ele gerencia **alçadas** — regras que
@@ -16,48 +25,6 @@ O que foi construído é a **versão simplificada** desse fluxo: as telas de um 
 pedidos de compra com aprovação por alçada, mais a API e a persistência que as sustentam.
 {{< /callout >}}
 
-## O serviço em uma tabela
-
-Pedidos de compra que percorrem uma **cadeia de aprovadores definida pela alçada da obra**: faixas
-de valor, cada uma com os seus aprovadores em ordem. O total do pedido escolhe a faixa; a faixa
-escolhe quem assina e em que sequência; e só o aprovador da vez decide.
-
-Resposta ao [enunciado do case](https://github.com/ObraFlow/obraflow-case/blob/main/README.md).
-
-| | |
-|---|---|
-| **Stack** | Next.js 16 (App Router) · React 19 · TypeScript · Prisma 7 · SQLite · Tailwind v4 · Vitest |
-| **Como roda** | `npm install && npx prisma migrate dev && npm run seed && npm run dev` |
-| **Telas** | 1 · Cadastro de pedido · 2 · Aprovação · 3 · Regras da alçada · e o painel da administração (`/admin`) |
-| **Dados de demonstração** | 3 obras, 6 usuários, 4 fornecedores, 3 faixas e **8 pedidos**, um em cada ponto do ciclo |
-| **Entrada** | sem senha, atrás da flag `DEMO_MODE` — troca de usuário em um clique |
-| **Documentação completa** | <https://carolbalbs.github.io/obraflow-case/> — o mesmo conteúdo deste README, em páginas, com os diagramas |
-
-## O que é avaliado
-
-| Critério | Peso | Onde está documentado |
-|---|---:|---|
-| Funcionamento completo: front-end, back-end e persistência | 25% | [Primeiros passos](/docs/getting-started) e [Tutoriais](/tutoriais/) |
-| **Modelagem e implementação das regras de alçada** | 20% | [Modelagem da alçada](/docs/guia/alcada) |
-| **Desenho de UI: hierarquia, clareza, consistência** | 20% | [Screenshots](/tutoriais/screenshots) |
-| **Qualidade de código, organização e decisões técnicas** | 15% | [Guia](/docs/guia/) |
-| **Estados (loading / empty / erro), responsividade e validações** | 10% | [Front-end](/docs/escopo/frontend) e [Screenshots](/tutoriais/screenshots) |
-| Documentação (`## Decisões técnicas`) | 10% | [Guia](/docs/guia/) |
-
-{{< callout type="info" >}}
-**UI + estados somam 30%** — tanto quanto o funcionamento completo. O desenho das telas
-não é acessório neste desafio.
-{{< /callout >}}
-
-## Como navegar
-
-{{< cards >}}
-  {{< card link="getting-started" title="Primeiros passos" icon="play" subtitle="Como rodar, o roteiro de avaliação em 5 minutos e a verificação por curl." >}}
-  {{< card link="guia/" title="Guia" icon="book-open" subtitle="As decisões técnicas: stack, modelagem da alçada, comunicação, consistência e produção." >}}
-  {{< card link="/tutoriais/" title="Tutoriais" icon="academic-cap" subtitle="Dados de demonstração e screenshots das telas." >}}
-  {{< card link="escopo/" title="Escopo do desafio" icon="clipboard-list" subtitle="O enunciado original e como cada parte foi resolvida." >}}
-{{< /cards >}}
-
 ## Em uma frase
 
 | Pergunta | Resposta curta |
@@ -68,6 +35,16 @@ não é acessório neste desafio.
 | Quando a cadeia é formada? | Na **submissão** do pedido — e é gravada como snapshot. |
 | E se alguém rejeitar? | O fluxo para na hora, com **motivo obrigatório** no histórico. |
 
+| | |
+|---|---|
+| **Stack** | Next.js 16 (App Router) · React 19 · TypeScript · Prisma 7 · SQLite · Tailwind v4 · Vitest |
+| **Como roda** | `npm install && npx prisma migrate dev && npm run seed && npm run dev` |
+| **Telas** | 1 · Cadastro de pedido · 2 · Aprovação · 3 · Regras da alçada · e o painel da administração (`/admin`) |
+| **Dados de demonstração** | 3 obras, 6 usuários, 4 fornecedores, 3 faixas e **8 pedidos**, um em cada ponto do ciclo |
+| **Entrada** | sem senha, atrás da flag `DEMO_MODE` — troca de usuário em um clique |
+| **Documentação completa** | <https://carolbalbs.github.io/obraflow-case/> — o mesmo conteúdo deste README, em páginas, com os diagramas |
+
+
 ## Onde está cada coisa
 
 ```
@@ -77,7 +54,7 @@ src/server/          sessão, permissão, envelope de erro, transações
 src/ui/              componentes, hooks e as chamadas de API das telas
 prisma/              schema, migrations e o seed da demonstração
 scripts/             verificar.sh (prova por curl) e capturar-telas.mjs
-docs/                PRD, SPEC, ADRs, glossário, progresso e o enunciado original
+docs/                Documentação, ADRs, glossário e o enunciado original
 ```
 
 | Tela | Endereço | Quem abre | Página e componente |

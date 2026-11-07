@@ -5,6 +5,35 @@ prev: /docs/
 next: /docs/guia/
 ---
 
+## Como esta documentação está organizada
+
+{{% steps %}}
+
+### Guia
+
+As **decisões técnicas**: [tecnologias e motivos](/docs/guia/tecnologias),
+[modelagem da alçada](/docs/guia/alcada),
+[comunicação front ↔ back](/docs/guia/comunicacao),
+[consistência dos dados](/docs/guia/consistencia) e
+[o que mudaria em produção](/docs/guia/producao).
+
+### Tutoriais
+
+O caminho prático: [dados de demonstração](/tutoriais/dados-demo) e
+[screenshots das telas](/tutoriais/screenshots).
+
+### Escopo do desafio
+
+O enunciado original, para conferência: [regra de alçada](/docs/escopo/regra-de-alcada),
+[back-end e persistência](/docs/escopo/backend) e [front-end](/docs/escopo/frontend).
+
+### Entrega
+
+[Prazo e Pull Request](/docs/entrega/), o
+[checklist do `README.md`](/docs/entrega/readme) e [as decisões registradas](/docs/entrega/avaliacao).
+
+{{% /steps %}}
+
 {{< callout type="info" >}}
 Este conteúdo é o mesmo do [`README.md`](https://github.com/Carolbalbs/obraflow-case/blob/resolucao-obraflow/docs/README.md) da entrega, que continua sendo a referência exigida pelo enunciado.
 {{< /callout >}}
@@ -89,47 +118,3 @@ O bloco 4 cria o próprio pedido, para o script ser repetível. Ele é o único 
 pedido submetido é imutável e não tem como ser apagado. `npm run seed` devolve o banco ao estado
 da demonstração.
 
-## Como esta documentação está organizada
-
-{{% steps %}}
-
-### Guia
-
-As **decisões técnicas**: [tecnologias e motivos](/docs/guia/tecnologias),
-[modelagem da alçada](/docs/guia/alcada),
-[comunicação front ↔ back](/docs/guia/comunicacao),
-[consistência dos dados](/docs/guia/consistencia) e
-[o que mudaria em produção](/docs/guia/producao).
-
-### Tutoriais
-
-O caminho prático: [dados de demonstração](/tutoriais/dados-demo) e
-[screenshots das telas](/tutoriais/screenshots).
-
-### Escopo do desafio
-
-O enunciado original, para conferência: [regra de alçada](/docs/escopo/regra-de-alcada),
-[back-end e persistência](/docs/escopo/backend) e [front-end](/docs/escopo/frontend).
-
-### Entrega
-
-[Prazo e Pull Request](/docs/entrega/), o
-[checklist do `README.md`](/docs/entrega/readme) e [as decisões registradas](/docs/entrega/avaliacao).
-
-{{% /steps %}}
-
-## Regras que valem para tudo
-
-{{< callout type="info" >}}
-**A stack é livre.** Front-end, back-end, banco, ORM, biblioteca de estilos, testes e
-infraestrutura ficam a critério de quem resolve o desafio.
-{{< /callout >}}
-
-{{< callout type="warning" >}}
-**A aplicação precisa rodar localmente** conforme estas instruções, sem serviços pagos nem
-credenciais externas. `docker compose` é aceito, mas não obrigatório.
-{{< /callout >}}
-
-{{< callout type="info" >}}
-**IA é permitida** — mas é preciso explicar **cada decisão** na entrevista de 30 min.
-{{< /callout >}}

@@ -5,10 +5,6 @@ prev: /docs/escopo/backend
 next: /docs/entrega/
 ---
 
-**Três telas.** O layout é livre — **não há Figma, API ou implementação de referência**.
-O desenho das telas e as decisões de produto **fazem parte da avaliação**: UI vale **20%** e
-estados/responsividade/validações valem **10%**.
-
 {{< cards >}}
   {{< card title="1. Cadastro de pedido" icon="clipboard-list" subtitle="Dados gerais, N itens e totalização." >}}
   {{< card title="2. Aprovação" icon="check-circle" subtitle="Lista, detalhe, alçada atual e decisões." >}}
@@ -114,11 +110,6 @@ O comportamento para **valores sem regra aplicável** deve ser definido e docume
 **Loading state é obrigatório em toda lista.**
 {{< /callout >}}
 
-## Stack
-
-**Livre** — framework, biblioteca de estilos e testes a seu critério. Deve rodar localmente
-conforme o `README.md`, sem serviços pagos ou credenciais externas.
-
 ## Como foi resolvido
 
 As telas, uma a uma e com capturas, estão em [Screenshots das telas](/tutoriais/screenshots). Abaixo: o que cada papel vê, como os estados e validações exigidos foram atendidos e onde a interface diverge dos mockups.
@@ -171,19 +162,3 @@ Abaixo de 768 px as tabelas viram cartões e os botões sobem para alvos de toqu
 390 px nenhuma das cinco telas do fluxo (`/entrar`, `/pedidos`, `/pedidos/{id}`, `/pedidos/novo`,
 `/alcadas`) rola na horizontal. No painel `/admin` os KPIs empilham em coluna e só a tabela da
 fila de atenção rola, dentro do próprio cartão.
-
-#### Divergências deliberadas do mockup
-
-A interface foi desenhada contra artboards próprios, e divergir deles exige justificativa. Nenhuma
-diverge do enunciado do case. As que valem para quem avalia:
-
-- **O campo "Valor mínimo" da tela 3 existe, mas é de leitura.** A faixa guarda só o limite
-  superior; torná-lo editável criaria uma segunda fonte para o mesmo intervalo, e com ela os
-  buracos e sobreposições que o modelo torna irrepresentáveis.
-- **A navegação é uma barra superior, não uma coluna lateral.** Dois artboards desenham as duas
-  formas; as duas não cabem juntas.
-- **O botão "Salvar rascunho"** foi acrescentado entre os dois do mockup: sem ele, gravar um
-  rascunho incompleto exigiria chamar a rota por fora da tela.
-- **O botão "Sair"** foi acrescentado ao cabeçalho: `DELETE /api/sessao` existe e precisava de um
-  controle; sem ele a única saída seria apagar o cookie à mão.
-- **Nomes e números dos mockups são ilustrativos.** O que vale é o seed.

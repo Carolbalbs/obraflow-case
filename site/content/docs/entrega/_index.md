@@ -44,7 +44,3 @@ Abra um **Pull Request** para esse repositório até o prazo.
 - [ ] instruções claras para **instalar dependências, configurar o ambiente e iniciar a
       solução completa** (front-end, back-end e banco de dados, quando aplicável).
 
-{{< callout type="info" >}}
-O método de execução é livre; `docker compose` é **aceito, mas não obrigatório**.
-A aplicação precisa rodar **localmente**, sem serviços pagos ou credenciais externas.
-{{< /callout >}}

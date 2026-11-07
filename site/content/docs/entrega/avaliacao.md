@@ -4,19 +4,12 @@ weight: 2
 prev: /docs/entrega/readme
 ---
 
-## Uso de IA
-
-{{< callout type="info" >}}
-**IA é permitida** — mas é preciso explicar **cada decisão** na entrevista de 30 min.
-{{< /callout >}}
-
-Os [critérios de avaliação e seus pesos](/docs/) estão na Introdução.
-
 ## Contato
 
 **Ana Carolina Balbino**
 
 {{< cards >}}
+
   {{< card link="https://wa.me/5571983002588" title="WhatsApp" icon="phone" subtitle="+55 71 98300-2588">}}
   {{< card link="mailto:carolbalbinosilva4@gmail.com" title="E-mail" icon="mail" subtitle="carolbalbinosilva4@gmail.com" >}}
 {{< /cards >}}
