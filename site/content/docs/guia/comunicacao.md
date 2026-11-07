@@ -25,8 +25,8 @@ e 422 noutro. `fields` é o que permite ao formulário **ancorar a mensagem no c
 mesmas chaves que o Zod produziu no cliente.
 
 "Sessão" na tabela abaixo é qualquer um dos quatro papéis; sem sessão, toda rota responde
-`403 SEM_PERMISSAO`. Obras, fornecedores e usuários são **só listados**: o cadastro deles é feito
-pelo seed e está fora de escopo.
+`403 SEM_PERMISSAO`. Obras e fornecedores são listados por qualquer sessão e cadastrados pelo
+admin; usuários são só listados, porque vêm do seed.
 
 | Método e rota | Quem pode | O que faz |
 |---|---|---|
@@ -36,6 +36,8 @@ pelo seed e está fora de escopo.
 | `GET /api/obras` | sessão | Obras cadastradas — `id`, `nome`, `cidade`, por nome |
 | `GET /api/fornecedores` | sessão | Fornecedores cadastrados — `id`, `nome`, `documento`, por nome |
 | `GET /api/obras/{id}/faixas` | sessão | Faixas da obra, ordenadas, com os aprovadores na ordem |
+| `POST /api/obras` | admin | Cadastra a obra — `{ nome, cidade }` → `201` |
+| `POST /api/fornecedores` | admin | Cadastra o fornecedor — `{ nome, documento? }`, CNPJ com ou sem máscara, gravado mascarado → `201` |
 | `POST /api/obras/{id}/faixas` | admin | Cria a faixa e os aprovadores numa transação (`201`) |
 | `PUT /api/faixas/{id}` | admin | **Substitui a faixa inteira** — limite e lista ordenada |
 | `DELETE /api/faixas/{id}` | admin | Remove, e devolve `pedidosAfetados` |

@@ -191,3 +191,23 @@ describe('submissaoSchema', () => {
     expect(comDataPedido.ok && comDataPedido.valor.itens[0].precoUnitario).toBe(3300)
   })
 })
+
+describe('obraSchema e fornecedorSchema', () => {
+  it('exige nome e cidade da obra, com erro em cada campo', () => {
+    const vazia = Schemas.validarObra({})
+    const ok = Schemas.validarObra({ nome: '  Edifício Íris ', cidade: 'Lauro de Freitas/BA' })
+
+    expect(!vazia.ok && Object.keys(vazia.erro.campos ?? {}).sort()).toEqual(['cidade', 'nome'])
+    expect(ok.ok && ok.valor).toEqual({ nome: 'Edifício Íris', cidade: 'Lauro de Freitas/BA' })
+  })
+
+  it('aceita fornecedor sem CNPJ, grava o CNPJ mascarado e recusa o que não tem 14 dígitos', () => {
+    const semCnpj = Schemas.validarFornecedor({ nome: 'Vidraçaria Sol', documento: '' })
+    const semMascara = Schemas.validarFornecedor({ nome: 'Madeireira', documento: '11222333000181' })
+    const curto = Schemas.validarFornecedor({ nome: 'Madeireira', documento: '123' })
+
+    expect(semCnpj.ok && semCnpj.valor.documento).toBeUndefined()
+    expect(semMascara.ok && semMascara.valor.documento).toBe('11.222.333/0001-81')
+    expect(!curto.ok && Object.keys(curto.erro.campos ?? {})).toEqual(['documento'])
+  })
+})

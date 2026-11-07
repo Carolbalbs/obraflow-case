@@ -130,9 +130,11 @@ papel não usa, mas esconder não é proteger: quem digitar a URL ou chamar a ro
 | Aprovar ou rejeitar | ❌ | ✅ **na sua vez** | ❌ | ❌ |
 | Configurar a alçada (tela 3) | ✅ | ❌ | ❌ | ❌ |
 | Painel da administração (`/admin`) | ✅ | ❌ | ❌ | ❌ |
+| Cadastrar obra e fornecedor (`/empresa`) | ✅ | ❌ | ❌ | ❌ |
 | Item "Aprovações" no menu | — | ✅ | — | — |
 | Item "Alçadas" no menu | ✅ | — | — | — |
 | Item "Administração" no menu | ✅ | — | — | — |
+| Item "Empresa" no menu | ✅ | — | — | — |
 
 Duas leituras importam aqui. **"Na sua vez" é a única linha condicional**: ser aprovador não basta,
 é preciso ser o aprovador da etapa pendente mais antiga. E **o admin não aprova nem cria** — quem

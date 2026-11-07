@@ -71,14 +71,14 @@ Os dois caminhos que mudam um pedido, e onde cada recusa acontece. Os diagramas 
 ```bash
 npx tsc --noEmit    # tipos
 npm run lint        # ESLint (next/core-web-vitals + react-hooks)
-npm test            # 56 casos
+npm test            # 58 casos
 ```
 
 A suíte cobre o que só leitura não pega e o que não exige servidor:
 
 | Projeto | Casos | O que afirma |
 |---|---:|---|
-| `dominio` | 47 | Limite inclusivo, faixa aberta, ordenação, sem regra aplicável, montagem e leitura da cadeia, aprovador da vez, rejeição encerrando o fluxo, arredondamento de centavos e milésimos, schemas (data do pedido obrigatória, preço zero aceito, negativo ou ausente recusado) — e, em 18 desses casos, as derivações do painel: quando cada etapa recebeu a vez, "parado há", KPIs contra o período anterior, cortes por faixa e por aprovador, fila de atenção e série semanal |
+| `dominio` | 49 | Limite inclusivo, faixa aberta, ordenação, sem regra aplicável, montagem e leitura da cadeia, aprovador da vez, rejeição encerrando o fluxo, arredondamento de centavos e milésimos, schemas (data do pedido obrigatória, preço zero aceito, negativo ou ausente recusado) — e, em 18 desses casos, as derivações do painel: quando cada etapa recebeu a vez, "parado há", KPIs contra o período anterior, cortes por faixa e por aprovador, fila de atenção e série semanal |
 | `ui` | 8 | Ancoragem de `error.fields` nos campos do formulário — chaves, nunca textos de mensagem —, inclusive o envio bloqueado sem data |
 | `api` | 1 | Guarda de configuração do projeto de rota |
 

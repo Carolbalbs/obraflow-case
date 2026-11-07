@@ -65,6 +65,7 @@ docs/                Documentação, ADRs, glossário e o enunciado original
 | 2 · Aprovação — detalhe | `/pedidos/{id}` | sessão | `app/pedidos/[id]/page.tsx` · `DetalheDoPedido.tsx` |
 | 3 · Regras da alçada | `/alcadas` | admin | `app/alcadas/page.tsx` · `RegrasDaAlcada.tsx` |
 | Painel da administração | `/admin` | admin | `app/admin/page.tsx` · `PainelDoAdmin.tsx` |
+| Empresa — obras e fornecedores | `/empresa` (`?aba=fornecedores`) | admin | `app/empresa/page.tsx` · `Empresa.tsx` |
 
 Os componentes estão em `src/ui/componentes/`; as rotas de API, em `app/api/`, uma pasta por
 endereço da tabela de endpoints.

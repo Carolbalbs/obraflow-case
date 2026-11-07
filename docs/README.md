@@ -95,6 +95,19 @@ tudo. Os números saem de `src/domain/painel.ts`, que tem 18 casos de teste.
 
 ![Administração — painel da empresa, como Marina](screenshots/administracao-painel.png)
 
+### Empresa · cadastro de obras e fornecedores
+
+Também só para o `admin`, no item "Empresa" do menu (artboard `Empresa`). Duas abas: **Obras**,
+com a cidade, quantas faixas a alçada tem e quantos pedidos submetidos — a obra sem faixa aparece
+marcada, com o atalho para criar a primeira — e **Fornecedores**, com CNPJ e pedidos submetidos.
+"+ Nova obra" e "+ Novo fornecedor" abrem o cadastro, validado pelo mesmo schema da rota; o que é
+cadastrado aparece na hora no seletor do cadastro de pedido. Uma obra nova ainda não tem alçada:
+o pedido dela é bloqueado na submissão até a primeira faixa existir.
+
+![Empresa — obras da construtora, como Marina](screenshots/empresa-obras.png)
+
+![Empresa — fornecedores](screenshots/empresa-fornecedores.png)
+
 ### A prova visual do snapshot
 
 O pedido `#1007` foi submetido quando a faixa da obra era **"até R$ 6.000,00 → João Ferreira"**.
@@ -140,7 +153,7 @@ superior direito troca de usuário sem sair da tela.
 | `npm run seed` | Repopula a demonstração. Apaga o que havia e reescreve o mesmo estado |
 | `npm run db:reset` | `prisma migrate reset --force` — recria o banco do zero e roda o seed |
 | `npm run build` / `npm start` | Build e execução em modo produção |
-| `npm test` | Suíte Vitest (56 casos) |
+| `npm test` | Suíte Vitest (58 casos) |
 | `npm run lint` / `npx tsc --noEmit` | Lint e verificação de tipos |
 | `./scripts/verificar.sh` | Prova por `curl` das recusas 403, 409 e 422 |
 
@@ -280,7 +293,7 @@ da demonstração.
 | Validação | **Zod 4** | Um único schema por contrato, rodado nas **duas** pontas: o formulário valida antes de enviar e a rota revalida ao receber. Mensagem e chave de campo saem do mesmo lugar |
 
 O que **não** entrou, e por quê: sem autenticação com senha ou SSO, sem entidade `Empresa`, sem
-telas de cadastro de obra/fornecedor/usuário, sem anexo, sem notificação, sem edição de pedido
+tela de cadastro de usuário, sem anexo, sem notificação, sem edição de pedido
 submetido, sem aprovação em paralelo. Cada ausência é deliberada.
 
 ### Como a alçada é modelada, calculada e persistida
@@ -353,8 +366,8 @@ e 422 noutro. `fields` é o que permite ao formulário **ancorar a mensagem no c
 mesmas chaves que o Zod produziu no cliente.
 
 "Sessão" na tabela abaixo é qualquer um dos quatro papéis; sem sessão, toda rota responde
-`403 SEM_PERMISSAO`. Obras, fornecedores e usuários são **só listados**: o cadastro deles é feito
-pelo seed e está fora de escopo.
+`403 SEM_PERMISSAO`. Obras e fornecedores são listados por qualquer sessão e cadastrados pelo
+admin; usuários são só listados, porque vêm do seed.
 
 | Método e rota | Quem pode | O que faz |
 |---|---|---|
@@ -364,6 +377,8 @@ pelo seed e está fora de escopo.
 | `GET /api/obras` | sessão | Obras cadastradas — `id`, `nome`, `cidade`, por nome |
 | `GET /api/fornecedores` | sessão | Fornecedores cadastrados — `id`, `nome`, `documento`, por nome |
 | `GET /api/obras/{id}/faixas` | sessão | Faixas da obra, ordenadas, com os aprovadores na ordem |
+| `POST /api/obras` | admin | Cadastra a obra — `{ nome, cidade }` → `201` |
+| `POST /api/fornecedores` | admin | Cadastra o fornecedor — `{ nome, documento? }`, CNPJ com ou sem máscara, gravado mascarado → `201` |
 | `POST /api/obras/{id}/faixas` | admin | Cria a faixa e os aprovadores numa transação (`201`) |
 | `PUT /api/faixas/{id}` | admin | **Substitui a faixa inteira** — limite e lista ordenada |
 | `DELETE /api/faixas/{id}` | admin | Remove, e devolve `pedidosAfetados` |
@@ -478,9 +493,11 @@ papel não usa, mas esconder não é proteger: quem digitar a URL ou chamar a ro
 | Aprovar ou rejeitar | ❌ | ✅ **na sua vez** | ❌ | ❌ |
 | Configurar a alçada (tela 3) | ✅ | ❌ | ❌ | ❌ |
 | Painel da administração (`/admin`) | ✅ | ❌ | ❌ | ❌ |
+| Cadastrar obra e fornecedor (`/empresa`) | ✅ | ❌ | ❌ | ❌ |
 | Item "Aprovações" no menu | — | ✅ | — | — |
 | Item "Alçadas" no menu | ✅ | — | — | — |
 | Item "Administração" no menu | ✅ | — | — | — |
+| Item "Empresa" no menu | ✅ | — | — | — |
 
 Duas leituras importam aqui. **"Na sua vez" é a única linha condicional**: ser aprovador não basta,
 é preciso ser o aprovador da etapa pendente mais antiga. E **o admin não aprova nem cria** — quem
@@ -525,6 +542,10 @@ diverge do enunciado do case. As que valem para quem avalia:
   rascunho incompleto exigiria chamar a rota por fora da tela.
 - **O botão "Sair"** foi acrescentado ao cabeçalho: `DELETE /api/sessao` existe e precisava de um
   controle; sem ele a única saída seria apagar o cookie à mão.
+- **A tela Empresa cadastra só o que o modelo tem.** Obra: nome e cidade; fornecedor: nome e CNPJ.
+  O artboard desenha também responsável, situação e início da obra, contato, ramo e bloqueio do
+  fornecedor, valores dos últimos 90 dias e uma aba Usuários — cada um pediria coluna e regra que
+  nenhuma user story pede, e por isso ficaram de fora.
 - **Nomes e números dos mockups são ilustrativos.** O que vale é o seed.
 
 ### O que mudaria em produção
@@ -591,14 +612,14 @@ dado; a regra mora em `src/domain`.
 ```bash
 npx tsc --noEmit    # tipos
 npm run lint        # ESLint (next/core-web-vitals + react-hooks)
-npm test            # 56 casos
+npm test            # 58 casos
 ```
 
 A suíte cobre o que só leitura não pega e o que não exige servidor:
 
 | Projeto | Casos | O que afirma |
 |---|---:|---|
-| `dominio` | 47 | Limite inclusivo, faixa aberta, ordenação, sem regra aplicável, montagem e leitura da cadeia, aprovador da vez, rejeição encerrando o fluxo, arredondamento de centavos e milésimos, schemas (data do pedido obrigatória, preço zero aceito, negativo ou ausente recusado) — e, em 18 desses casos, as derivações do painel: quando cada etapa recebeu a vez, "parado há", KPIs contra o período anterior, cortes por faixa e por aprovador, fila de atenção e série semanal |
+| `dominio` | 49 | Limite inclusivo, faixa aberta, ordenação, sem regra aplicável, montagem e leitura da cadeia, aprovador da vez, rejeição encerrando o fluxo, arredondamento de centavos e milésimos, schemas (data do pedido obrigatória, preço zero aceito, negativo ou ausente recusado) — e, em 18 desses casos, as derivações do painel: quando cada etapa recebeu a vez, "parado há", KPIs contra o período anterior, cortes por faixa e por aprovador, fila de atenção e série semanal |
 | `ui` | 8 | Ancoragem de `error.fields` nos campos do formulário — chaves, nunca textos de mensagem —, inclusive o envio bloqueado sem data |
 | `api` | 1 | Guarda de configuração do projeto de rota |
 
@@ -628,6 +649,7 @@ docs/                PRD, SPEC, ADRs, glossário, progresso e o enunciado origin
 | 2 · Aprovação — detalhe | `/pedidos/{id}` | sessão | `app/pedidos/[id]/page.tsx` · `DetalheDoPedido.tsx` |
 | 3 · Regras da alçada | `/alcadas` | admin | `app/alcadas/page.tsx` · `RegrasDaAlcada.tsx` |
 | Painel da administração | `/admin` | admin | `app/admin/page.tsx` · `PainelDoAdmin.tsx` |
+| Empresa — obras e fornecedores | `/empresa` (`?aba=fornecedores`) | admin | `app/empresa/page.tsx` · `Empresa.tsx` |
 
 Os componentes estão em `src/ui/componentes/`; as rotas de API, em `app/api/`, uma pasta por
 endereço da tabela de endpoints.

@@ -14,7 +14,7 @@ import { CONSTRUTORA, ROTULO_DO_PAPEL } from './rotulos'
  */
 const EXPLICACAO: Readonly<
   Record<
-    Extract<Acao, 'gerir_alcada' | 'criar_pedido' | 'ver_resumo'>,
+    Extract<Acao, 'gerir_alcada' | 'criar_pedido' | 'ver_resumo' | 'gerir_cadastros'>,
     { titulo: string; oQue: React.ReactNode; papelQuePode: string; quem: string }
   >
 > = {
@@ -46,6 +46,12 @@ const EXPLICACAO: Readonly<
     papelQuePode: 'Admin',
     quem: 'Marina Alencar',
   },
+  gerir_cadastros: {
+    titulo: 'Você não tem acesso a esta configuração',
+    oQue: <>O cadastro de obras e fornecedores da empresa é editado apenas pelo papel</>,
+    papelQuePode: 'Admin',
+    quem: 'Marina Alencar',
+  },
 }
 
 /**
@@ -61,7 +67,7 @@ export function AcessoNegado({
   acao = 'gerir_alcada',
 }: {
   papel: Papel | null
-  acao?: Extract<Acao, 'gerir_alcada' | 'criar_pedido' | 'ver_resumo'>
+  acao?: Extract<Acao, 'gerir_alcada' | 'criar_pedido' | 'ver_resumo' | 'gerir_cadastros'>
 }) {
   const texto = EXPLICACAO[acao]
 

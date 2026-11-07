@@ -66,7 +66,7 @@ superior direito troca de usuário sem sair da tela.
 | `npm run seed` | Repopula a demonstração. Apaga o que havia e reescreve o mesmo estado |
 | `npm run db:reset` | `prisma migrate reset --force` — recria o banco do zero e roda o seed |
 | `npm run build` / `npm start` | Build e execução em modo produção |
-| `npm test` | Suíte Vitest (56 casos) |
+| `npm test` | Suíte Vitest (58 casos) |
 | `npm run lint` / `npx tsc --noEmit` | Lint e verificação de tipos |
 | `./scripts/verificar.sh` | Prova por `curl` das recusas 403, 409 e 422 |
 

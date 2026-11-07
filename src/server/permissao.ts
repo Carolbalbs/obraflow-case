@@ -26,6 +26,8 @@ export const ACOES = [
   'gerir_alcada',
   /** Ler a contagem agregada de pedidos por situação — o painel da administração. */
   'ver_resumo',
+  /** Cadastrar obra e fornecedor — a tela Empresa. */
+  'gerir_cadastros',
 ] as const
 
 export type Acao = (typeof ACOES)[number]
@@ -38,6 +40,7 @@ export const MATRIZ: Readonly<Record<Papel, Readonly<Record<Acao, boolean>>>> = 
     decidir: false,
     gerir_alcada: true,
     ver_resumo: true,
+    gerir_cadastros: true,
   },
   aprovador: {
     ver_pedidos: true,
@@ -46,6 +49,7 @@ export const MATRIZ: Readonly<Record<Papel, Readonly<Record<Acao, boolean>>>> = 
     decidir: true,
     gerir_alcada: false,
     ver_resumo: false,
+    gerir_cadastros: false,
   },
   comprador: {
     ver_pedidos: true,
@@ -54,6 +58,7 @@ export const MATRIZ: Readonly<Record<Papel, Readonly<Record<Acao, boolean>>>> = 
     decidir: false,
     gerir_alcada: false,
     ver_resumo: false,
+    gerir_cadastros: false,
   },
   visualizador: {
     ver_pedidos: true,
@@ -62,6 +67,7 @@ export const MATRIZ: Readonly<Record<Papel, Readonly<Record<Acao, boolean>>>> = 
     decidir: false,
     gerir_alcada: false,
     ver_resumo: false,
+    gerir_cadastros: false,
   },
 }
 

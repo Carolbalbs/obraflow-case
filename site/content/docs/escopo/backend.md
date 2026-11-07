@@ -80,7 +80,7 @@ Cada requisito acima cruzado com o código que o implementa.
 
 | # | Exigência | | Onde |
 |---|---|:---:|---|
-| B1 | Cadastrar e listar obras, usuários, fornecedores, pedidos e regras de alçada | ◐ | Pedidos e regras: completo. Listagem por API das outras três: `GET /api/obras` e `GET /api/fornecedores` (sessão, qualquer papel; feature `s5f4`) e `GET /api/usuarios` (atrás de `DEMO_MODE`). **Cadastro** dessas três fica com o seed — fora de escopo declarado no PRD § 3 e no README |
+| B1 | Cadastrar e listar obras, usuários, fornecedores, pedidos e regras de alçada | ✅ | Pedidos e regras: completo. Listagem por API das outras três: `GET /api/obras` e `GET /api/fornecedores` (sessão, qualquer papel; feature `s5f4`) e `GET /api/usuarios` (atrás de `DEMO_MODE`). **Cadastro**: obras e fornecedores pela tela `/empresa` e por `POST /api/obras` e `POST /api/fornecedores`, só para o admin (feature `s5f5`, depois da entrega); usuários continuam vindo do seed |
 | B2 | Pedido com cabeçalho e N itens; calcular e persistir totais | ✅ | Total do item em `dinheiro.ts:77` (`porMilesimos`, arredondamento único), soma em `dinheiro.ts:66`. Itens substituídos e total recalculado numa transação em `api/pedidos/[id]/route.ts:54`. Total enviado pelo cliente é ignorado |
 | B3 | Cadeia de aprovadores conforme obra e valor **total** | ✅ | `alcada.ts:76` `resolverFaixa`, limite inclusivo em `alcada.ts:61` `comporta`, cadeia em `cadeia.ts:34` `montarCadeia` |
 | B4 | Registrar aprovações e rejeições, com motivo obrigatório | ✅ | Rota `api/pedidos/[id]/decisoes`; motivo validado em `decisao.ts:45` `rejeitar` |

@@ -59,6 +59,20 @@ tudo. Os números saem de `src/domain/painel.ts`, que tem 18 casos de teste.
 
 ![Administração — painel da empresa, como Marina](/screenshots/administracao-painel.png)
 
+
+## Empresa · cadastro de obras e fornecedores
+
+Também só para o `admin`, no item "Empresa" do menu (artboard `Empresa`). Duas abas: **Obras**,
+com a cidade, quantas faixas a alçada tem e quantos pedidos submetidos — a obra sem faixa aparece
+marcada, com o atalho para criar a primeira — e **Fornecedores**, com CNPJ e pedidos submetidos.
+"+ Nova obra" e "+ Novo fornecedor" abrem o cadastro, validado pelo mesmo schema da rota; o que é
+cadastrado aparece na hora no seletor do cadastro de pedido. Uma obra nova ainda não tem alçada:
+o pedido dela é bloqueado na submissão até a primeira faixa existir.
+
+![Empresa — obras da construtora, como Marina](/screenshots/empresa-obras.png)
+
+![Empresa — fornecedores](/screenshots/empresa-fornecedores.png)
+
 ## A prova visual do snapshot
 
 O pedido `#1007` foi submetido quando a faixa da obra era **"até R$ 6.000,00 → João Ferreira"**.

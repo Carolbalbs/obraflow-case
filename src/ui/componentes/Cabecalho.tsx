@@ -8,9 +8,9 @@
  *
  * `Aprovações` entrou na Sprint 6 e aponta para a **mesma** rota de `Pedidos`, com a fila de
  * quem decide já aberta: é a mesma tela 2, e um segundo endereço para ela faria dois lugares
- * discordarem sobre o que está pendente. `Estados` e `Empresa`, que o artboard desenha, são
- * divergências deliberadas declaradas na SPEC — o primeiro é catálogo de estados, o segundo está
- * fora do recorte. O botão `Sair`, que o artboard não desenha, é a divergência no outro sentido: está
+ * discordarem sobre o que está pendente. `Estados`, que o artboard desenha, é divergência
+ * deliberada declarada na SPEC: é catálogo de estados, não tela. `Empresa` entrou depois da
+ * entrega, com o cadastro de obra e de fornecedor. O botão `Sair`, que o artboard não desenha, é a divergência no outro sentido: está
  * declarada pelo mesmo mecanismo.
  */
 
@@ -42,6 +42,9 @@ export async function Cabecalho() {
           )}
           {pode(sessao?.papel, 'ver_resumo') && (
             <ItemDeMenu href="/admin">Administração</ItemDeMenu>
+          )}
+          {pode(sessao?.papel, 'gerir_cadastros') && (
+            <ItemDeMenu href="/empresa">Empresa</ItemDeMenu>
           )}
         </nav>
 

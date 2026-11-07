@@ -346,6 +346,72 @@ export function validarFaixa(dados: unknown): Resultado<EntradaDeFaixa, ErroDomi
   return validarCom(faixaSchema, dados)
 }
 
+// --- cadastros: obra e fornecedor --------------------------------------------------------------
+
+export const MAX_NOME_DE_OBRA = 120
+export const MAX_CIDADE = 80
+export const MAX_NOME_DE_FORNECEDOR = 160
+
+/**
+ * O corpo aceitável de uma obra nova. São os dois campos que o modelo tem — `nome` e `cidade` —, e
+ * nada mais: o artboard `Empresa` desenha também responsável, situação e data de início, que não
+ * existem no modelo e entram como divergência declarada, não como coluna inventada aqui.
+ */
+export const obraSchema = z.object({
+  nome: z
+    .string({ error: 'Informe o nome da obra.' })
+    .trim()
+    .min(1, 'Informe o nome da obra.')
+    .max(MAX_NOME_DE_OBRA, `O nome não pode passar de ${MAX_NOME_DE_OBRA} caracteres.`),
+  cidade: z
+    .string({ error: 'Informe a cidade da obra.' })
+    .trim()
+    .min(1, 'Informe a cidade da obra.')
+    .max(MAX_CIDADE, `A cidade não pode passar de ${MAX_CIDADE} caracteres.`),
+})
+
+export type EntradaDeObra = z.infer<typeof obraSchema>
+
+export function validarObra(dados: unknown): Resultado<EntradaDeObra, ErroDominio> {
+  return validarCom(obraSchema, dados)
+}
+
+/**
+ * O CNPJ, opcional como no modelo. Aceita com ou sem máscara e grava sempre mascarado
+ * ("12.345.678/0001-90"), que é como o seed e a tela o mostram. A exigência é só a forma — 14
+ * dígitos —: o enunciado não pede validação de dígito verificador, e regra não se inventa.
+ */
+const cnpj = z.preprocess(
+  (valor) => (valor === null || (typeof valor === 'string' && valor.trim() === '') ? undefined : valor),
+  z
+    .string()
+    .transform((texto, ctx): string => {
+      const digitos = texto.replace(/[.\/\-\s]/g, '')
+      if (!/^\d{14}$/.test(digitos)) {
+        ctx.addIssue({ code: 'custom', message: 'O CNPJ tem 14 dígitos, como 12.345.678/0001-90.' })
+        return z.NEVER
+      }
+      return digitos.replace(/^(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})$/, '$1.$2.$3/$4-$5')
+    })
+    .optional(),
+)
+
+/** O corpo aceitável de um fornecedor novo: `nome` e, opcionalmente, o CNPJ (`documento`). */
+export const fornecedorSchema = z.object({
+  nome: z
+    .string({ error: 'Informe o nome do fornecedor.' })
+    .trim()
+    .min(1, 'Informe o nome do fornecedor.')
+    .max(MAX_NOME_DE_FORNECEDOR, `O nome não pode passar de ${MAX_NOME_DE_FORNECEDOR} caracteres.`),
+  documento: cnpj,
+})
+
+export type EntradaDeFornecedor = z.infer<typeof fornecedorSchema>
+
+export function validarFornecedor(dados: unknown): Resultado<EntradaDeFornecedor, ErroDominio> {
+  return validarCom(fornecedorSchema, dados)
+}
+
 // --- decisão -----------------------------------------------------------------------------------
 
 /**

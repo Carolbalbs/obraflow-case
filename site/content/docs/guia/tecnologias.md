@@ -20,5 +20,5 @@ Este conteúdo é o mesmo do [`README.md`](https://github.com/Carolbalbs/obraflo
 | Validação | **Zod 4** | Um único schema por contrato, rodado nas **duas** pontas: o formulário valida antes de enviar e a rota revalida ao receber. Mensagem e chave de campo saem do mesmo lugar |
 
 O que **não** entrou, e por quê: sem autenticação com senha ou SSO, sem entidade `Empresa`, sem
-telas de cadastro de obra/fornecedor/usuário, sem anexo, sem notificação, sem edição de pedido
+tela de cadastro de usuário, sem anexo, sem notificação, sem edição de pedido
 submetido, sem aprovação em paralelo. Cada ausência é deliberada.
