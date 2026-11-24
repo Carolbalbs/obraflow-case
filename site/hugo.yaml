@@ -34,12 +34,15 @@ menu:
     - name: Tutoriais
       pageRef: /tutoriais
       weight: 2
-    - name: Busca
+    - name: Textos da LP
+      pageRef: /lp
       weight: 3
+    - name: Busca
+      weight: 4
       params:
         type: search
     - name: GitHub
-      weight: 4
+      weight: 5
       url: "https://github.com/Carolbalbs/obraflow-case"
       params:
         icon: github
