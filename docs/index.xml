@@ -1,4 +1,5 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ObraFlow · Aprovações – Introdução</title><link>https://carolbalbs.github.io/obraflow-case/docs/</link><description>Recent content in Introdução on ObraFlow · Aprovações</description><generator>Hugo -- gohugo.io</generator><language>pt</language><atom:link href="https://carolbalbs.github.io/obraflow-case/docs/index.xml" rel="self" type="application/rss+xml"/><item><title>Cabeçalho e rodapé</title><link>https://carolbalbs.github.io/obraflow-case/lp/cabecalho-e-rodape/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://carolbalbs.github.io/obraflow-case/lp/cabecalho-e-rodape/</guid><description>
+&lt;p&gt;&lt;a href="https://github.com/Carolbalbs/obraflow-case/edit/resolucao-obraflow/site/content/lp/cabecalho-e-rodape.md" target="_blank" rel="noopener"&gt;Editar este .md no GitHub&lt;/a&gt; · &lt;a href="https://carolbalbs.github.io/obraflow-case/lp/cabecalho-e-rodape.md"&gt;Ver o .md&lt;/a&gt;&lt;/p&gt;
 &lt;h2 data-hextra-search-id="cabeçalho"&gt;Cabeçalho&lt;span class="hx:absolute hx:-mt-20" id="cabeçalho"&gt;&lt;/span&gt;
 &lt;a href="#cabe%c3%a7alho" class="subheading-anchor" aria-label="Link permanente para esta secção"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;ObraFlow&lt;/li&gt;
@@ -261,6 +262,7 @@ data-copied-label="Copiado!"
 &lt;/button&gt;
 &lt;/div&gt;
 &lt;/div&gt;</description></item><item><title>Dokimos</title><link>https://carolbalbs.github.io/obraflow-case/lp/produtos/dokimos/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://carolbalbs.github.io/obraflow-case/lp/produtos/dokimos/</guid><description>
+&lt;p&gt;&lt;a href="https://github.com/Carolbalbs/obraflow-case/edit/resolucao-obraflow/site/content/lp/produtos/dokimos.md" target="_blank" rel="noopener"&gt;Editar este .md no GitHub&lt;/a&gt; · &lt;a href="https://carolbalbs.github.io/obraflow-case/lp/produtos/dokimos.md"&gt;Ver o .md&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Arquivo da página: &lt;code&gt;produtos/dokimos.html&lt;/code&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Título (aba e Google): Dokimos · ObraFlow&lt;/li&gt;
@@ -776,6 +778,7 @@ e payloads&lt;/strong&gt;. Veja o &lt;a href="https://carolbalbs.github.io/obraf
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;</description></item><item><title>Home</title><link>https://carolbalbs.github.io/obraflow-case/lp/home/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://carolbalbs.github.io/obraflow-case/lp/home/</guid><description>
+&lt;p&gt;&lt;a href="https://github.com/Carolbalbs/obraflow-case/edit/resolucao-obraflow/site/content/lp/home.md" target="_blank" rel="noopener"&gt;Editar este .md no GitHub&lt;/a&gt; · &lt;a href="https://carolbalbs.github.io/obraflow-case/lp/home.md"&gt;Ver o .md&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Arquivo da página: &lt;code&gt;index.html&lt;/code&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Título (aba e Google): ObraFlow · Plataforma operacional para construtoras&lt;/li&gt;
@@ -1244,6 +1247,7 @@ credenciais externas. &lt;code&gt;docker compose&lt;/code&gt; é aceito, mas nã
 &lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;strong&gt;IA é permitida&lt;/strong&gt; — mas é preciso explicar &lt;strong&gt;cada decisão&lt;/strong&gt; na entrevista de 30 min.&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;</description></item><item><title>Prometheus</title><link>https://carolbalbs.github.io/obraflow-case/lp/produtos/prometheus/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://carolbalbs.github.io/obraflow-case/lp/produtos/prometheus/</guid><description>
+&lt;p&gt;&lt;a href="https://github.com/Carolbalbs/obraflow-case/edit/resolucao-obraflow/site/content/lp/produtos/prometheus.md" target="_blank" rel="noopener"&gt;Editar este .md no GitHub&lt;/a&gt; · &lt;a href="https://carolbalbs.github.io/obraflow-case/lp/produtos/prometheus.md"&gt;Ver o .md&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Arquivo da página: &lt;code&gt;produtos/prometheus.html&lt;/code&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Título (aba e Google): Prometheus · ObraFlow&lt;/li&gt;
@@ -1995,6 +1999,7 @@ Sem data, ela responde &lt;code&gt;422&lt;/code&gt; com &lt;code&gt;fields.dataP
 &lt;h2 data-hextra-search-id="operações-por-camada"&gt;Operações por camada&lt;span class="hx:absolute hx:-mt-20" id="operações-por-camada"&gt;&lt;/span&gt;
 &lt;a href="#opera%c3%a7%c3%b5es-por-camada" class="subheading-anchor" aria-label="Link permanente para esta secção"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Rotas, servidor e domínio puro: quem chama quem. Os diagramas saem de um canvas feito no planejamento e foram &lt;strong&gt;corrigidos contra o código&lt;/strong&gt;: os nomes de função são os de &lt;code&gt;src/domain&lt;/code&gt; e &lt;code&gt;src/server&lt;/code&gt;, e os campos, os de &lt;code&gt;prisma/schema.prisma&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;img src="https://carolbalbs.github.io/obraflow-case/diagramas/operacoes-por-camada.png" alt="Operações por camada" loading="lazy" /&gt;&lt;/p&gt;</description></item><item><title>ObraFlow AI</title><link>https://carolbalbs.github.io/obraflow-case/lp/produtos/ai/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://carolbalbs.github.io/obraflow-case/lp/produtos/ai/</guid><description>
+&lt;p&gt;&lt;a href="https://github.com/Carolbalbs/obraflow-case/edit/resolucao-obraflow/site/content/lp/produtos/ai.md" target="_blank" rel="noopener"&gt;Editar este .md no GitHub&lt;/a&gt; · &lt;a href="https://carolbalbs.github.io/obraflow-case/lp/produtos/ai.md"&gt;Ver o .md&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Arquivo da página: &lt;code&gt;produtos/ai.html&lt;/code&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Título (aba e Google): ObraFlow AI · ObraFlow&lt;/li&gt;
@@ -2135,6 +2140,7 @@ Sem data, ela responde &lt;code&gt;422&lt;/code&gt; com &lt;code&gt;fields.dataP
 &lt;p&gt;Botão (#agenda): Continuar&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;</description></item><item><title>Sobre</title><link>https://carolbalbs.github.io/obraflow-case/lp/sobre/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://carolbalbs.github.io/obraflow-case/lp/sobre/</guid><description>
+&lt;p&gt;&lt;a href="https://github.com/Carolbalbs/obraflow-case/edit/resolucao-obraflow/site/content/lp/sobre.md" target="_blank" rel="noopener"&gt;Editar este .md no GitHub&lt;/a&gt; · &lt;a href="https://carolbalbs.github.io/obraflow-case/lp/sobre.md"&gt;Ver o .md&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Arquivo da página: &lt;code&gt;sobre.html&lt;/code&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Título (aba e Google): Sobre a ObraFlow · Integrações, segurança e IA&lt;/li&gt;
@@ -2335,6 +2341,7 @@ Sem data, ela responde &lt;code&gt;422&lt;/code&gt; com &lt;code&gt;fields.dataP
 &lt;a href="#obrigado-por-ler-a-nossa-hist%c3%b3ria-e-por-construir-com-a-gente" class="subheading-anchor" aria-label="Link permanente para esta secção"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;Botão (index.html#contato): Quero ver mais numa demonstração&lt;/li&gt;
 &lt;/ul&gt;</description></item><item><title>Blog</title><link>https://carolbalbs.github.io/obraflow-case/lp/blog/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://carolbalbs.github.io/obraflow-case/lp/blog/</guid><description>
+&lt;p&gt;&lt;a href="https://github.com/Carolbalbs/obraflow-case/edit/resolucao-obraflow/site/content/lp/blog.md" target="_blank" rel="noopener"&gt;Editar este .md no GitHub&lt;/a&gt; · &lt;a href="https://carolbalbs.github.io/obraflow-case/lp/blog.md"&gt;Ver o .md&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Arquivo da página: &lt;code&gt;blog.html&lt;/code&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Título (aba e Google): Blog da ObraFlow · Para quem toca obra&lt;/li&gt;
@@ -2511,6 +2518,7 @@ data-copied-label="Copiado!"
 &lt;p&gt;O que &lt;strong&gt;não&lt;/strong&gt; é testado por unidade é testado por &lt;code&gt;curl&lt;/code&gt; contra o servidor de verdade, em
 &lt;code&gt;scripts/verificar.sh&lt;/code&gt;: as recusas 403, 409 e 422 e a corrida de decisão. É deliberado — a corrida
 só é real contra o banco de verdade, e um mock dela provaria apenas que o mock foi escrito certo.&lt;/p&gt;</description></item><item><title>Portal</title><link>https://carolbalbs.github.io/obraflow-case/lp/produtos/portal/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://carolbalbs.github.io/obraflow-case/lp/produtos/portal/</guid><description>
+&lt;p&gt;&lt;a href="https://github.com/Carolbalbs/obraflow-case/edit/resolucao-obraflow/site/content/lp/produtos/portal.md" target="_blank" rel="noopener"&gt;Editar este .md no GitHub&lt;/a&gt; · &lt;a href="https://carolbalbs.github.io/obraflow-case/lp/produtos/portal.md"&gt;Ver o .md&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Arquivo da página: &lt;code&gt;produtos/portal.html&lt;/code&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Título (aba e Google): Portal · ObraFlow&lt;/li&gt;
@@ -2645,6 +2653,7 @@ só é real contra o banco de verdade, e um mock dela provaria apenas que o mock
 &lt;p&gt;Botão (#agenda): Continuar&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;</description></item><item><title>Fazer login</title><link>https://carolbalbs.github.io/obraflow-case/lp/login/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://carolbalbs.github.io/obraflow-case/lp/login/</guid><description>
+&lt;p&gt;&lt;a href="https://github.com/Carolbalbs/obraflow-case/edit/resolucao-obraflow/site/content/lp/login.md" target="_blank" rel="noopener"&gt;Editar este .md no GitHub&lt;/a&gt; · &lt;a href="https://carolbalbs.github.io/obraflow-case/lp/login.md"&gt;Ver o .md&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Arquivo da página: &lt;code&gt;login.html&lt;/code&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Título (aba e Google): Fazer login · ObraFlow&lt;/li&gt;
@@ -2696,6 +2705,7 @@ volume.&lt;/li&gt;
 snapshot da cadeia, o dinheiro inteiro e o envelope único de erro. São as decisões que não
 mudam de resposta quando o sistema cresce.&lt;/li&gt;
 &lt;/ol&gt;</description></item><item><title>Stádia</title><link>https://carolbalbs.github.io/obraflow-case/lp/produtos/stadia/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://carolbalbs.github.io/obraflow-case/lp/produtos/stadia/</guid><description>
+&lt;p&gt;&lt;a href="https://github.com/Carolbalbs/obraflow-case/edit/resolucao-obraflow/site/content/lp/produtos/stadia.md" target="_blank" rel="noopener"&gt;Editar este .md no GitHub&lt;/a&gt; · &lt;a href="https://carolbalbs.github.io/obraflow-case/lp/produtos/stadia.md"&gt;Ver o .md&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Arquivo da página: &lt;code&gt;produtos/stadia.html&lt;/code&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Título (aba e Google): Stádia · ObraFlow&lt;/li&gt;
@@ -2829,6 +2839,7 @@ mudam de resposta quando o sistema cresce.&lt;/li&gt;
 &lt;p&gt;Botão (#agenda): Continuar&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;</description></item><item><title>Módulo Jurídico</title><link>https://carolbalbs.github.io/obraflow-case/lp/produtos/juridico/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://carolbalbs.github.io/obraflow-case/lp/produtos/juridico/</guid><description>
+&lt;p&gt;&lt;a href="https://github.com/Carolbalbs/obraflow-case/edit/resolucao-obraflow/site/content/lp/produtos/juridico.md" target="_blank" rel="noopener"&gt;Editar este .md no GitHub&lt;/a&gt; · &lt;a href="https://carolbalbs.github.io/obraflow-case/lp/produtos/juridico.md"&gt;Ver o .md&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Arquivo da página: &lt;code&gt;produtos/juridico.html&lt;/code&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Título (aba e Google): Módulo Jurídico · ObraFlow&lt;/li&gt;
