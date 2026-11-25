@@ -96,7 +96,7 @@ Aprovar no WhatsApp
 
 Dokimos
 
-- Status: Em produção
+- Status: Disponível
 
 Aprovações e workflows pelo WhatsApp, com a decisão escrita direto no ERP.
 
@@ -112,7 +112,7 @@ Operar com IA
 
 ObraFlow AI
 
-- Status: Em produção
+- Status: Disponível
 
 ChatGPT, Claude e Claude Code operando a ObraFlow pelo MCP.
 
@@ -120,7 +120,7 @@ Acompanhar tudo num lugar
 
 Portal ObraFlow
 
-- Status: Em produção
+- Status: Disponível
 
 Solicitações, aprovações e usuários num só lugar, com o login da construtora.
 
