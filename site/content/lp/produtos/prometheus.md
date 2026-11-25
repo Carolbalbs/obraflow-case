@@ -3,6 +3,8 @@ title: "Prometheus"
 weight: 2
 ---
 
+[Editar este .md no GitHub](https://github.com/Carolbalbs/obraflow-case/edit/resolucao-obraflow/site/content/lp/produtos/prometheus.md) · [Ver o .md](/obraflow-case/lp/produtos/prometheus.md)
+
 Arquivo da página: `produtos/prometheus.html`
 
 - Título (aba e Google): Prometheus · ObraFlow

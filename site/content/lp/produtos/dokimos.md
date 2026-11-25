@@ -3,6 +3,8 @@ title: "Dokimos"
 weight: 1
 ---
 
+[Editar este .md no GitHub](https://github.com/Carolbalbs/obraflow-case/edit/resolucao-obraflow/site/content/lp/produtos/dokimos.md) · [Ver o .md](/obraflow-case/lp/produtos/dokimos.md)
+
 Arquivo da página: `produtos/dokimos.html`
 
 - Título (aba e Google): Dokimos · ObraFlow

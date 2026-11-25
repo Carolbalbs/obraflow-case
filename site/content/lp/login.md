@@ -3,6 +3,8 @@ title: "Fazer login"
 weight: 5
 ---
 
+[Editar este .md no GitHub](https://github.com/Carolbalbs/obraflow-case/edit/resolucao-obraflow/site/content/lp/login.md) · [Ver o .md](/obraflow-case/lp/login.md)
+
 Arquivo da página: `login.html`
 
 - Título (aba e Google): Fazer login · ObraFlow

@@ -3,6 +3,8 @@ title: "Stádia"
 weight: 5
 ---
 
+[Editar este .md no GitHub](https://github.com/Carolbalbs/obraflow-case/edit/resolucao-obraflow/site/content/lp/produtos/stadia.md) · [Ver o .md](/obraflow-case/lp/produtos/stadia.md)
+
 Arquivo da página: `produtos/stadia.html`
 
 - Título (aba e Google): Stádia · ObraFlow

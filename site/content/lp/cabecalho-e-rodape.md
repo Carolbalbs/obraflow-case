@@ -3,6 +3,8 @@ title: "Cabeçalho e rodapé"
 weight: 1
 ---
 
+[Editar este .md no GitHub](https://github.com/Carolbalbs/obraflow-case/edit/resolucao-obraflow/site/content/lp/cabecalho-e-rodape.md) · [Ver o .md](/obraflow-case/lp/cabecalho-e-rodape.md)
+
 ## Cabeçalho
 
 - ObraFlow

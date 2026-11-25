@@ -11,6 +11,8 @@ Os textos da nova landing page da ObraFlow (OBF-268, versão B), página por pá
 - Linhas que começam com "Ilustração" são o texto das telas e cartões decorativos.
 - No topo de cada página estão o título da aba e a descrição que aparece no Google.
 
+Os arquivos .md ficam no GitHub, na pasta [`site/content/lp`](https://github.com/Carolbalbs/obraflow-case/tree/resolucao-obraflow/site/content/lp) do branch `resolucao-obraflow`. Em cada página há um link para editar o .md direto no GitHub e outro para ver o .md bruto. Uma edição feita no GitHub só aparece aqui no site depois de uma nova publicação.
+
 {{< cards >}}
   {{< card link="cabecalho-e-rodape" title="Cabeçalho e rodapé" subtitle="Iguais em todas as páginas." >}}
   {{< card link="home" title="Home" >}}

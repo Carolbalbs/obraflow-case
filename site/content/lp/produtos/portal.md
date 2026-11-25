@@ -3,6 +3,8 @@ title: "Portal"
 weight: 4
 ---
 
+[Editar este .md no GitHub](https://github.com/Carolbalbs/obraflow-case/edit/resolucao-obraflow/site/content/lp/produtos/portal.md) · [Ver o .md](/obraflow-case/lp/produtos/portal.md)
+
 Arquivo da página: `produtos/portal.html`
 
 - Título (aba e Google): Portal · ObraFlow

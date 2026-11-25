@@ -3,6 +3,8 @@ title: "Módulo Jurídico"
 weight: 6
 ---
 
+[Editar este .md no GitHub](https://github.com/Carolbalbs/obraflow-case/edit/resolucao-obraflow/site/content/lp/produtos/juridico.md) · [Ver o .md](/obraflow-case/lp/produtos/juridico.md)
+
 Arquivo da página: `produtos/juridico.html`
 
 - Título (aba e Google): Módulo Jurídico · ObraFlow

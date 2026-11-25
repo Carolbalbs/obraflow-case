@@ -3,6 +3,8 @@ title: "Sobre"
 weight: 3
 ---
 
+[Editar este .md no GitHub](https://github.com/Carolbalbs/obraflow-case/edit/resolucao-obraflow/site/content/lp/sobre.md) · [Ver o .md](/obraflow-case/lp/sobre.md)
+
 Arquivo da página: `sobre.html`
 
 - Título (aba e Google): Sobre a ObraFlow · Integrações, segurança e IA

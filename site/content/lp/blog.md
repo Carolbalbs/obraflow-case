@@ -3,6 +3,8 @@ title: "Blog"
 weight: 4
 ---
 
+[Editar este .md no GitHub](https://github.com/Carolbalbs/obraflow-case/edit/resolucao-obraflow/site/content/lp/blog.md) · [Ver o .md](/obraflow-case/lp/blog.md)
+
 Arquivo da página: `blog.html`
 
 - Título (aba e Google): Blog da ObraFlow · Para quem toca obra

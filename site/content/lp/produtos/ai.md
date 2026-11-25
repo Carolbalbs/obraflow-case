@@ -3,6 +3,8 @@ title: "ObraFlow AI"
 weight: 3
 ---
 
+[Editar este .md no GitHub](https://github.com/Carolbalbs/obraflow-case/edit/resolucao-obraflow/site/content/lp/produtos/ai.md) · [Ver o .md](/obraflow-case/lp/produtos/ai.md)
+
 Arquivo da página: `produtos/ai.html`
 
 - Título (aba e Google): ObraFlow AI · ObraFlow

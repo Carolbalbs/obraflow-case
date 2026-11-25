@@ -3,6 +3,8 @@ title: "Home"
 weight: 2
 ---
 
+[Editar este .md no GitHub](https://github.com/Carolbalbs/obraflow-case/edit/resolucao-obraflow/site/content/lp/home.md) · [Ver o .md](/obraflow-case/lp/home.md)
+
 Arquivo da página: `index.html`
 
 - Título (aba e Google): ObraFlow · Plataforma operacional para construtoras
