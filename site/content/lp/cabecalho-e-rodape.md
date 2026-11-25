@@ -17,7 +17,7 @@ weight: 1
 - Stádia Em breve Pede. Aprova. Cadastra.
 - Módulo Jurídico Em breve Monitora. Alerta. Responde.
 - Blog
-- Docs MCP
+- Docs
 - Fazer login
 - Agendar demo
 
@@ -31,14 +31,14 @@ weight: 1
 - Portal
 - Stádia
 - Módulo Jurídico
-- Docs
-- Documentação
-- Servidor MCP
 - Empresa
 - Sobre
 - Blog
 - Segurança
 - Contato
+- Docs
+- Documentação
+- Servidor MCP
 - Legal
 - Política de Privacidade
-- © ObraFlow · [RAZÃO SOCIAL · CNPJ]
+- © ObraFlow – Todos os direitos reservados. · [ano-atualizar-sempre]
