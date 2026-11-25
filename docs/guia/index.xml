@@ -52,7 +52,7 @@
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;O que &lt;strong&gt;não&lt;/strong&gt; entrou, e por quê: sem autenticação com senha ou SSO, sem entidade &lt;code&gt;Empresa&lt;/code&gt;, sem
-telas de cadastro de obra/fornecedor/usuário, sem anexo, sem notificação, sem edição de pedido
+tela de cadastro de usuário, sem anexo, sem notificação, sem edição de pedido
 submetido, sem aprovação em paralelo. Cada ausência é deliberada.&lt;/p&gt;</description></item><item><title>Modelagem da alçada</title><link>https://carolbalbs.github.io/obraflow-case/docs/guia/alcada/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://carolbalbs.github.io/obraflow-case/docs/guia/alcada/</guid><description>
 &lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200"&gt;
 &lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/&gt;&lt;/svg&gt;&lt;/div&gt;
@@ -165,8 +165,8 @@ rota escolhe status de recusa por conta própria, então a mesma regra nunca res
 e 422 noutro. &lt;code&gt;fields&lt;/code&gt; é o que permite ao formulário &lt;strong&gt;ancorar a mensagem no campo certo&lt;/strong&gt;, com as
 mesmas chaves que o Zod produziu no cliente.&lt;/p&gt;
 &lt;p&gt;&amp;ldquo;Sessão&amp;rdquo; na tabela abaixo é qualquer um dos quatro papéis; sem sessão, toda rota responde
-&lt;code&gt;403 SEM_PERMISSAO&lt;/code&gt;. Obras, fornecedores e usuários são &lt;strong&gt;só listados&lt;/strong&gt;: o cadastro deles é feito
-pelo seed e está fora de escopo.&lt;/p&gt;
+&lt;code&gt;403 SEM_PERMISSAO&lt;/code&gt;. Obras e fornecedores são listados por qualquer sessão e cadastrados pelo
+admin; usuários são só listados, porque vêm do seed.&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -205,6 +205,16 @@ pelo seed e está fora de escopo.&lt;/p&gt;
 &lt;td&gt;&lt;code&gt;GET /api/obras/{id}/faixas&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;sessão&lt;/td&gt;
 &lt;td&gt;Faixas da obra, ordenadas, com os aprovadores na ordem&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;POST /api/obras&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;admin&lt;/td&gt;
+&lt;td&gt;Cadastra a obra — &lt;code&gt;{ nome, cidade }&lt;/code&gt; → &lt;code&gt;201&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;POST /api/fornecedores&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;admin&lt;/td&gt;
+&lt;td&gt;Cadastra o fornecedor — &lt;code&gt;{ nome, documento? }&lt;/code&gt;, CNPJ com ou sem máscara, gravado mascarado → &lt;code&gt;201&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;POST /api/obras/{id}/faixas&lt;/code&gt;&lt;/td&gt;
@@ -370,7 +380,7 @@ mais. Nenhum cabeçalho declarado pelo cliente participa da decisão.&lt;/p&gt;
 &lt;a href="#testes-e-verifica%c3%a7%c3%b5es" class="subheading-anchor" aria-label="Link permanente para esta secção"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
 &lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;npx tsc --noEmit &lt;span class="c1"&gt;# tipos&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;npm run lint &lt;span class="c1"&gt;# ESLint (next/core-web-vitals + react-hooks)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;npm &lt;span class="nb"&gt;test&lt;/span&gt; &lt;span class="c1"&gt;# 56 casos&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;npm &lt;span class="nb"&gt;test&lt;/span&gt; &lt;span class="c1"&gt;# 58 casos&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
 &lt;button
 class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
 title="Copiar código"
@@ -394,7 +404,7 @@ data-copied-label="Copiado!"
 &lt;tbody&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;dominio&lt;/code&gt;&lt;/td&gt;
-&lt;td style="text-align: right"&gt;47&lt;/td&gt;
+&lt;td style="text-align: right"&gt;49&lt;/td&gt;
 &lt;td&gt;Limite inclusivo, faixa aberta, ordenação, sem regra aplicável, montagem e leitura da cadeia, aprovador da vez, rejeição encerrando o fluxo, arredondamento de centavos e milésimos, schemas (data do pedido obrigatória, preço zero aceito, negativo ou ausente recusado) — e, em 18 desses casos, as derivações do painel: quando cada etapa recebeu a vez, &amp;ldquo;parado há&amp;rdquo;, KPIs contra o período anterior, cortes por faixa e por aprovador, fila de atenção e série semanal&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;

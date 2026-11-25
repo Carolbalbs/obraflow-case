@@ -207,8 +207,8 @@ e payloads&lt;/strong&gt;. Veja o &lt;a href="https://carolbalbs.github.io/obraf
 &lt;tr&gt;
 &lt;td&gt;B1&lt;/td&gt;
 &lt;td&gt;Cadastrar e listar obras, usuários, fornecedores, pedidos e regras de alçada&lt;/td&gt;
-&lt;td style="text-align: center"&gt;◐&lt;/td&gt;
-&lt;td&gt;Pedidos e regras: completo. Listagem por API das outras três: &lt;code&gt;GET /api/obras&lt;/code&gt; e &lt;code&gt;GET /api/fornecedores&lt;/code&gt; (sessão, qualquer papel; feature &lt;code&gt;s5f4&lt;/code&gt;) e &lt;code&gt;GET /api/usuarios&lt;/code&gt; (atrás de &lt;code&gt;DEMO_MODE&lt;/code&gt;). &lt;strong&gt;Cadastro&lt;/strong&gt; dessas três fica com o seed — fora de escopo declarado no PRD § 3 e no README&lt;/td&gt;
+&lt;td style="text-align: center"&gt;✅&lt;/td&gt;
+&lt;td&gt;Pedidos e regras: completo. Listagem por API das outras três: &lt;code&gt;GET /api/obras&lt;/code&gt; e &lt;code&gt;GET /api/fornecedores&lt;/code&gt; (sessão, qualquer papel; feature &lt;code&gt;s5f4&lt;/code&gt;) e &lt;code&gt;GET /api/usuarios&lt;/code&gt; (atrás de &lt;code&gt;DEMO_MODE&lt;/code&gt;). &lt;strong&gt;Cadastro&lt;/strong&gt;: obras e fornecedores pela tela &lt;code&gt;/empresa&lt;/code&gt; e por &lt;code&gt;POST /api/obras&lt;/code&gt; e &lt;code&gt;POST /api/fornecedores&lt;/code&gt;, só para o admin (feature &lt;code&gt;s5f5&lt;/code&gt;, depois da entrega); usuários continuam vindo do seed&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;B2&lt;/td&gt;
@@ -260,9 +260,6 @@ e payloads&lt;/strong&gt;. Veja o &lt;a href="https://carolbalbs.github.io/obraf
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;</description></item><item><title>Front-end</title><link>https://carolbalbs.github.io/obraflow-case/docs/escopo/frontend/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://carolbalbs.github.io/obraflow-case/docs/escopo/frontend/</guid><description>
-&lt;p&gt;&lt;strong&gt;Três telas.&lt;/strong&gt; O layout é livre — &lt;strong&gt;não há Figma, API ou implementação de referência&lt;/strong&gt;.
-O desenho das telas e as decisões de produto &lt;strong&gt;fazem parte da avaliação&lt;/strong&gt;: UI vale &lt;strong&gt;20%&lt;/strong&gt; e
-estados/responsividade/validações valem &lt;strong&gt;10%&lt;/strong&gt;.&lt;/p&gt;
 &lt;div class="hextra-cards hx:mt-4 hx:gap-4 hx:grid not-prose" style="--hextra-cards-grid-cols: 3;"&gt;
 &lt;a class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900"&gt;&lt;div class="hx:mt-auto"&gt;
 &lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;&lt;svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/&gt;&lt;/svg&gt;1. Cadastro de pedido&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;Dados gerais, N itens e totalização.&lt;/div&gt;&lt;/div&gt;&lt;/a&gt;
@@ -479,9 +476,6 @@ vários itens permaneça &lt;strong&gt;clara&lt;/strong&gt;.&lt;/p&gt;
 &lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;strong&gt;Loading state é obrigatório em toda lista.&lt;/strong&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;h2 data-hextra-search-id="stack"&gt;Stack&lt;span class="hx:absolute hx:-mt-20" id="stack"&gt;&lt;/span&gt;
-&lt;a href="#stack" class="subheading-anchor" aria-label="Link permanente para esta secção"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Livre&lt;/strong&gt; — framework, biblioteca de estilos e testes a seu critério. Deve rodar localmente
-conforme o &lt;code&gt;README.md&lt;/code&gt;, sem serviços pagos ou credenciais externas.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="como-foi-resolvido"&gt;Como foi resolvido&lt;span class="hx:absolute hx:-mt-20" id="como-foi-resolvido"&gt;&lt;/span&gt;
 &lt;a href="#como-foi-resolvido" class="subheading-anchor" aria-label="Link permanente para esta secção"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;As telas, uma a uma e com capturas, estão em &lt;a href="https://carolbalbs.github.io/obraflow-case/tutoriais/screenshots/"&gt;Screenshots das telas&lt;/a&gt;. Abaixo: o que cada papel vê, como os estados e validações exigidos foram atendidos e onde a interface diverge dos mockups.&lt;/p&gt;
 &lt;h4 data-hextra-search-id="o-que-cada-papel-vê-e-pode-fazer"&gt;O que cada papel vê e pode fazer&lt;span class="hx:absolute hx:-mt-20" id="o-que-cada-papel-vê-e-pode-fazer"&gt;&lt;/span&gt;
@@ -556,6 +550,13 @@ papel não usa, mas esconder não é proteger: quem digitar a URL ou chamar a ro
 &lt;td style="text-align: center"&gt;❌&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
+&lt;td&gt;Cadastrar obra e fornecedor (&lt;code&gt;/empresa&lt;/code&gt;)&lt;/td&gt;
+&lt;td style="text-align: center"&gt;✅&lt;/td&gt;
+&lt;td style="text-align: center"&gt;❌&lt;/td&gt;
+&lt;td style="text-align: center"&gt;❌&lt;/td&gt;
+&lt;td style="text-align: center"&gt;❌&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
 &lt;td&gt;Item &amp;ldquo;Aprovações&amp;rdquo; no menu&lt;/td&gt;
 &lt;td style="text-align: center"&gt;—&lt;/td&gt;
 &lt;td style="text-align: center"&gt;✅&lt;/td&gt;
@@ -571,6 +572,13 @@ papel não usa, mas esconder não é proteger: quem digitar a URL ou chamar a ro
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;Item &amp;ldquo;Administração&amp;rdquo; no menu&lt;/td&gt;
+&lt;td style="text-align: center"&gt;✅&lt;/td&gt;
+&lt;td style="text-align: center"&gt;—&lt;/td&gt;
+&lt;td style="text-align: center"&gt;—&lt;/td&gt;
+&lt;td style="text-align: center"&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Item &amp;ldquo;Empresa&amp;rdquo; no menu&lt;/td&gt;
 &lt;td style="text-align: center"&gt;✅&lt;/td&gt;
 &lt;td style="text-align: center"&gt;—&lt;/td&gt;
 &lt;td style="text-align: center"&gt;—&lt;/td&gt;
@@ -633,19 +641,4 @@ componente, não cuidado de cada tela.&lt;/p&gt;
 &lt;p&gt;Abaixo de 768 px as tabelas viram cartões e os botões sobem para alvos de toque de 44 px. Em
 390 px nenhuma das cinco telas do fluxo (&lt;code&gt;/entrar&lt;/code&gt;, &lt;code&gt;/pedidos&lt;/code&gt;, &lt;code&gt;/pedidos/{id}&lt;/code&gt;, &lt;code&gt;/pedidos/novo&lt;/code&gt;,
 &lt;code&gt;/alcadas&lt;/code&gt;) rola na horizontal. No painel &lt;code&gt;/admin&lt;/code&gt; os KPIs empilham em coluna e só a tabela da
-fila de atenção rola, dentro do próprio cartão.&lt;/p&gt;
-&lt;h4 data-hextra-search-id="divergências-deliberadas-do-mockup"&gt;Divergências deliberadas do mockup&lt;span class="hx:absolute hx:-mt-20" id="divergências-deliberadas-do-mockup"&gt;&lt;/span&gt;
-&lt;a href="#diverg%c3%aancias-deliberadas-do-mockup" class="subheading-anchor" aria-label="Link permanente para esta secção"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;A interface foi desenhada contra artboards próprios, e divergir deles exige justificativa. Nenhuma
-diverge do enunciado do case. As que valem para quem avalia:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;O campo &amp;ldquo;Valor mínimo&amp;rdquo; da tela 3 existe, mas é de leitura.&lt;/strong&gt; A faixa guarda só o limite
-superior; torná-lo editável criaria uma segunda fonte para o mesmo intervalo, e com ela os
-buracos e sobreposições que o modelo torna irrepresentáveis.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;A navegação é uma barra superior, não uma coluna lateral.&lt;/strong&gt; Dois artboards desenham as duas
-formas; as duas não cabem juntas.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;O botão &amp;ldquo;Salvar rascunho&amp;rdquo;&lt;/strong&gt; foi acrescentado entre os dois do mockup: sem ele, gravar um
-rascunho incompleto exigiria chamar a rota por fora da tela.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;O botão &amp;ldquo;Sair&amp;rdquo;&lt;/strong&gt; foi acrescentado ao cabeçalho: &lt;code&gt;DELETE /api/sessao&lt;/code&gt; existe e precisava de um
-controle; sem ele a única saída seria apagar o cookie à mão.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Nomes e números dos mockups são ilustrativos.&lt;/strong&gt; O que vale é o seed.&lt;/li&gt;
-&lt;/ul&gt;</description></item></channel></rss>
+fila de atenção rola, dentro do próprio cartão.&lt;/p&gt;</description></item></channel></rss>

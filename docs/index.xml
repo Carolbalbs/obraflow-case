@@ -516,7 +516,7 @@ depois não reescreve pedido em andamento. Detalhes em &lt;a href="https://carol
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;O que &lt;strong&gt;não&lt;/strong&gt; entrou, e por quê: sem autenticação com senha ou SSO, sem entidade &lt;code&gt;Empresa&lt;/code&gt;, sem
-telas de cadastro de obra/fornecedor/usuário, sem anexo, sem notificação, sem edição de pedido
+tela de cadastro de usuário, sem anexo, sem notificação, sem edição de pedido
 submetido, sem aprovação em paralelo. Cada ausência é deliberada.&lt;/p&gt;</description></item><item><title>Backend e persistência</title><link>https://carolbalbs.github.io/obraflow-case/docs/escopo/backend/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://carolbalbs.github.io/obraflow-case/docs/escopo/backend/</guid><description>
 &lt;p&gt;Você deve projetar e implementar a &lt;strong&gt;API&lt;/strong&gt; (ou outro mecanismo de comunicação entre
 front-end e servidor) e a &lt;strong&gt;persistência&lt;/strong&gt; necessários para suportar o desafio. O contrato,
@@ -661,8 +661,8 @@ e payloads&lt;/strong&gt;. Veja o &lt;a href="https://carolbalbs.github.io/obraf
 &lt;tr&gt;
 &lt;td&gt;B1&lt;/td&gt;
 &lt;td&gt;Cadastrar e listar obras, usuários, fornecedores, pedidos e regras de alçada&lt;/td&gt;
-&lt;td style="text-align: center"&gt;◐&lt;/td&gt;
-&lt;td&gt;Pedidos e regras: completo. Listagem por API das outras três: &lt;code&gt;GET /api/obras&lt;/code&gt; e &lt;code&gt;GET /api/fornecedores&lt;/code&gt; (sessão, qualquer papel; feature &lt;code&gt;s5f4&lt;/code&gt;) e &lt;code&gt;GET /api/usuarios&lt;/code&gt; (atrás de &lt;code&gt;DEMO_MODE&lt;/code&gt;). &lt;strong&gt;Cadastro&lt;/strong&gt; dessas três fica com o seed — fora de escopo declarado no PRD § 3 e no README&lt;/td&gt;
+&lt;td style="text-align: center"&gt;✅&lt;/td&gt;
+&lt;td&gt;Pedidos e regras: completo. Listagem por API das outras três: &lt;code&gt;GET /api/obras&lt;/code&gt; e &lt;code&gt;GET /api/fornecedores&lt;/code&gt; (sessão, qualquer papel; feature &lt;code&gt;s5f4&lt;/code&gt;) e &lt;code&gt;GET /api/usuarios&lt;/code&gt; (atrás de &lt;code&gt;DEMO_MODE&lt;/code&gt;). &lt;strong&gt;Cadastro&lt;/strong&gt;: obras e fornecedores pela tela &lt;code&gt;/empresa&lt;/code&gt; e por &lt;code&gt;POST /api/obras&lt;/code&gt; e &lt;code&gt;POST /api/fornecedores&lt;/code&gt;, só para o admin (feature &lt;code&gt;s5f5&lt;/code&gt;, depois da entrega); usuários continuam vindo do seed&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;B2&lt;/td&gt;
@@ -714,14 +714,6 @@ e payloads&lt;/strong&gt;. Veja o &lt;a href="https://carolbalbs.github.io/obraf
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;</description></item><item><title>Contato e entrevista</title><link>https://carolbalbs.github.io/obraflow-case/docs/entrega/avaliacao/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://carolbalbs.github.io/obraflow-case/docs/entrega/avaliacao/</guid><description>
-&lt;h2 data-hextra-search-id="uso-de-ia"&gt;Uso de IA&lt;span class="hx:absolute hx:-mt-20" id="uso-de-ia"&gt;&lt;/span&gt;
-&lt;a href="#uso-de-ia" class="subheading-anchor" aria-label="Link permanente para esta secção"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200"&gt;
-&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/&gt;&lt;/svg&gt;&lt;/div&gt;
-&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
-&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;strong&gt;IA é permitida&lt;/strong&gt; — mas é preciso explicar &lt;strong&gt;cada decisão&lt;/strong&gt; na entrevista de 30 min.&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;Os &lt;a href="https://carolbalbs.github.io/obraflow-case/docs/"&gt;critérios de avaliação e seus pesos&lt;/a&gt; estão na Introdução.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="contato"&gt;Contato&lt;span class="hx:absolute hx:-mt-20" id="contato"&gt;&lt;/span&gt;
 &lt;a href="#contato" class="subheading-anchor" aria-label="Link permanente para esta secção"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Ana Carolina Balbino&lt;/strong&gt;&lt;/p&gt;
 &lt;div class="hextra-cards hx:mt-4 hx:gap-4 hx:grid not-prose" style="--hextra-cards-grid-cols: 3;"&gt;
@@ -1052,6 +1044,24 @@ gravaria uma decisão derivada de um número provisório.&lt;/p&gt;
 &lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;O enunciado deste ponto está em &lt;a href="https://carolbalbs.github.io/obraflow-case/docs/escopo/regra-de-alcada/"&gt;Escopo → Regra de alçada&lt;/a&gt;.&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;</description></item><item><title>Primeiros passos</title><link>https://carolbalbs.github.io/obraflow-case/docs/getting-started/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://carolbalbs.github.io/obraflow-case/docs/getting-started/</guid><description>
+&lt;h2 data-hextra-search-id="como-esta-documentação-está-organizada"&gt;Como esta documentação está organizada&lt;span class="hx:absolute hx:-mt-20" id="como-esta-documentação-está-organizada"&gt;&lt;/span&gt;
+&lt;a href="#como-esta-documenta%c3%a7%c3%a3o-est%c3%a1-organizada" class="subheading-anchor" aria-label="Link permanente para esta secção"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-steps hx:ml-4 hx:mb-12 hx:ltr:border-l hx:rtl:border-r hx:border-gray-200 hx:ltr:pl-6 hx:rtl:pr-6 hx:dark:border-neutral-800 [counter-reset:step]"&gt;
+&lt;h3 data-hextra-search-id="guia"&gt;Guia&lt;span class="hx:absolute hx:-mt-20" id="guia"&gt;&lt;/span&gt;
+&lt;a href="#guia" class="subheading-anchor" aria-label="Link permanente para esta secção"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;As &lt;strong&gt;decisões técnicas&lt;/strong&gt;: &lt;a href="https://carolbalbs.github.io/obraflow-case/docs/guia/tecnologias/"&gt;tecnologias e motivos&lt;/a&gt;,
+&lt;a href="https://carolbalbs.github.io/obraflow-case/docs/guia/alcada/"&gt;modelagem da alçada&lt;/a&gt;,
+&lt;a href="https://carolbalbs.github.io/obraflow-case/docs/guia/comunicacao/"&gt;comunicação front ↔ back&lt;/a&gt;,
+&lt;a href="https://carolbalbs.github.io/obraflow-case/docs/guia/consistencia/"&gt;consistência dos dados&lt;/a&gt; e
+&lt;a href="https://carolbalbs.github.io/obraflow-case/docs/guia/producao/"&gt;o que mudaria em produção&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="tutoriais"&gt;Tutoriais&lt;span class="hx:absolute hx:-mt-20" id="tutoriais"&gt;&lt;/span&gt;
+&lt;a href="#tutoriais" class="subheading-anchor" aria-label="Link permanente para esta secção"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;O caminho prático: &lt;a href="https://carolbalbs.github.io/obraflow-case/tutoriais/dados-demo/"&gt;dados de demonstração&lt;/a&gt; e
+&lt;a href="https://carolbalbs.github.io/obraflow-case/tutoriais/screenshots/"&gt;screenshots das telas&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="escopo-do-desafio"&gt;Escopo do desafio&lt;span class="hx:absolute hx:-mt-20" id="escopo-do-desafio"&gt;&lt;/span&gt;
+&lt;a href="#escopo-do-desafio" class="subheading-anchor" aria-label="Link permanente para esta secção"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;O enunciado original, para conferência: &lt;a href="https://carolbalbs.github.io/obraflow-case/docs/escopo/regra-de-alcada/"&gt;regra de alçada&lt;/a&gt;,
+&lt;a href="https://carolbalbs.github.io/obraflow-case/docs/escopo/backend/"&gt;back-end e persistência&lt;/a&gt; e &lt;a href="https://carolbalbs.github.io/obraflow-case/docs/escopo/frontend/"&gt;front-end&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="entrega"&gt;Entrega&lt;span class="hx:absolute hx:-mt-20" id="entrega"&gt;&lt;/span&gt;
+&lt;a href="#entrega" class="subheading-anchor" aria-label="Link permanente para esta secção"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;a href="https://carolbalbs.github.io/obraflow-case/docs/entrega/"&gt;Prazo e Pull Request&lt;/a&gt;, o
+&lt;a href="https://carolbalbs.github.io/obraflow-case/docs/entrega/readme/"&gt;checklist do &lt;code&gt;README.md&lt;/code&gt;&lt;/a&gt; e &lt;a href="https://carolbalbs.github.io/obraflow-case/docs/entrega/avaliacao/"&gt;as decisões registradas&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
 &lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200"&gt;
 &lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/&gt;&lt;/svg&gt;&lt;/div&gt;
 &lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
@@ -1111,7 +1121,7 @@ superior direito troca de usuário sem sair da tela.&lt;/p&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;npm test&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;Suíte Vitest (56 casos)&lt;/td&gt;
+&lt;td&gt;Suíte Vitest (58 casos)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;npm run lint&lt;/code&gt; / &lt;code&gt;npx tsc --noEmit&lt;/code&gt;&lt;/td&gt;
@@ -1207,46 +1217,7 @@ não estiver no ar, ou se o banco não estiver semeado, ele falha cedo dizendo q
 &lt;/table&gt;
 &lt;p&gt;O bloco 4 cria o próprio pedido, para o script ser repetível. Ele é o único que deixa rastro —
 pedido submetido é imutável e não tem como ser apagado. &lt;code&gt;npm run seed&lt;/code&gt; devolve o banco ao estado
-da demonstração.&lt;/p&gt;
-&lt;h2 data-hextra-search-id="como-esta-documentação-está-organizada"&gt;Como esta documentação está organizada&lt;span class="hx:absolute hx:-mt-20" id="como-esta-documentação-está-organizada"&gt;&lt;/span&gt;
-&lt;a href="#como-esta-documenta%c3%a7%c3%a3o-est%c3%a1-organizada" class="subheading-anchor" aria-label="Link permanente para esta secção"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-steps hx:ml-4 hx:mb-12 hx:ltr:border-l hx:rtl:border-r hx:border-gray-200 hx:ltr:pl-6 hx:rtl:pr-6 hx:dark:border-neutral-800 [counter-reset:step]"&gt;
-&lt;h3 data-hextra-search-id="guia"&gt;Guia&lt;span class="hx:absolute hx:-mt-20" id="guia"&gt;&lt;/span&gt;
-&lt;a href="#guia" class="subheading-anchor" aria-label="Link permanente para esta secção"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;As &lt;strong&gt;decisões técnicas&lt;/strong&gt;: &lt;a href="https://carolbalbs.github.io/obraflow-case/docs/guia/tecnologias/"&gt;tecnologias e motivos&lt;/a&gt;,
-&lt;a href="https://carolbalbs.github.io/obraflow-case/docs/guia/alcada/"&gt;modelagem da alçada&lt;/a&gt;,
-&lt;a href="https://carolbalbs.github.io/obraflow-case/docs/guia/comunicacao/"&gt;comunicação front ↔ back&lt;/a&gt;,
-&lt;a href="https://carolbalbs.github.io/obraflow-case/docs/guia/consistencia/"&gt;consistência dos dados&lt;/a&gt; e
-&lt;a href="https://carolbalbs.github.io/obraflow-case/docs/guia/producao/"&gt;o que mudaria em produção&lt;/a&gt;.&lt;/p&gt;
-&lt;h3 data-hextra-search-id="tutoriais"&gt;Tutoriais&lt;span class="hx:absolute hx:-mt-20" id="tutoriais"&gt;&lt;/span&gt;
-&lt;a href="#tutoriais" class="subheading-anchor" aria-label="Link permanente para esta secção"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;O caminho prático: &lt;a href="https://carolbalbs.github.io/obraflow-case/tutoriais/dados-demo/"&gt;dados de demonstração&lt;/a&gt; e
-&lt;a href="https://carolbalbs.github.io/obraflow-case/tutoriais/screenshots/"&gt;screenshots das telas&lt;/a&gt;.&lt;/p&gt;
-&lt;h3 data-hextra-search-id="escopo-do-desafio"&gt;Escopo do desafio&lt;span class="hx:absolute hx:-mt-20" id="escopo-do-desafio"&gt;&lt;/span&gt;
-&lt;a href="#escopo-do-desafio" class="subheading-anchor" aria-label="Link permanente para esta secção"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;O enunciado original, para conferência: &lt;a href="https://carolbalbs.github.io/obraflow-case/docs/escopo/regra-de-alcada/"&gt;regra de alçada&lt;/a&gt;,
-&lt;a href="https://carolbalbs.github.io/obraflow-case/docs/escopo/backend/"&gt;back-end e persistência&lt;/a&gt; e &lt;a href="https://carolbalbs.github.io/obraflow-case/docs/escopo/frontend/"&gt;front-end&lt;/a&gt;.&lt;/p&gt;
-&lt;h3 data-hextra-search-id="entrega"&gt;Entrega&lt;span class="hx:absolute hx:-mt-20" id="entrega"&gt;&lt;/span&gt;
-&lt;a href="#entrega" class="subheading-anchor" aria-label="Link permanente para esta secção"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;a href="https://carolbalbs.github.io/obraflow-case/docs/entrega/"&gt;Prazo e Pull Request&lt;/a&gt;, o
-&lt;a href="https://carolbalbs.github.io/obraflow-case/docs/entrega/readme/"&gt;checklist do &lt;code&gt;README.md&lt;/code&gt;&lt;/a&gt; e &lt;a href="https://carolbalbs.github.io/obraflow-case/docs/entrega/avaliacao/"&gt;as decisões registradas&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;h2 data-hextra-search-id="regras-que-valem-para-tudo"&gt;Regras que valem para tudo&lt;span class="hx:absolute hx:-mt-20" id="regras-que-valem-para-tudo"&gt;&lt;/span&gt;
-&lt;a href="#regras-que-valem-para-tudo" class="subheading-anchor" aria-label="Link permanente para esta secção"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200"&gt;
-&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/&gt;&lt;/svg&gt;&lt;/div&gt;
-&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
-&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;strong&gt;A stack é livre.&lt;/strong&gt; Front-end, back-end, banco, ORM, biblioteca de estilos, testes e
-infraestrutura ficam a critério de quem resolve o desafio.&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-amber-200 hx:bg-amber-100 hx:text-amber-900 hx:dark:border-amber-200/30 hx:dark:bg-amber-900/30 hx:dark:text-amber-200"&gt;
-&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/&gt;&lt;/svg&gt;&lt;/div&gt;
-&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
-&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;strong&gt;A aplicação precisa rodar localmente&lt;/strong&gt; conforme estas instruções, sem serviços pagos nem
-credenciais externas. &lt;code&gt;docker compose&lt;/code&gt; é aceito, mas não obrigatório.&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200"&gt;
-&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/&gt;&lt;/svg&gt;&lt;/div&gt;
-&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
-&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;strong&gt;IA é permitida&lt;/strong&gt; — mas é preciso explicar &lt;strong&gt;cada decisão&lt;/strong&gt; na entrevista de 30 min.&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;</description></item><item><title>Prometheus</title><link>https://carolbalbs.github.io/obraflow-case/lp/produtos/prometheus/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://carolbalbs.github.io/obraflow-case/lp/produtos/prometheus/</guid><description>
+da demonstração.&lt;/p&gt;</description></item><item><title>Prometheus</title><link>https://carolbalbs.github.io/obraflow-case/lp/produtos/prometheus/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://carolbalbs.github.io/obraflow-case/lp/produtos/prometheus/</guid><description>
 &lt;p&gt;&lt;a href="https://github.com/Carolbalbs/obraflow-case/edit/resolucao-obraflow/site/content/lp/produtos/prometheus.md" target="_blank" rel="noopener"&gt;Editar este .md no GitHub&lt;/a&gt; · &lt;a href="https://carolbalbs.github.io/obraflow-case/lp/produtos/prometheus.md"&gt;Ver o .md&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Arquivo da página: &lt;code&gt;produtos/prometheus.html&lt;/code&gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -1419,6 +1390,15 @@ com o período anterior de mesmo tamanho), valor aprovado por semana e por obra,
 de pedidos parados há mais de 24 h e a contagem de pedidos por situação. O filtro de obra recorta
 tudo. Os números saem de &lt;code&gt;src/domain/painel.ts&lt;/code&gt;, que tem 18 casos de teste.&lt;/p&gt;
 &lt;p&gt;&lt;img src="https://carolbalbs.github.io/obraflow-case/screenshots/administracao-painel.png" alt="Administração — painel da empresa, como Marina" loading="lazy" /&gt;&lt;/p&gt;
+&lt;h2 data-hextra-search-id="empresa--cadastro-de-obras-e-fornecedores"&gt;Empresa · cadastro de obras e fornecedores&lt;span class="hx:absolute hx:-mt-20" id="empresa--cadastro-de-obras-e-fornecedores"&gt;&lt;/span&gt;
+&lt;a href="#empresa--cadastro-de-obras-e-fornecedores" class="subheading-anchor" aria-label="Link permanente para esta secção"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Também só para o &lt;code&gt;admin&lt;/code&gt;, no item &amp;ldquo;Empresa&amp;rdquo; do menu (artboard &lt;code&gt;Empresa&lt;/code&gt;). Duas abas: &lt;strong&gt;Obras&lt;/strong&gt;,
+com a cidade, quantas faixas a alçada tem e quantos pedidos submetidos — a obra sem faixa aparece
+marcada, com o atalho para criar a primeira — e &lt;strong&gt;Fornecedores&lt;/strong&gt;, com CNPJ e pedidos submetidos.
+&amp;ldquo;+ Nova obra&amp;rdquo; e &amp;ldquo;+ Novo fornecedor&amp;rdquo; abrem o cadastro, validado pelo mesmo schema da rota; o que é
+cadastrado aparece na hora no seletor do cadastro de pedido. Uma obra nova ainda não tem alçada:
+o pedido dela é bloqueado na submissão até a primeira faixa existir.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://carolbalbs.github.io/obraflow-case/screenshots/empresa-obras.png" alt="Empresa — obras da construtora, como Marina" loading="lazy" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://carolbalbs.github.io/obraflow-case/screenshots/empresa-fornecedores.png" alt="Empresa — fornecedores" loading="lazy" /&gt;&lt;/p&gt;
 &lt;h2 data-hextra-search-id="a-prova-visual-do-snapshot"&gt;A prova visual do snapshot&lt;span class="hx:absolute hx:-mt-20" id="a-prova-visual-do-snapshot"&gt;&lt;/span&gt;
 &lt;a href="#a-prova-visual-do-snapshot" class="subheading-anchor" aria-label="Link permanente para esta secção"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;O pedido &lt;code&gt;#1007&lt;/code&gt; foi submetido quando a faixa da obra era &lt;strong&gt;&amp;ldquo;até R$ 6.000,00 → João Ferreira&amp;rdquo;&lt;/strong&gt;.
 Depois disso a faixa foi editada e hoje é &lt;strong&gt;&amp;ldquo;até R$ 10.000,00 → Amanda Prado&amp;rdquo;&lt;/strong&gt; (veja a tela 3
@@ -1441,9 +1421,6 @@ e conteúdo pela forma do hook.&lt;/p&gt;
 390 px nenhuma das cinco telas do fluxo (&lt;code&gt;/entrar&lt;/code&gt;, &lt;code&gt;/pedidos&lt;/code&gt;, &lt;code&gt;/pedidos/{id}&lt;/code&gt;, &lt;code&gt;/pedidos/novo&lt;/code&gt;,
 &lt;code&gt;/alcadas&lt;/code&gt;) rola na horizontal. No painel &lt;code&gt;/admin&lt;/code&gt; os KPIs empilham em coluna e só a tabela da
 fila de atenção rola, dentro do próprio cartão.&lt;/p&gt;</description></item><item><title>Front-end</title><link>https://carolbalbs.github.io/obraflow-case/docs/escopo/frontend/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://carolbalbs.github.io/obraflow-case/docs/escopo/frontend/</guid><description>
-&lt;p&gt;&lt;strong&gt;Três telas.&lt;/strong&gt; O layout é livre — &lt;strong&gt;não há Figma, API ou implementação de referência&lt;/strong&gt;.
-O desenho das telas e as decisões de produto &lt;strong&gt;fazem parte da avaliação&lt;/strong&gt;: UI vale &lt;strong&gt;20%&lt;/strong&gt; e
-estados/responsividade/validações valem &lt;strong&gt;10%&lt;/strong&gt;.&lt;/p&gt;
 &lt;div class="hextra-cards hx:mt-4 hx:gap-4 hx:grid not-prose" style="--hextra-cards-grid-cols: 3;"&gt;
 &lt;a class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900"&gt;&lt;div class="hx:mt-auto"&gt;
 &lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;&lt;svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/&gt;&lt;/svg&gt;1. Cadastro de pedido&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;Dados gerais, N itens e totalização.&lt;/div&gt;&lt;/div&gt;&lt;/a&gt;
@@ -1660,9 +1637,6 @@ vários itens permaneça &lt;strong&gt;clara&lt;/strong&gt;.&lt;/p&gt;
 &lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;strong&gt;Loading state é obrigatório em toda lista.&lt;/strong&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;h2 data-hextra-search-id="stack"&gt;Stack&lt;span class="hx:absolute hx:-mt-20" id="stack"&gt;&lt;/span&gt;
-&lt;a href="#stack" class="subheading-anchor" aria-label="Link permanente para esta secção"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Livre&lt;/strong&gt; — framework, biblioteca de estilos e testes a seu critério. Deve rodar localmente
-conforme o &lt;code&gt;README.md&lt;/code&gt;, sem serviços pagos ou credenciais externas.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="como-foi-resolvido"&gt;Como foi resolvido&lt;span class="hx:absolute hx:-mt-20" id="como-foi-resolvido"&gt;&lt;/span&gt;
 &lt;a href="#como-foi-resolvido" class="subheading-anchor" aria-label="Link permanente para esta secção"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;As telas, uma a uma e com capturas, estão em &lt;a href="https://carolbalbs.github.io/obraflow-case/tutoriais/screenshots/"&gt;Screenshots das telas&lt;/a&gt;. Abaixo: o que cada papel vê, como os estados e validações exigidos foram atendidos e onde a interface diverge dos mockups.&lt;/p&gt;
 &lt;h4 data-hextra-search-id="o-que-cada-papel-vê-e-pode-fazer"&gt;O que cada papel vê e pode fazer&lt;span class="hx:absolute hx:-mt-20" id="o-que-cada-papel-vê-e-pode-fazer"&gt;&lt;/span&gt;
@@ -1737,6 +1711,13 @@ papel não usa, mas esconder não é proteger: quem digitar a URL ou chamar a ro
 &lt;td style="text-align: center"&gt;❌&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
+&lt;td&gt;Cadastrar obra e fornecedor (&lt;code&gt;/empresa&lt;/code&gt;)&lt;/td&gt;
+&lt;td style="text-align: center"&gt;✅&lt;/td&gt;
+&lt;td style="text-align: center"&gt;❌&lt;/td&gt;
+&lt;td style="text-align: center"&gt;❌&lt;/td&gt;
+&lt;td style="text-align: center"&gt;❌&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
 &lt;td&gt;Item &amp;ldquo;Aprovações&amp;rdquo; no menu&lt;/td&gt;
 &lt;td style="text-align: center"&gt;—&lt;/td&gt;
 &lt;td style="text-align: center"&gt;✅&lt;/td&gt;
@@ -1752,6 +1733,13 @@ papel não usa, mas esconder não é proteger: quem digitar a URL ou chamar a ro
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;Item &amp;ldquo;Administração&amp;rdquo; no menu&lt;/td&gt;
+&lt;td style="text-align: center"&gt;✅&lt;/td&gt;
+&lt;td style="text-align: center"&gt;—&lt;/td&gt;
+&lt;td style="text-align: center"&gt;—&lt;/td&gt;
+&lt;td style="text-align: center"&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Item &amp;ldquo;Empresa&amp;rdquo; no menu&lt;/td&gt;
 &lt;td style="text-align: center"&gt;✅&lt;/td&gt;
 &lt;td style="text-align: center"&gt;—&lt;/td&gt;
 &lt;td style="text-align: center"&gt;—&lt;/td&gt;
@@ -1814,22 +1802,7 @@ componente, não cuidado de cada tela.&lt;/p&gt;
 &lt;p&gt;Abaixo de 768 px as tabelas viram cartões e os botões sobem para alvos de toque de 44 px. Em
 390 px nenhuma das cinco telas do fluxo (&lt;code&gt;/entrar&lt;/code&gt;, &lt;code&gt;/pedidos&lt;/code&gt;, &lt;code&gt;/pedidos/{id}&lt;/code&gt;, &lt;code&gt;/pedidos/novo&lt;/code&gt;,
 &lt;code&gt;/alcadas&lt;/code&gt;) rola na horizontal. No painel &lt;code&gt;/admin&lt;/code&gt; os KPIs empilham em coluna e só a tabela da
-fila de atenção rola, dentro do próprio cartão.&lt;/p&gt;
-&lt;h4 data-hextra-search-id="divergências-deliberadas-do-mockup"&gt;Divergências deliberadas do mockup&lt;span class="hx:absolute hx:-mt-20" id="divergências-deliberadas-do-mockup"&gt;&lt;/span&gt;
-&lt;a href="#diverg%c3%aancias-deliberadas-do-mockup" class="subheading-anchor" aria-label="Link permanente para esta secção"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;A interface foi desenhada contra artboards próprios, e divergir deles exige justificativa. Nenhuma
-diverge do enunciado do case. As que valem para quem avalia:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;O campo &amp;ldquo;Valor mínimo&amp;rdquo; da tela 3 existe, mas é de leitura.&lt;/strong&gt; A faixa guarda só o limite
-superior; torná-lo editável criaria uma segunda fonte para o mesmo intervalo, e com ela os
-buracos e sobreposições que o modelo torna irrepresentáveis.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;A navegação é uma barra superior, não uma coluna lateral.&lt;/strong&gt; Dois artboards desenham as duas
-formas; as duas não cabem juntas.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;O botão &amp;ldquo;Salvar rascunho&amp;rdquo;&lt;/strong&gt; foi acrescentado entre os dois do mockup: sem ele, gravar um
-rascunho incompleto exigiria chamar a rota por fora da tela.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;O botão &amp;ldquo;Sair&amp;rdquo;&lt;/strong&gt; foi acrescentado ao cabeçalho: &lt;code&gt;DELETE /api/sessao&lt;/code&gt; existe e precisava de um
-controle; sem ele a única saída seria apagar o cookie à mão.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Nomes e números dos mockups são ilustrativos.&lt;/strong&gt; O que vale é o seed.&lt;/li&gt;
-&lt;/ul&gt;</description></item><item><title>Front-end ↔ back-end</title><link>https://carolbalbs.github.io/obraflow-case/docs/guia/comunicacao/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://carolbalbs.github.io/obraflow-case/docs/guia/comunicacao/</guid><description>
+fila de atenção rola, dentro do próprio cartão.&lt;/p&gt;</description></item><item><title>Front-end ↔ back-end</title><link>https://carolbalbs.github.io/obraflow-case/docs/guia/comunicacao/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://carolbalbs.github.io/obraflow-case/docs/guia/comunicacao/</guid><description>
 &lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200"&gt;
 &lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/&gt;&lt;/svg&gt;&lt;/div&gt;
 &lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
@@ -1858,8 +1831,8 @@ rota escolhe status de recusa por conta própria, então a mesma regra nunca res
 e 422 noutro. &lt;code&gt;fields&lt;/code&gt; é o que permite ao formulário &lt;strong&gt;ancorar a mensagem no campo certo&lt;/strong&gt;, com as
 mesmas chaves que o Zod produziu no cliente.&lt;/p&gt;
 &lt;p&gt;&amp;ldquo;Sessão&amp;rdquo; na tabela abaixo é qualquer um dos quatro papéis; sem sessão, toda rota responde
-&lt;code&gt;403 SEM_PERMISSAO&lt;/code&gt;. Obras, fornecedores e usuários são &lt;strong&gt;só listados&lt;/strong&gt;: o cadastro deles é feito
-pelo seed e está fora de escopo.&lt;/p&gt;
+&lt;code&gt;403 SEM_PERMISSAO&lt;/code&gt;. Obras e fornecedores são listados por qualquer sessão e cadastrados pelo
+admin; usuários são só listados, porque vêm do seed.&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -1898,6 +1871,16 @@ pelo seed e está fora de escopo.&lt;/p&gt;
 &lt;td&gt;&lt;code&gt;GET /api/obras/{id}/faixas&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;sessão&lt;/td&gt;
 &lt;td&gt;Faixas da obra, ordenadas, com os aprovadores na ordem&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;POST /api/obras&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;admin&lt;/td&gt;
+&lt;td&gt;Cadastra a obra — &lt;code&gt;{ nome, cidade }&lt;/code&gt; → &lt;code&gt;201&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;POST /api/fornecedores&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;admin&lt;/td&gt;
+&lt;td&gt;Cadastra o fornecedor — &lt;code&gt;{ nome, documento? }&lt;/code&gt;, CNPJ com ou sem máscara, gravado mascarado → &lt;code&gt;201&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;POST /api/obras/{id}/faixas&lt;/code&gt;&lt;/td&gt;
@@ -2476,7 +2459,7 @@ mais. Nenhum cabeçalho declarado pelo cliente participa da decisão.&lt;/p&gt;
 &lt;a href="#testes-e-verifica%c3%a7%c3%b5es" class="subheading-anchor" aria-label="Link permanente para esta secção"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
 &lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;npx tsc --noEmit &lt;span class="c1"&gt;# tipos&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;npm run lint &lt;span class="c1"&gt;# ESLint (next/core-web-vitals + react-hooks)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;npm &lt;span class="nb"&gt;test&lt;/span&gt; &lt;span class="c1"&gt;# 56 casos&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;npm &lt;span class="nb"&gt;test&lt;/span&gt; &lt;span class="c1"&gt;# 58 casos&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
 &lt;button
 class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
 title="Copiar código"
@@ -2500,7 +2483,7 @@ data-copied-label="Copiado!"
 &lt;tbody&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;dominio&lt;/code&gt;&lt;/td&gt;
-&lt;td style="text-align: right"&gt;47&lt;/td&gt;
+&lt;td style="text-align: right"&gt;49&lt;/td&gt;
 &lt;td&gt;Limite inclusivo, faixa aberta, ordenação, sem regra aplicável, montagem e leitura da cadeia, aprovador da vez, rejeição encerrando o fluxo, arredondamento de centavos e milésimos, schemas (data do pedido obrigatória, preço zero aceito, negativo ou ausente recusado) — e, em 18 desses casos, as derivações do painel: quando cada etapa recebeu a vez, &amp;ldquo;parado há&amp;rdquo;, KPIs contra o período anterior, cortes por faixa e por aprovador, fila de atenção e série semanal&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
