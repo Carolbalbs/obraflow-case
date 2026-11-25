@@ -1,0 +1,62 @@
+name: Publica o site (gh-pages)
+
+# A cada push no branch da entrega que mexa no site, gera o Hugo e publica no
+# gh-pages, que é de onde o GitHub Pages serve https://carolbalbs.github.io/obraflow-case/.
+on:
+  push:
+    branches: [resolucao-obraflow]
+    paths:
+      - 'site/**'
+      - '.github/workflows/publica-site.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publica-site
+  cancel-in-progress: false
+
+jobs:
+  publica:
+    runs-on: ubuntu-latest
+    env:
+      HUGO_VERSION: 0.167.0
+      BASE_URL: https://carolbalbs.github.io/obraflow-case/
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Instala o Hugo
+        run: |
+          curl -sSL -o hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb
+          sudo dpkg -i hugo.deb
+
+      - name: Gera o site
+        working-directory: site
+        run: hugo --gc --minify --baseURL "$BASE_URL"
+
+      # Os .md de Textos da LP também vão para o site, ao lado das páginas (link "Ver o .md").
+      - name: Copia os .md de Textos da LP
+        working-directory: site/content/lp
+        run: |
+          find . -name '*.md' ! -name '_index.md' | while read -r f; do
+            mkdir -p "../../public/lp/$(dirname "$f")"
+            cp "$f" "../../public/lp/$f"
+          done
+
+      - name: Publica no gh-pages
+        run: |
+          git fetch origin gh-pages
+          git worktree add pages origin/gh-pages
+          cd pages
+          find . -mindepth 1 -maxdepth 1 ! -name .git ! -name .nojekyll -exec rm -rf {} +
+          cp -r ../site/public/. .
+          touch .nojekyll
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Nada mudou no site."
+            exit 0
+          fi
+          git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+            commit -m "Publica o site (resolucao-obraflow@${GITHUB_SHA::7})"
+          git push origin HEAD:gh-pages
